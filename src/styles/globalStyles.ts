@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         transition: color, background .2s ease-in-out;
+        font-family: var(--main-font);
     }
 
     html,
@@ -24,13 +25,17 @@ const GlobalStyles = createGlobalStyle`
 
     h1, h2, h3, h4, h5, h6 {
         color: ${({ theme }) => theme.palette.text.primary};
+        font-style: normal;
         font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.03906rem;
     }
 
     p{  
         color: ${({ theme }) => theme.palette.text.secondary};
-        font-weight: 500;
         font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 500;
         line-height: 0.9375rem;
         letter-spacing: -0.01563rem;
     }

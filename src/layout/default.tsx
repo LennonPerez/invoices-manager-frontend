@@ -22,7 +22,7 @@ const DefaultLayout: FunctionComponent<DefaultLayoutProps> = ({ children }) => {
 }
 
 const DefaultLayoutWrapper = styled.div`
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem;
 
     .navbar{
         position: fixed;
