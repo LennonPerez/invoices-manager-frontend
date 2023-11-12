@@ -2,8 +2,8 @@ import { DefaultTheme } from "styled-components";
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    type: 'light' | 'dark',
     palette: {
-      type: 'light' | 'dark',
       text: {
         primary: string,
         secondary: string,
@@ -32,7 +32,7 @@ declare module 'styled-components' {
         default: string,
       },
     },
-    settingsBar: {
+    navbar: {
       background: string,
       icon: string,
       border: string,

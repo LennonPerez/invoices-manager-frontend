@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
 
     html,
     body {
-        color-scheme: ${({ theme }) => theme.palette.type};
+        color-scheme: ${({ theme }) => theme.type};
         max-width: 100vw;
         overflow-x: hidden;
     }

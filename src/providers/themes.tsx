@@ -23,8 +23,8 @@ const ThemesProvider: FunctionComponent<ThemesProviderProps> = ({ children }) =>
 
     const toggleTheme = () => {
         setTheme((prevTheme) => {
-            const selectedTheme = prevTheme.palette.type === 'dark' ? lightTheme : darkTheme;
-            localStorage.setItem('theme', selectedTheme.palette.type)
+            const selectedTheme = prevTheme.type === 'dark' ? lightTheme : darkTheme;
+            localStorage.setItem('theme', selectedTheme.type)
             return selectedTheme;
         });
     };

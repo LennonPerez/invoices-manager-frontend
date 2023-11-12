@@ -8,7 +8,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 
 const Navbar = () => {
     const { theme, toggleTheme } = useTheme()
-    const ThemeIcon = theme.palette.type === 'dark' ? BsFillSunFill : BsFillMoonFill;
+    const ThemeIcon = theme.type === 'dark' ? BsFillSunFill : BsFillMoonFill;
 
     return (
         <NavbarWrapper>
@@ -33,7 +33,7 @@ const Navbar = () => {
 }
 
 const NavbarWrapper = styled.header`
-    background-color: ${({ theme }) => theme.settingsBar.background};
+    background-color: ${({ theme }) => theme.navbar.background};
     height: 4.5rem;
     display: flex;
     flex-direction: row;
@@ -78,14 +78,14 @@ const NavbarWrapper = styled.header`
             margin-right: 1.5rem;
 
             .theme-icon{
-                color: ${({ theme }) => theme.settingsBar.icon};
+                color: ${({ theme }) => theme.navbar.icon};
                 width: 100%;
                 height: 100%;
             }
         }
 
         .user-container{
-            border-left: 0.06rem solid ${({ theme }) => theme.settingsBar.border};
+            border-left: 0.06rem solid ${({ theme }) => theme.navbar.border};
             height: 100%;
             width: 5rem;
             display: flex;
@@ -102,7 +102,7 @@ const NavbarWrapper = styled.header`
                 align-items: center;
 
                 .user-avatar{
-                    color: ${({theme}) => theme.settingsBar.background};
+                    color: ${({theme}) => theme.navbar.background};
                     height: 100%;
                     width: 100%;
                 }

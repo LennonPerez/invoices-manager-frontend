@@ -31,7 +31,7 @@ const lightTheme: DefaultTheme = {
       default: '#F8F8FB',
     },
   },
-  settingsBar: {
+  navbar: {
     background: "#373B53",
     icon: "#7E88C3",
     border: "#494E6E",

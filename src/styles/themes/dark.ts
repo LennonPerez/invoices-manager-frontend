@@ -1,8 +1,8 @@
 import { DefaultTheme } from "styled-components";
 
 const darkTheme: DefaultTheme = {
+  type: 'dark',
   palette: {
-    type: 'dark',
     text: {
       primary: '#FFFFFF',
       secondary: '#DFE3FA',
@@ -31,7 +31,7 @@ const darkTheme: DefaultTheme = {
       default: '#141625',
     },
   },
-  settingsBar: {
+  navbar: {
     background: "#1E2139",
     icon: "#858BB2",
     border: "#494E6E",
