@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
 
     html,
     body {
+        color-scheme: ${({ theme }) => theme.palette.type};
         max-width: 100vw;
         overflow-x: hidden;
     }
@@ -19,6 +20,19 @@ const GlobalStyles = createGlobalStyle`
     body {
         color: ${({ theme }) => theme.palette.text.primary};
         background: ${({ theme }) => theme.palette.background.default};
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: ${({ theme }) => theme.palette.text.primary};
+        font-weight: 700;
+    }
+
+    p{  
+        color: ${({ theme }) => theme.palette.text.secondary};
+        font-weight: 500;
+        font-size: 0.75rem;
+        line-height: 0.9375rem;
+        letter-spacing: -0.01563rem;
     }
 `;
 

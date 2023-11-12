@@ -1,17 +1,32 @@
 'use client'
 
-import React, { createContext, useContext, useState, FunctionComponent, ReactNode } from 'react';
+import { createContext, useContext, useState, FunctionComponent, ReactNode, useEffect } from 'react';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 import StyledComponentsRegistry from '@/lib/registry';
 import GlobalStyles from '@/styles/globalStyles';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
-import darkTheme from '../styles/themes/dark';
-import lightTheme from '../styles/themes/light';
+import darkTheme from '@/styles/themes/dark';
+import lightTheme from '@/styles/themes/light';
 
 const ThemesProvider: FunctionComponent<ThemesProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState(darkTheme);
 
+    useEffect(() => {
+        const storageTheme = localStorage.getItem('theme')
+    
+        if(storageTheme) {
+            setTheme(storageTheme === 'dark' ? darkTheme : lightTheme)
+        }else{
+           const isSystemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+           setTheme(isSystemDarkMode ? darkTheme : lightTheme)
+        }
+    }, [])
+
     const toggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme.palette.type === 'dark' ? lightTheme : darkTheme));
+        setTheme((prevTheme) => {
+            const selectedTheme = prevTheme.palette.type === 'dark' ? lightTheme : darkTheme;
+            localStorage.setItem('theme', selectedTheme.palette.type)
+            return selectedTheme;
+        });
     };
 
     return (
