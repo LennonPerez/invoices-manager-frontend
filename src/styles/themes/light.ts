@@ -80,7 +80,7 @@ const lightTheme: DefaultTheme = {
   status: {
     draft: "#373B53",
     pending: '#FF8F00',
-    success: '#33D69F',
+    paid: '#33D69F',
   },
 };
 

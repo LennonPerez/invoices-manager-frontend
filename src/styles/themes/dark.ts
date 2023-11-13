@@ -80,7 +80,7 @@ const darkTheme: DefaultTheme = {
   status: {
     draft: "#DFE3FA",
     pending: '#FF8F00',
-    success: '#33D69F',
+    paid: '#33D69F',
   },
 };
 

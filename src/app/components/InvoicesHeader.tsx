@@ -1,11 +1,11 @@
 'use client'
 
 import styled from "styled-components";
-import { FourthButton, PrimaryButton } from "./button";
+import { FourthButton, PrimaryButton } from "../../components/button";
 import { HiPlusSm } from 'react-icons/hi'
 import { LuChevronDown } from 'react-icons/lu'
 
-const InvoicesListHeader = () => {
+const InvoicesPageHeader = () => {
     return (
         <InvoicesListHeaderStyles> 
             <div className="left-side">
@@ -14,7 +14,7 @@ const InvoicesListHeader = () => {
             </div>
             <div className="right-side">
                 <div className="filter-button-container">
-                    <FourthButton padding="0.25rem 0.5rem 0.25rem 1.25rem" onClick={() => { console.log('ola') }}>
+                    <FourthButton padding="0.25rem 0.5rem 0.25rem 1.25rem" onClick={() => { console.log('Change filters') }}>
                         Filter
                         <div className="chevron-icon-container">
                             <LuChevronDown className="chevron-icon" />
@@ -22,7 +22,7 @@ const InvoicesListHeader = () => {
                     </FourthButton>
                 </div>
                 <div className="new-button-container">
-                    <PrimaryButton padding="0.25rem 1.25rem 0.25rem 0.5rem" onClick={() => { console.log('ola') }}>
+                    <PrimaryButton padding="0.25rem 1.25rem 0.25rem 0.5rem" onClick={() => { console.log('Go to create a new invoice') }}>
                         <div className="plus-icon-container">
                             <HiPlusSm className="plus-icon" />
                         </div>
@@ -95,4 +95,4 @@ const InvoicesListHeaderStyles = styled.div`
     }
 `
 
-export default InvoicesListHeader;
+export default InvoicesPageHeader;

@@ -81,7 +81,7 @@ declare module 'styled-components' {
     status: {
       draft: string,
       pending: string,
-      success: string,
+      paid: string,
     },
   }
 }
