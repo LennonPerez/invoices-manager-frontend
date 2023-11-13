@@ -22,7 +22,7 @@ interface ButtonProps {
     onClick?: () => void,
     padding?: string,
 }
- 
+
 const ButtonStyles = styled.button<BaseButtonProps>`
     background-color: ${(props) => props.colors.backgroundColor};
     color: ${(props) => props.colors.textColor};
@@ -49,7 +49,7 @@ const BaseButton: FunctionComponent<BaseButtonProps> = (props) => {
     return <ButtonStyles {...props}>{props.children}</ButtonStyles>;
 }
 
-export const PrimaryButton = (props: ButtonProps) =>  {
+export const PrimaryButton = (props: ButtonProps) => {
     const { theme } = useTheme();
 
     const colors: ButtonColor = {
@@ -63,7 +63,7 @@ export const PrimaryButton = (props: ButtonProps) =>  {
     return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
 }
 
-export const SecondaryButton = (props: ButtonProps) =>  {
+export const SecondaryButton = (props: ButtonProps) => {
     const { theme } = useTheme();
 
     const colors: ButtonColor = {
@@ -77,7 +77,7 @@ export const SecondaryButton = (props: ButtonProps) =>  {
     return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
 }
 
-export const TertiaryButton = (props: ButtonProps) =>  {
+export const TertiaryButton = (props: ButtonProps) => {
     const { theme } = useTheme();
 
     const colors: ButtonColor = {
@@ -91,7 +91,7 @@ export const TertiaryButton = (props: ButtonProps) =>  {
     return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
 }
 
-export const FourthButton = (props: ButtonProps) =>  {
+export const FourthButton = (props: ButtonProps) => {
     const { theme } = useTheme();
 
     const colors: ButtonColor = {
@@ -102,5 +102,5 @@ export const FourthButton = (props: ButtonProps) =>  {
 
     return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
 }
- 
+
 export default BaseButton;

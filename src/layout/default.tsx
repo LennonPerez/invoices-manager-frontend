@@ -7,9 +7,9 @@ import styled from "styled-components";
 interface DefaultLayoutProps {
     children: ReactNode,
 }
- 
+
 const DefaultLayout: FunctionComponent<DefaultLayoutProps> = ({ children }) => {
-    return ( 
+    return (
         <DefaultLayoutWrapper>
             <div className="navbar">
                 <Navbar />
@@ -18,7 +18,7 @@ const DefaultLayout: FunctionComponent<DefaultLayoutProps> = ({ children }) => {
                 {children}
             </div>
         </DefaultLayoutWrapper>
-     );
+    );
 }
 
 const DefaultLayoutWrapper = styled.div`
@@ -36,5 +36,5 @@ const DefaultLayoutWrapper = styled.div`
         padding-top: 4.5rem;
     }
 `
- 
+
 export default DefaultLayout;

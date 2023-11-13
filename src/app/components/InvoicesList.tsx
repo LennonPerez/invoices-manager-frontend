@@ -40,17 +40,17 @@ const InvoicesList: FunctionComponent<InvoicesListProps> = ({ invoices, isFetchi
     return (
         <InvoicesListStyles>
             {invoicesParsed.map(e =>
-                <div key={e.id} className="invoice-card">
+                <div key={e.id} className="invoice-card" onClick={() => { console.log(`Go to invoice ${e.id}`) }}>
                     <InvoiceCard
                         id={e.id}
                         clientName={e.clientName}
                         date={e.createdAt}
                         amount={e.total}
                         status={e.status}
-                        onClick={() => { console.log(`Go to invoice ${e.id}`) }}
                     />
                 </div>
             )}
+            {isFetchingMoreInvoices ? <InvoiceCardLoader /> : null}
         </InvoicesListStyles>
     );
 }
@@ -73,6 +73,10 @@ const InvoicesListStyles = styled.div`
 
     .invoice-card{
       margin-bottom: 1rem;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
     }
 `
 

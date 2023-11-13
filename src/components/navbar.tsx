@@ -93,7 +93,7 @@ const NavbarWrapper = styled.header`
             align-items: center;
 
             .user-avatar-container{
-                background-color: ${({theme}) => theme.palette.common.white};
+                background-color: ${({ theme }) => theme.palette.common.white};
                 width: 2rem;
                 height: 2rem;
                 border-radius: 100%;
@@ -102,7 +102,7 @@ const NavbarWrapper = styled.header`
                 align-items: center;
 
                 .user-avatar{
-                    color: ${({theme}) => theme.navbar.background};
+                    color: ${({ theme }) => theme.navbar.background};
                     height: 100%;
                     width: 100%;
                 }

@@ -7,7 +7,7 @@ import { LuChevronDown } from 'react-icons/lu'
 
 const InvoicesPageHeader = () => {
     return (
-        <InvoicesListHeaderStyles> 
+        <InvoicesListHeaderStyles>
             <div className="left-side">
                 <h1 className="title">Invoices</h1>
                 <p className="invoices-counter">7 invoices</p>

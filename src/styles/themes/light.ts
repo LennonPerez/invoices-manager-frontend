@@ -23,7 +23,7 @@ const lightTheme: DefaultTheme = {
       main: '#7E88C3',
       dark: '#252945',
       contrastText: '#FFFFFF',
-    }, 
+    },
     background: {
       paper: '##FFFFFF',
       lightPaper: '#F9FAFE',

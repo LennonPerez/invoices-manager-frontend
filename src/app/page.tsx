@@ -5,7 +5,7 @@ import InvoicesPageHeader from "@/app/components/InvoicesHeader";
 import InvoicesList from "@/app/components/InvoicesList";
 import invoices from "@/mocks/invoices"
 
-export default function Home() {
+const Home = () => {
   return (
     <HomePageStyles>
       <div className="header-container">
@@ -21,3 +21,5 @@ const HomePageStyles = styled.main`
     margin-bottom: 2.25rem;
   }
 `
+
+export default Home;

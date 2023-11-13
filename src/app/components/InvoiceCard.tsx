@@ -9,12 +9,11 @@ interface InvoiceCardProps {
     date: Date,
     amount: number,
     status: InvoiceStatus,
-    onClick: () => void,
 }
 
 const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
     return (
-        <InvoiceCardStyles status={props.status} onClick={props.onClick}>
+        <InvoiceCardStyles status={props.status}>
             <div className='top-row-container'>
                 <h4 className='invoice-id'><span>#</span>{props.id}</h4>
                 <p className='client-name'>{props.clientName}</p>
@@ -34,7 +33,7 @@ const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
     );
 }
 
-const InvoiceCardStyles = styled.div<{ status: InvoiceStatus}>`
+const InvoiceCardStyles = styled.div<{ status: InvoiceStatus }>`
     background: ${({ theme }) => theme.card.background};
     box-shadow: 0px 10px 10px -10px ${({ theme }) => theme.card.shadow};
     min-height: 8.37rem;

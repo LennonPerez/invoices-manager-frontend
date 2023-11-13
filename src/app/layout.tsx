@@ -14,7 +14,7 @@ interface RootLayoutProps {
   children: ReactNode,
 }
 
-const RootLayout: FunctionComponent<RootLayoutProps> =({ children }) => {
+const RootLayout: FunctionComponent<RootLayoutProps> = ({ children }) => {
   return (
     <ThemesProvider>
       <html lang="en">

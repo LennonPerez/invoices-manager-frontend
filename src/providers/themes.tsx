@@ -12,12 +12,12 @@ const ThemesProvider: FunctionComponent<ThemesProviderProps> = ({ children }) =>
 
     useEffect(() => {
         const storageTheme = localStorage.getItem('theme')
-    
-        if(storageTheme) {
+
+        if (storageTheme) {
             setTheme(storageTheme === 'dark' ? darkTheme : lightTheme)
-        }else{
-           const isSystemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-           setTheme(isSystemDarkMode ? darkTheme : lightTheme)
+        } else {
+            const isSystemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(isSystemDarkMode ? darkTheme : lightTheme)
         }
     }, [])
 

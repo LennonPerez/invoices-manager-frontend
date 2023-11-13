@@ -1,13 +1,4 @@
-// import { League_Spartan } from "next/font/google"
 import localFont from 'next/font/local'
-
-// export const SpartanFont = League_Spartan({
-//     display: 'swap',
-//     style: ['normal'],
-//     subsets: ['latin'],
-//     fallback: ['Times New Roman'],
-//     weight: ['500', '700'],
-// })
 
 export const SpartanFont = localFont({
     display: 'swap',
