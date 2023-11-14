@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useTheme } from "@/providers/themes";
 
 interface BaseButtonProps extends ButtonProps {
-    colors: ButtonColor,
+    $colors: ButtonColor,
 }
 
 interface ButtonColor {
@@ -20,13 +20,13 @@ interface ButtonProps {
     children: ReactNode,
     type?: "button" | "submit",
     onClick?: () => void,
-    padding?: string,
+    $padding?: string,
 }
 
 const ButtonStyles = styled.button<BaseButtonProps>`
-    background-color: ${(props) => props.colors.backgroundColor};
-    color: ${(props) => props.colors.textColor};
-    padding: ${(props) => props.padding ?? '0.25rem 1.25rem'};
+    background-color: ${(props) => props.$colors.backgroundColor};
+    color: ${(props) => props.$colors.textColor};
+    padding: ${(props) => props.$padding ?? '0.25rem 1.25rem'};
     display: flex;
     align-items: center;
     min-height: 2.75rem;
@@ -40,8 +40,8 @@ const ButtonStyles = styled.button<BaseButtonProps>`
     letter-spacing: -0.01563rem;
 
     &:hover{
-        background-color: ${(props) => props.colors.hoverBackgroundColor ?? props.colors.backgroundColor};
-        color: ${(props) => props.colors.hoverTextColor ?? props.colors.textColor};
+        background-color: ${(props) => props.$colors.hoverBackgroundColor ?? props.$colors.backgroundColor};
+        color: ${(props) => props.$colors.hoverTextColor ?? props.$colors.textColor};
     }
 `
 
@@ -60,7 +60,7 @@ export const PrimaryButton = (props: ButtonProps) => {
         hoverTextColor: theme.buttons.primary.hoverColor,
     }
 
-    return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
+    return <BaseButton {...props} $colors={colors}>{props.children}</BaseButton>
 }
 
 export const SecondaryButton = (props: ButtonProps) => {
@@ -74,7 +74,7 @@ export const SecondaryButton = (props: ButtonProps) => {
         hoverTextColor: theme.buttons.secondary.hoverColor,
     }
 
-    return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
+    return <BaseButton {...props} $colors={colors}>{props.children}</BaseButton>
 }
 
 export const TertiaryButton = (props: ButtonProps) => {
@@ -88,7 +88,7 @@ export const TertiaryButton = (props: ButtonProps) => {
         hoverTextColor: theme.buttons.tertiary.hoverColor,
     }
 
-    return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
+    return <BaseButton {...props} $colors={colors}>{props.children}</BaseButton>
 }
 
 export const FourthButton = (props: ButtonProps) => {
@@ -100,7 +100,7 @@ export const FourthButton = (props: ButtonProps) => {
         textColor: theme.palette.common.white,
     }
 
-    return <BaseButton {...props} colors={colors}>{props.children}</BaseButton>
+    return <BaseButton {...props} $colors={colors}>{props.children}</BaseButton>
 }
 
 export default BaseButton;

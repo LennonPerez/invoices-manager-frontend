@@ -14,7 +14,7 @@ const InvoicesPageHeader = () => {
             </div>
             <div className="right-side">
                 <div className="filter-button-container">
-                    <FourthButton padding="0.25rem 0.5rem 0.25rem 1.25rem" onClick={() => { console.log('Change filters') }}>
+                    <FourthButton $padding="0.25rem 0.5rem 0.25rem 1.25rem" onClick={() => { console.log('Change filters') }}>
                         Filter
                         <div className="chevron-icon-container">
                             <LuChevronDown className="chevron-icon" />
@@ -22,7 +22,7 @@ const InvoicesPageHeader = () => {
                     </FourthButton>
                 </div>
                 <div className="new-button-container">
-                    <PrimaryButton padding="0.25rem 1.25rem 0.25rem 0.5rem" onClick={() => { console.log('Go to create a new invoice') }}>
+                    <PrimaryButton $padding="0.25rem 1.25rem 0.25rem 0.5rem" onClick={() => { console.log('Go to create a new invoice') }}>
                         <div className="plus-icon-container">
                             <HiPlusSm className="plus-icon" />
                         </div>

@@ -13,7 +13,7 @@ interface InvoiceCardProps {
 
 const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
     return (
-        <InvoiceCardStyles status={props.status}>
+        <InvoiceCardStyles $status={props.status}>
             <div className='top-row-container'>
                 <h4 className='invoice-id'><span>#</span>{props.id}</h4>
                 <p className='client-name'>{props.clientName}</p>
@@ -33,7 +33,7 @@ const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
     );
 }
 
-const InvoiceCardStyles = styled.div<{ status: InvoiceStatus }>`
+const InvoiceCardStyles = styled.div<{ $status: InvoiceStatus }>`
     background: ${({ theme }) => theme.card.background};
     box-shadow: 0px 10px 10px -10px ${({ theme }) => theme.card.shadow};
     min-height: 8.37rem;
@@ -86,7 +86,7 @@ const InvoiceCardStyles = styled.div<{ status: InvoiceStatus }>`
             position: relative;
 
             .opacity-background{
-                background-color: ${(props) => props.theme.status[props.status]};
+                background-color: ${(props) => props.theme.status[props.$status]};
                 position: absolute;
                 top: 0;
                 bottom: 0;
@@ -96,7 +96,7 @@ const InvoiceCardStyles = styled.div<{ status: InvoiceStatus }>`
             }
             
             .status-circle{
-                background-color: ${(props) => props.theme.status[props.status]};
+                background-color: ${(props) => props.theme.status[props.$status]};
                 border-radius: 100%;
                 width: 0.5rem;
                 height: 0.5rem;
@@ -104,7 +104,7 @@ const InvoiceCardStyles = styled.div<{ status: InvoiceStatus }>`
             }
         
             .status-text{
-                color: ${(props) => props.theme.status[props.status]};
+                color: ${(props) => props.theme.status[props.$status]};
                 text-transform: capitalize;
                 font-size: 0.75rem;
             }
