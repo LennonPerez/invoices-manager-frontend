@@ -1,34 +1,34 @@
 import { DefaultTheme } from "styled-components";
 
 const darkTheme: DefaultTheme = {
-  type: 'dark',
+  type: "dark",
   palette: {
     text: {
-      primary: '#FFFFFF',
-      secondary: '#DFE3FA',
-      disabled: '#888EB0',
+      primary: "#FFFFFF",
+      secondary: "#DFE3FA",
+      disabled: "#888EB0",
     },
     common: {
-      black: '#000000',
-      white: '#FFFFFF',
+      black: "#000000",
+      white: "#FFFFFF",
     },
     primary: {
-      light: '#9277FF',
-      main: '#7C5DFA',
-      dark: '#7C5DFA',
-      contrastText: '#FFFFFF',
+      light: "#9277FF",
+      main: "#7C5DFA",
+      dark: "#7C5DFA",
+      contrastText: "#FFFFFF",
     },
     secondary: {
-      light: '#858BB2',
-      main: '#7E88C3',
-      dark: '#252945',
-      contrastText: '#FFFFFF',
+      light: "#858BB2",
+      main: "#7E88C3",
+      dark: "#252945",
+      contrastText: "#FFFFFF",
     },
     background: {
-      paper: '#1E2139',
-      lightPaper: '#252945',
-      darkPaper: '#0C0E16',
-      default: '#141625',
+      paper: "#1E2139",
+      lightPaper: "#252945",
+      darkPaper: "#0C0E16",
+      default: "#141625",
     },
   },
   navbar: {
@@ -37,9 +37,9 @@ const darkTheme: DefaultTheme = {
     border: "#494E6E",
   },
   card: {
-    background: '#1E2139',
-    contrastBackground: '#0C0E16',
-    shadow: 'rgba(72, 84, 159, 0.10);',
+    background: "#1E2139",
+    contrastBackground: "#0C0E16",
+    shadow: "rgba(72, 84, 159, 0.10);",
   },
   inputs: {
     background: "#1E2139",
@@ -53,34 +53,34 @@ const darkTheme: DefaultTheme = {
   },
   buttons: {
     primary: {
-      background: '#7C5DFA',
-      hoverBackground: '#9277FF',
-      color: '#FFFFFF',
-      hoverColor: '#FFFFFF',
+      background: "#7C5DFA",
+      hoverBackground: "#9277FF",
+      color: "#FFFFFF",
+      hoverColor: "#FFFFFF",
     },
     secondary: {
-      background: '#252945',
-      hoverBackground: '#FFFFFF',
-      color: '#DFE3FA',
-      hoverColor: '#DFE3FA',
+      background: "#252945",
+      hoverBackground: "#FFFFFF",
+      color: "#DFE3FA",
+      hoverColor: "#DFE3FA",
     },
     tertiary: {
-      background: '#373B53',
-      hoverBackground: '#1E2139',
-      color: '#DFE3FA',
-      hoverColor: '#DFE3FA',
+      background: "#373B53",
+      hoverBackground: "#1E2139",
+      color: "#DFE3FA",
+      hoverColor: "#DFE3FA",
     },
     danger: {
-      background: '#EC5757',
-      hoverBackground: '#FF9797',
-      color: '#FFFFFF',
-      hoverColor: '#FFFFFF',
-    }
+      background: "#EC5757",
+      hoverBackground: "#FF9797",
+      color: "#FFFFFF",
+      hoverColor: "#FFFFFF",
+    },
   },
   status: {
     draft: "#DFE3FA",
-    pending: '#FF8F00',
-    paid: '#33D69F',
+    pending: "#FF8F00",
+    paid: "#33D69F",
   },
 };
 
