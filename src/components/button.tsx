@@ -21,15 +21,19 @@ interface ButtonProps {
   type?: "button" | "submit";
   onClick?: () => void;
   $padding?: string;
+  $width?: string;
+  $minHeight?: string;
 }
 
 const ButtonStyles = styled.button<BaseButtonProps>`
   background-color: ${(props) => props.$colors.backgroundColor};
   color: ${(props) => props.$colors.textColor};
   padding: ${(props) => props.$padding ?? "0.25rem 1.25rem"};
+  min-height: ${(props) => props.$minHeight ?? "2.75rem"};
+  width: ${(props) => props.$width ?? "auto"};
   display: flex;
   align-items: center;
-  min-height: 2.75rem;
+  justify-content: center;
   border: none;
   border-radius: 1.5rem;
   font-family: var(--main-font);
@@ -111,7 +115,25 @@ export const FourthButton = (props: ButtonProps) => {
   const colors: ButtonColor = {
     name: "transparent",
     backgroundColor: "transparent",
-    textColor: theme.palette.common.white,
+    textColor: theme.palette.text.primary,
+  };
+
+  return (
+    <BaseButton {...props} $colors={colors}>
+      {props.children}
+    </BaseButton>
+  );
+};
+
+export const DangerButton = (props: ButtonProps) => {
+  const { theme } = useTheme();
+
+  const colors: ButtonColor = {
+    name: "danger",
+    backgroundColor: theme.buttons.danger.background,
+    hoverBackgroundColor: theme.buttons.danger.hoverBackground,
+    textColor: theme.buttons.danger.color,
+    hoverTextColor: theme.buttons.danger.hoverColor,
   };
 
   return (

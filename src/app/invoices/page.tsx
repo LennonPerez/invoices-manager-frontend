@@ -1,8 +1,8 @@
 "use client";
 
 import styled from "styled-components";
-import InvoicesPageHeader from "@/app/components/InvoicesHeader";
-import InvoicesList from "@/app/components/InvoicesList";
+import InvoicesPageHeader from "@/app/invoices/components/InvoicesHeader";
+import InvoicesList from "@/app/invoices/components/InvoicesList";
 import invoices from "@/mocks/invoices";
 
 const Home = () => {
@@ -21,6 +21,8 @@ const Home = () => {
 };
 
 const HomePageStyles = styled.main`
+  padding: 2.25rem 1.5rem;
+
   .header-container {
     margin-bottom: 2.25rem;
   }

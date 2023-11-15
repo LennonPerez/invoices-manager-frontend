@@ -1,22 +1,28 @@
 import { FunctionComponent, memo } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Invoice } from "@/types/invoice";
 import styled from "styled-components";
-import InvoiceCard from "@/app/components/invoiceCard";
+import { Invoice } from "@/types/invoice";
+import InvoiceCard from "./invoiceCard";
 import InvoiceCardLoader from "./InvoiceCardLoader";
 import { generateIDs } from "@/utils/generators";
+import { ResponseError } from "@/types/response";
 
 interface InvoicesListProps {
-  invoices: Invoice[];
+  invoices: Invoice[] | undefined;
+  error?: ResponseError;
   isFetchingInvoices: boolean;
   isFetchingMoreInvoices: boolean;
 }
 
 const InvoicesList: FunctionComponent<InvoicesListProps> = ({
   invoices,
+  error,
   isFetchingInvoices,
   isFetchingMoreInvoices,
 }) => {
+  const router = useRouter();
+
   if (isFetchingInvoices) {
     const loaders = generateIDs(10);
 
@@ -29,6 +35,10 @@ const InvoicesList: FunctionComponent<InvoicesListProps> = ({
         ))}
       </InvoicesListStyles>
     );
+  }
+
+  if (error || invoices === undefined) {
+    return <p>Error</p>;
   }
 
   if (invoices.length === 0) {
@@ -47,9 +57,7 @@ const InvoicesList: FunctionComponent<InvoicesListProps> = ({
         <div
           key={e.id}
           className="invoice-card"
-          onClick={() => {
-            console.log(`Go to invoice ${e.id}`);
-          }}
+          onClick={() => router.push(`/invoices/${e.id}`)}
         >
           <InvoiceCard
             id={e.id}

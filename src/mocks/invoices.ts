@@ -24,6 +24,7 @@ const invoices: Invoice[] = [
     },
     items: [
       {
+        id: "1",
         name: "Brand Guidelines",
         quantity: 1,
         price: 1800.9,
@@ -55,12 +56,14 @@ const invoices: Invoice[] = [
     },
     items: [
       {
+        id: "2",
         name: "Banner Design",
         quantity: 1,
         price: 156.0,
         total: 156.0,
       },
       {
+        id: "3",
         name: "Email Design",
         quantity: 2,
         price: 200.0,
@@ -92,6 +95,7 @@ const invoices: Invoice[] = [
     },
     items: [
       {
+        id: "4",
         name: "Website Redesign",
         quantity: 1,
         price: 14002.33,
@@ -123,6 +127,7 @@ const invoices: Invoice[] = [
     },
     items: [
       {
+        id: "5",
         name: "Logo Sketches",
         quantity: 1,
         price: 102.04,
@@ -154,12 +159,14 @@ const invoices: Invoice[] = [
     },
     items: [
       {
+        id: "6",
         name: "New Logo",
         quantity: 1,
         price: 1532.33,
         total: 1532.33,
       },
       {
+        id: "7",
         name: "Brand Guidelines",
         quantity: 1,
         price: 2500.0,
@@ -191,6 +198,7 @@ const invoices: Invoice[] = [
     },
     items: [
       {
+        id: "8",
         name: "Web Design",
         quantity: 1,
         price: 6155.91,
@@ -222,6 +230,7 @@ const invoices: Invoice[] = [
     },
     items: [
       {
+        id: "9",
         name: "Logo Re-design",
         quantity: 1,
         price: 3102.04,

@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import { FunctionComponent, ReactNode } from "react";
 import styled from "styled-components";
 
@@ -20,8 +20,6 @@ const DefaultLayout: FunctionComponent<DefaultLayoutProps> = ({ children }) => {
 };
 
 const DefaultLayoutWrapper = styled.div`
-  padding: 2.25rem 1.5rem;
-
   .navbar {
     position: fixed;
     top: 0;

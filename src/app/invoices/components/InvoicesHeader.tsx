@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { FourthButton, PrimaryButton } from "../../components/button";
+import { FourthButton, PrimaryButton } from "../../../components/Button";
 import { HiPlusSm } from "react-icons/hi";
 import { LuChevronDown } from "react-icons/lu";
 

@@ -40,7 +40,8 @@ declare module "styled-components" {
     };
     card: {
       background: string;
-      contrastBackground: string;
+      lightContrastBackground: string;
+      darkContrastBackground: string;
       shadow: string;
     };
     inputs: {

@@ -38,7 +38,8 @@ const darkTheme: DefaultTheme = {
   },
   card: {
     background: "#1E2139",
-    contrastBackground: "#0C0E16",
+    lightContrastBackground: "#252945",
+    darkContrastBackground: "#0C0E16",
     shadow: "rgba(72, 84, 159, 0.10);",
   },
   inputs: {
