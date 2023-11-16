@@ -1,8 +1,8 @@
 "use client";
 
 import styled from "styled-components";
-import InvoicesPageHeader from "@/app/invoices/components/InvoicesHeader";
-import InvoicesList from "@/app/invoices/components/InvoicesList";
+import InvoicesPageHeader from "@/app/invoices/(list)/components/InvoicesHeader";
+import InvoicesList from "@/app/invoices/(list)/components/InvoicesList";
 import invoices from "@/mocks/invoices";
 
 const Home = () => {
