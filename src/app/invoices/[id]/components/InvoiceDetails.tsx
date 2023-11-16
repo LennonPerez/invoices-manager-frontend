@@ -6,7 +6,7 @@ import InvoiceDetailsCardLoader from "./invoiceDetailsCardLoader";
 
 interface InvoiceDetailsProps {
   invoice: Invoice | undefined;
-  error?: ResponseError | undefined;
+  error: ResponseError | undefined;
   isFetching: boolean;
 }
 

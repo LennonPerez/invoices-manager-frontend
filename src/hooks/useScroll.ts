@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 const useScroll = () => {
   const [scrollData, setScrollData] = useState<ScrollData>({
+    currentY: 0,
+    currentX: 0,
     isScrolling: false,
     isScrollingUpwards: false,
     isScrollingDownwards: false,
@@ -15,17 +17,20 @@ const useScroll = () => {
   const controlNavbar = () => {
     if (typeof window === "undefined") return;
 
-    const currentScrollY = window.scrollY;
-    const isScrolling = currentScrollY !== lastScrollY;
-    const isScrollingUpwards = currentScrollY < lastScrollY;
-    const isScrollingDownwards = currentScrollY > lastScrollY;
+    const currentY = window.scrollY;
+    const currentX = window.scrollX;
+    const isScrolling = currentY !== lastScrollY;
+    const isScrollingUpwards = currentY < lastScrollY;
+    const isScrollingDownwards = currentY > lastScrollY;
 
     setScrollData({
+      currentY,
+      currentX,
       isScrolling,
       isScrollingUpwards,
       isScrollingDownwards,
     });
-    setLastScrollY(currentScrollY);
+    setLastScrollY(currentY);
 
     if (scrollTimeout) {
       clearTimeout(scrollTimeout);
@@ -34,6 +39,8 @@ const useScroll = () => {
     setScrollTimeout(
       setTimeout(() => {
         setScrollData({
+          currentY: 0,
+          currentX: 0,
           isScrolling: false,
           isScrollingUpwards: false,
           isScrollingDownwards: false,
@@ -56,6 +63,8 @@ const useScroll = () => {
 };
 
 export type ScrollData = {
+  currentY: number;
+  currentX: number;
   isScrolling: boolean;
   isScrollingUpwards: boolean;
   isScrollingDownwards: boolean;

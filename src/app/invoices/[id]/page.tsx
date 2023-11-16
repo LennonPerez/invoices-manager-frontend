@@ -7,8 +7,7 @@ import { LuChevronLeft } from "react-icons/lu";
 import invoices from "@/mocks/invoices";
 import { FourthButton } from "@/components/Button";
 import InvoiceDetails from "./components/InvoiceDetails";
-import InvoiceDetailsCTAs from "./components/InvoiceDetailsCTAs";
-import useScroll from "@/hooks/useScroll";
+import InvoiceDetailsMobileCTAs from "./components/InvoiceDetailsMobileCTAs";
 
 interface InvoiceDetailsPageProps {
   params: {
@@ -21,7 +20,6 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
 }) => {
   console.log(params.id);
   const router = useRouter();
-  const scrollData = useScroll();
   const invoice = invoices[1];
   const isFetching = false;
 
@@ -33,12 +31,19 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
           Go back
         </FourthButton>
       </div>
-      <InvoiceDetails invoice={invoice} isFetching={isFetching} />
-      {scrollData.isScrollingDownwards ? null : (
-        <div className="mobile-ctas-container">
-          <InvoiceDetailsCTAs isLoadingAction={isFetching} />
-        </div>
-      )}
+      <InvoiceDetails
+        invoice={invoice}
+        isFetching={isFetching}
+        error={undefined}
+      />
+      <InvoiceDetailsMobileCTAs
+        isInitialLoading={false}
+        isLoadingAction={isFetching}
+        showDeleteButton={true}
+        showEditButton={invoice.status !== "paid"}
+        showMarkAsPaidButton={invoice.status === "pending"}
+        showMarkAsPendingButton={invoice.status === "draft"}
+      />
     </InvoiceDetailsPageStyles>
   );
 };
@@ -62,13 +67,6 @@ const InvoiceDetailsPageStyles = styled.div`
     .text {
       font-size: 0.75rem;
     }
-  }
-
-  .mobile-ctas-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 `;
 

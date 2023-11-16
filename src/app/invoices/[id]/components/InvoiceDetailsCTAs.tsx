@@ -6,30 +6,59 @@ import {
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 
-interface InvoiceDetailsCTAsProps {
-  isLoadingAction: boolean;
-}
-
-const InvoiceDetailsMobileCTAs: FunctionComponent<
-  InvoiceDetailsCTAsProps
-> = () => {
+const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
+  isLoadingAction,
+  showEditButton,
+  showDeleteButton,
+  showMarkAsPaidButton,
+  showMarkAsPendingButton,
+}) => {
   return (
     <InvoiceDetailsCTAsStyles>
-      <div className="edit-button">
-        <SecondaryButton $minHeight="3rem" $width="100%">
-          Edit
-        </SecondaryButton>
-      </div>
-      <div className="delete-button">
-        <DangerButton $minHeight="3rem" $width="100%">
-          Delete
-        </DangerButton>
-      </div>
-      <div className="mark-as-paid-button">
-        <PrimaryButton $minHeight="3rem" $width="100%">
-          Mark as Paid
-        </PrimaryButton>
-      </div>
+      {showEditButton ? (
+        <div className="edit-button">
+          <SecondaryButton
+            $minHeight="3rem"
+            $width="100%"
+            disabled={isLoadingAction}
+          >
+            Edit
+          </SecondaryButton>
+        </div>
+      ) : null}
+      {showDeleteButton ? (
+        <div className="delete-button">
+          <DangerButton
+            $minHeight="3rem"
+            $width="100%"
+            disabled={isLoadingAction}
+          >
+            Delete
+          </DangerButton>
+        </div>
+      ) : null}
+      {showMarkAsPaidButton ? (
+        <div className="mark-as-paid-button">
+          <PrimaryButton
+            $minHeight="3rem"
+            $width="100%"
+            disabled={isLoadingAction}
+          >
+            Mark as Paid
+          </PrimaryButton>
+        </div>
+      ) : null}
+      {showMarkAsPendingButton ? (
+        <div className="mark-as-pending-button">
+          <PrimaryButton
+            $minHeight="3rem"
+            $width="100%"
+            disabled={isLoadingAction}
+          >
+            Mark as Pending
+          </PrimaryButton>
+        </div>
+      ) : null}
     </InvoiceDetailsCTAsStyles>
   );
 };
@@ -59,6 +88,19 @@ const InvoiceDetailsCTAsStyles = styled.div`
     width: 100%;
     max-width: 9.3125rem;
   }
+
+  .mark-as-pending-button {
+    width: 100%;
+    max-width: 9.3125rem;
+  }
 `;
+
+export interface InvoiceDetailsCTAsProps {
+  isLoadingAction: boolean;
+  showEditButton: boolean;
+  showDeleteButton: boolean;
+  showMarkAsPaidButton: boolean;
+  showMarkAsPendingButton: boolean;
+}
 
 export default InvoiceDetailsMobileCTAs;
