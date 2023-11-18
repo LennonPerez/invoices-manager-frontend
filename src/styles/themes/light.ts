@@ -46,11 +46,18 @@ const lightTheme: DefaultTheme = {
     background: "#FFFFFF",
     border: "#DFE3FA",
     borderActive: "#9277FF",
-    shadow: "rgba(72, 84, 159, 0.25)",
+    error: "#EC5757",
     icon: "#7E88C3",
     selector: "#7C5DFA",
     label: "#7E88C3",
     text: "#0C0E16",
+  },
+  selector: {
+    background: "#FFF",
+    shadow: "rgba(72, 84, 159, 0.25)",
+    text: "#0C0E16",
+    activeText: "#7C5DFA",
+    border: "#DFE3FA",
   },
   buttons: {
     primary: {

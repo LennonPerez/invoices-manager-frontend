@@ -1,11 +1,24 @@
 export const formatDate = (date: Date): string => {
   const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "short" });
+  const month = formatMonth(date);
   const year = date.getFullYear();
 
-  const result = `${day} ${month} ${year}`;
+  return `${day} ${month} ${year}`;
+};
 
-  return result;
+export const formatMonth = (
+  date: Date,
+  format: "short" | "long" = "short",
+): string => {
+  return date.toLocaleString("default", { month: format });
+};
+
+export const formatMonthByIndex = (
+  month: number,
+  format: "short" | "long" = "short",
+): string => {
+  const date = new Date(2000, month, 0);
+  return date.toLocaleString("default", { month: format });
 };
 
 export const formatAmount = (amount: number, showSymbol: boolean = true) => {

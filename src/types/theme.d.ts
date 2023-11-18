@@ -48,11 +48,18 @@ declare module "styled-components" {
       background: string;
       border: string;
       borderActive: string;
-      shadow: string;
+      error: string;
       icon: string;
       selector: string;
       label: string;
       text: string;
+    };
+    selector: {
+      background: string;
+      shadow: string;
+      text: string;
+      activeText: string;
+      border: string;
     };
     buttons: {
       primary: {

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Invoice } from "@/types/invoice";
 import StatusBox from "@/components/StatusBox";
 import { formatAmount, formatDate } from "@/utils/formatters";
-
 interface InvoiceDetailsCardProps {
   invoice: Invoice;
 }

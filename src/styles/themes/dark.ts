@@ -46,11 +46,18 @@ const darkTheme: DefaultTheme = {
     background: "#1E2139",
     border: "#252945",
     borderActive: "#252945",
-    shadow: "rgba(0, 0, 0, 0.25)",
+    error: "#EC5757",
     icon: "#7E88C3",
     selector: "#7C5DFA",
     label: "#DFE3FA",
     text: "#FFFFFF",
+  },
+  selector: {
+    background: "#252945",
+    shadow: "rgba(0, 0, 0, 0.25)",
+    text: "#DFE3FA",
+    activeText: "#9277FF",
+    border: "#1E2139",
   },
   buttons: {
     primary: {

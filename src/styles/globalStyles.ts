@@ -31,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
         letter-spacing: -0.03906rem;
     }
 
-    p{  
+    p, label, span {  
         color: ${({ theme }) => theme.palette.text.secondary};
         font-size: 0.75rem;
         font-style: normal;

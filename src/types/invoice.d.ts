@@ -1,4 +1,4 @@
-export type Invoice = {
+export interface Invoice {
   id: string;
   createdAt: string;
   paymentDue: string;
@@ -11,21 +11,21 @@ export type Invoice = {
   clientAddress: InvoiceAddress;
   items: InvoiceItem[];
   total: number;
-};
+}
 
 export type InvoiceStatus = "draft" | "pending" | "paid";
 
-export type InvoiceAddress = {
+export interface InvoiceAddress {
   street: string;
   city: string;
   postCode: string;
   country: string;
-};
+}
 
-export type InvoiceItem = {
+export interface InvoiceItem {
   id: string;
   name: string;
   quantity: number;
   price: number;
   total: number;
-};
+}

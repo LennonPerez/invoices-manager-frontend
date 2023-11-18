@@ -3,8 +3,8 @@ export interface Response<T> {
   error: ResponseError | undefined;
 }
 
-export type ResponseError = {
+export interface ResponseError {
   statusCode: number;
   errorCode: string;
   errorMessage: string;
-};
+}

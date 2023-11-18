@@ -62,12 +62,12 @@ const useScroll = () => {
   return scrollData;
 };
 
-export type ScrollData = {
+export interface ScrollData {
   currentY: number;
   currentX: number;
   isScrolling: boolean;
   isScrollingUpwards: boolean;
   isScrollingDownwards: boolean;
-};
+}
 
 export default useScroll;
