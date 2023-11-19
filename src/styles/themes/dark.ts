@@ -1,95 +1,130 @@
 import { DefaultTheme } from "styled-components";
 
-const darkTheme: DefaultTheme = {
+const black = "#000000";
+const white = "#FFFFFF";
+
+// Text colors
+const lavenderGrey = "#DFE3FA";
+const cadetBlue = "#888EB0";
+
+// Primary colors
+const mediumSlateBlue = "#7C5DFA";
+const lightSlateBlue = "#9277FF";
+
+// Secondary colors
+const blueBell = "#858BB2";
+const slateBlue = "#7E88C3";
+const outerSpace = "#252945";
+
+// Background colors
+const midnightBlue = "#1E2139";
+const outerSpaceLight = "#252945";
+const ebonyClay = "#0C0E16";
+const darkLiver = "#141625";
+
+// Other colors
+const graniteGray = "#494E6E";
+const ghostWhite = "rgba(255, 255, 255, 0.1)";
+const bittersweet = "#EC5757";
+const lightSalmon = "#FF9797";
+const orangeYellow = "#FF8F00";
+const shamrockGreen = "#33D69F";
+
+const colorTheme: DefaultTheme = {
   type: "dark",
   palette: {
     text: {
-      primary: "#FFFFFF",
-      secondary: "#DFE3FA",
-      disabled: "#888EB0",
+      primary: white,
+      secondary: lavenderGrey,
+      disabled: cadetBlue,
     },
     common: {
-      black: "#000000",
-      white: "#FFFFFF",
+      black: black,
+      white: white,
     },
     primary: {
-      light: "#9277FF",
-      main: "#7C5DFA",
-      dark: "#7C5DFA",
-      contrastText: "#FFFFFF",
+      light: lightSlateBlue,
+      main: mediumSlateBlue,
+      dark: mediumSlateBlue,
+      contrastText: white,
     },
     secondary: {
-      light: "#858BB2",
-      main: "#7E88C3",
-      dark: "#252945",
-      contrastText: "#FFFFFF",
+      light: blueBell,
+      main: slateBlue,
+      dark: outerSpace,
+      contrastText: white,
     },
     background: {
-      paper: "#1E2139",
-      lightPaper: "#252945",
-      darkPaper: "#0C0E16",
-      default: "#141625",
+      paper: midnightBlue,
+      lightPaper: outerSpaceLight,
+      darkPaper: ebonyClay,
+      default: darkLiver,
     },
   },
   navbar: {
-    background: "#1E2139",
-    icon: "#858BB2",
-    border: "#494E6E",
+    background: midnightBlue,
+    icon: graniteGray,
+    border: graniteGray,
+  },
+  page: {
+    background: darkLiver,
+    scrollbarThumb: outerSpaceLight,
   },
   card: {
-    background: "#1E2139",
-    lightContrastBackground: "#252945",
-    darkContrastBackground: "#0C0E16",
-    shadow: "rgba(72, 84, 159, 0.10);",
+    background: midnightBlue,
+    lightContrastBackground: outerSpaceLight,
+    darkContrastBackground: ebonyClay,
+    shadow: ghostWhite,
   },
   inputs: {
-    background: "#1E2139",
-    border: "#252945",
-    borderActive: "#252945",
-    error: "#EC5757",
-    icon: "#7E88C3",
-    selector: "#7C5DFA",
-    label: "#DFE3FA",
-    text: "#FFFFFF",
+    background: midnightBlue,
+    border: outerSpaceLight,
+    borderActive: outerSpaceLight,
+    error: bittersweet,
+    icon: slateBlue,
+    selector: mediumSlateBlue,
+    caret: mediumSlateBlue,
+    label: cadetBlue,
+    text: white,
   },
   selector: {
-    background: "#252945",
-    shadow: "rgba(0, 0, 0, 0.25)",
-    text: "#DFE3FA",
-    activeText: "#9277FF",
-    border: "#1E2139",
+    background: outerSpaceLight,
+    shadow: ghostWhite,
+    text: lavenderGrey,
+    activeText: lightSlateBlue,
+    border: midnightBlue,
   },
   buttons: {
     primary: {
-      background: "#7C5DFA",
-      hoverBackground: "#9277FF",
-      color: "#FFFFFF",
-      hoverColor: "#FFFFFF",
+      background: mediumSlateBlue,
+      hoverBackground: lightSlateBlue,
+      color: white,
+      hoverColor: white,
     },
     secondary: {
-      background: "#252945",
-      hoverBackground: "#FFFFFF",
-      color: "#DFE3FA",
-      hoverColor: "#DFE3FA",
+      background: outerSpace,
+      hoverBackground: white,
+      color: lavenderGrey,
+      hoverColor: lavenderGrey,
     },
     tertiary: {
-      background: "#373B53",
-      hoverBackground: "#1E2139",
-      color: "#DFE3FA",
-      hoverColor: "#DFE3FA",
+      background: darkLiver,
+      hoverBackground: midnightBlue,
+      color: lavenderGrey,
+      hoverColor: lavenderGrey,
     },
     danger: {
-      background: "#EC5757",
-      hoverBackground: "#FF9797",
-      color: "#FFFFFF",
-      hoverColor: "#FFFFFF",
+      background: bittersweet,
+      hoverBackground: lightSalmon,
+      color: white,
+      hoverColor: white,
     },
   },
   status: {
-    draft: "#DFE3FA",
-    pending: "#FF8F00",
-    paid: "#33D69F",
+    draft: lavenderGrey,
+    pending: orangeYellow,
+    paid: shamrockGreen,
   },
 };
 
-export default darkTheme;
+export default colorTheme;

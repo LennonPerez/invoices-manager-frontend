@@ -38,6 +38,10 @@ declare module "styled-components" {
       icon: string;
       border: string;
     };
+    page: {
+      background: string;
+      scrollbarThumb: string;
+    };
     card: {
       background: string;
       lightContrastBackground: string;
@@ -51,6 +55,7 @@ declare module "styled-components" {
       error: string;
       icon: string;
       selector: string;
+      caret: string;
       label: string;
       text: string;
     };

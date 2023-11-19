@@ -15,7 +15,7 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = (props) => {
 
   return (
     <InvoiceFormPageStyles>
-      <div className="content">
+      <div className="page-content">
         <div className="back-button-container">
           <BackButton onClick={props.onClose} />
         </div>
@@ -34,7 +34,7 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = (props) => {
 };
 
 const InvoiceFormPageStyles = styled.div`
-  background-color: ${({ theme }) => theme.palette.background.default};
+  background-color: ${({ theme }) => theme.page.background};
   position: fixed;
   top: 4.5rem;
   bottom: 0;
@@ -43,7 +43,7 @@ const InvoiceFormPageStyles = styled.div`
   z-index: 2;
   overflow-y: auto;
 
-  .content {
+  .page-content {
     padding: 2rem 1.5rem;
     margin-bottom: 4rem;
 
@@ -60,6 +60,7 @@ const InvoiceFormPageStyles = styled.div`
     margin-bottom: 1.5rem;
 
     span {
+      font-weight: 700;
       color: ${({ theme }) => theme.palette.text.disabled};
     }
   }

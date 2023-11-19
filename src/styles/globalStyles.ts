@@ -11,13 +11,12 @@ const GlobalStyles = createGlobalStyle`
         font-family: var(--main-font);
 
         &::-webkit-scrollbar {
-            background-color: ${({ theme }) =>
-              theme.palette.background.default};
+            background-color: ${({ theme }) => theme.page.background};
             width: 0.5rem;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: ${({ theme }) => theme.inputs.border};
+            background-color: ${({ theme }) => theme.page.scrollbarThumb};
         }
     }
 
@@ -30,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         color: ${({ theme }) => theme.palette.text.primary};
-        background: ${({ theme }) => theme.palette.background.default};
+        background: ${({ theme }) => theme.page.background}
     }
 
     h1, h2, h3, h4, h5, h6 {

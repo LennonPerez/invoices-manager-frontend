@@ -123,9 +123,10 @@ interface BaseInputStylesProps {
 const BaseInputStyles = styled.div<BaseInputStylesProps>`
   display: flex;
   flex-direction: column;
+  opacity: ${({ $isDisabled }) => ($isDisabled ? "0.5" : "1")};
 
   label {
-    color: ${({ theme }) => theme.palette.text.secondary};
+    color: ${({ theme }) => theme.inputs.label};
     width: fit-content;
     font-size: 0.75rem;
     font-style: normal;
@@ -158,10 +159,10 @@ const BaseInputStyles = styled.div<BaseInputStylesProps>`
 
     input {
       caret-color: ${({ $cantWrite, theme }) =>
-        $cantWrite ? "transparent" : theme.palette.primary.main};
+        $cantWrite ? "transparent" : theme.inputs.caret};
       background-color: ${({ theme }) => theme.inputs.background};
       cursor: inherit;
-      color: ${({ theme }) => theme.palette.text.primary};
+      color: ${({ theme }) => theme.inputs.text};
       border: none;
       outline: none;
       font-size: 0.75rem;
@@ -209,7 +210,7 @@ const InputSelectIconStyles = styled.div`
   align-items: center;
 
   .icon {
-    color: ${({ theme }) => theme.palette.primary.main};
+    color: ${({ theme }) => theme.inputs.selector};
     width: 1.25rem;
     height: 1.25rem;
   }
