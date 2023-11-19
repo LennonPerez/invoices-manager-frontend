@@ -22,18 +22,20 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<
 const InnerComponent: FunctionComponent<InvoiceDetailsMobileCTAsProps> = (
   props,
 ) => {
-  const scrollData = useScroll();
+  const {
+    document,
+    currentY,
+    scrollHeight,
+    clientHeight,
+    isScrollingDownwards,
+  } = useScroll("invoice-details-page");
 
-  const scrollHeight = document.documentElement.scrollHeight;
-  const clientHeight = document.documentElement.clientHeight;
-
-  const scrollPositionFromBottom =
-    scrollHeight - scrollData.currentY - clientHeight;
+  const scrollPositionFromBottom = scrollHeight - currentY - clientHeight;
 
   const showCTAs =
-    !scrollData.isScrollingDownwards ||
+    !isScrollingDownwards ||
     scrollPositionFromBottom <=
-      4.5 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+      4.5 * parseFloat(getComputedStyle(document).fontSize);
 
   return (
     <InvoiceDetailsMobileCTAsStyles $show={showCTAs}>

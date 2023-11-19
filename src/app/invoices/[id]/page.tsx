@@ -23,7 +23,7 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
   const isFetching = false;
 
   return (
-    <InvoiceDetailsPageStyles>
+    <InvoiceDetailsPageStyles id="invoice-details-page">
       <div className="back-button-container">
         <BackButton onClick={router.back} />
       </div>

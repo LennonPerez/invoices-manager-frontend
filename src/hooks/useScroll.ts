@@ -1,10 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 
-const useScroll = () => {
+const useScroll = (elementId?: string) => {
   const [scrollData, setScrollData] = useState<ScrollData>({
+    document: window.document.documentElement,
     currentY: 0,
     currentX: 0,
+    clientHeight: 0,
+    scrollHeight: 0,
     isScrolling: false,
     isScrollingUpwards: false,
     isScrollingDownwards: false,
@@ -15,17 +18,46 @@ const useScroll = () => {
   );
 
   const controlNavbar = () => {
-    if (typeof window === "undefined") return;
+    const targetElement = elementId
+      ? document.getElementById(elementId)
+      : window;
 
-    const currentY = window.scrollY;
-    const currentX = window.scrollX;
+    if (!targetElement) return;
+
+    const doc = elementId
+      ? (targetElement as HTMLElement)
+      : (targetElement as Window).document.documentElement;
+
+    const currentY = elementId
+      ? (targetElement as HTMLElement).scrollTop
+      : (targetElement as Window).scrollY;
+
+    const currentX = elementId
+      ? (targetElement as HTMLElement).scrollLeft
+      : (targetElement as Window).scrollX;
+
+    const clientHeight = (
+      elementId
+        ? (targetElement as HTMLElement)
+        : (targetElement as Window).document.documentElement
+    ).clientHeight;
+
+    const scrollHeight = (
+      elementId
+        ? (targetElement as HTMLElement)
+        : (targetElement as Window).document.documentElement
+    ).scrollHeight;
+
     const isScrolling = currentY !== lastScrollY;
     const isScrollingUpwards = currentY < lastScrollY;
     const isScrollingDownwards = currentY > lastScrollY;
 
     setScrollData({
+      document: doc,
       currentY,
       currentX,
+      clientHeight,
+      scrollHeight,
       isScrolling,
       isScrollingUpwards,
       isScrollingDownwards,
@@ -39,8 +71,11 @@ const useScroll = () => {
     setScrollTimeout(
       setTimeout(() => {
         setScrollData({
+          document: window.document.documentElement,
           currentY: 0,
           currentX: 0,
+          clientHeight: 0,
+          scrollHeight: 0,
           isScrolling: false,
           isScrollingUpwards: false,
           isScrollingDownwards: false,
@@ -50,21 +85,28 @@ const useScroll = () => {
   };
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    const targetElement = elementId
+      ? document.getElementById(elementId)
+      : window;
 
-    window.addEventListener("scroll", controlNavbar);
+    if (!targetElement) return;
+
+    targetElement.addEventListener("scroll", controlNavbar);
 
     return () => {
-      window.removeEventListener("scroll", controlNavbar);
+      targetElement.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY, scrollTimeout]);
+  }, [elementId, lastScrollY, scrollTimeout]);
 
   return scrollData;
 };
 
 export interface ScrollData {
+  document: HTMLElement;
   currentY: number;
   currentX: number;
+  clientHeight: number;
+  scrollHeight: number;
   isScrolling: boolean;
   isScrollingUpwards: boolean;
   isScrollingDownwards: boolean;
