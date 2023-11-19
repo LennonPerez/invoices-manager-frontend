@@ -6,6 +6,7 @@ const white = "#FFFFFF";
 // Text colors
 const lavenderGrey = "#DFE3FA";
 const cadetBlue = "#888EB0";
+const blueGray = "#777F98";
 
 // Primary colors
 const mediumSlateBlue = "#7C5DFA";
@@ -21,9 +22,11 @@ const midnightBlue = "#1E2139";
 const outerSpaceLight = "#252945";
 const ebonyClay = "#0C0E16";
 const darkLiver = "#141625";
+const darkGrey = "#373B53";
 
 // Other colors
 const graniteGray = "#494E6E";
+const mutedBlue = "rgba(72, 84, 159, 0.10)";
 const ghostWhite = "rgba(255, 255, 255, 0.1)";
 const bittersweet = "#EC5757";
 const lightSalmon = "#FF9797";
@@ -36,7 +39,8 @@ const colorTheme: DefaultTheme = {
     text: {
       primary: white,
       secondary: lavenderGrey,
-      disabled: cadetBlue,
+      tertiary: blueGray,
+      fourth: cadetBlue,
     },
     common: {
       black: black,
@@ -69,6 +73,12 @@ const colorTheme: DefaultTheme = {
   page: {
     background: darkLiver,
     scrollbarThumb: outerSpaceLight,
+  },
+  modal: {
+    background: midnightBlue,
+    primaryText: white,
+    secondaryText: cadetBlue,
+    shadow: mutedBlue,
   },
   card: {
     background: midnightBlue,
@@ -108,7 +118,7 @@ const colorTheme: DefaultTheme = {
       hoverColor: lavenderGrey,
     },
     tertiary: {
-      background: darkLiver,
+      background: darkGrey,
       hoverBackground: midnightBlue,
       color: lavenderGrey,
       hoverColor: lavenderGrey,

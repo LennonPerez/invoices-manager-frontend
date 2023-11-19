@@ -10,19 +10,25 @@ import { useState } from "react";
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  const onOpenForm = () => {
+    setIsFormOpen(true);
+  };
+
+  const onCloseForm = () => {
+    setIsFormOpen(false);
+  };
+
   return (
     <HomePageStyles>
       <div className="header-container">
-        <InvoicesPageHeader onOpenForm={() => setIsFormOpen(true)} />
+        <InvoicesPageHeader onOpenForm={onOpenForm} />
       </div>
       <InvoicesList
         invoices={invoices}
         isFetchingInvoices={false}
         isFetchingMoreInvoices={false}
       />
-      {isFormOpen ? (
-        <InvoiceFormPage onClose={() => setIsFormOpen(false)} />
-      ) : null}
+      {isFormOpen ? <InvoiceFormPage onClose={onCloseForm} /> : null}
     </HomePageStyles>
   );
 };

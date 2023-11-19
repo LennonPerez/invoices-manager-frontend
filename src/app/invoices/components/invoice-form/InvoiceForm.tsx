@@ -80,6 +80,7 @@ const InvoiceFormStyles = styled.div`
     margin-top: 4rem;
 
     h2 {
+      color: ${({ theme }) => theme.palette.text.tertiary};
       font-size: 1.125rem;
       font-weight: 700;
       line-height: 2rem;

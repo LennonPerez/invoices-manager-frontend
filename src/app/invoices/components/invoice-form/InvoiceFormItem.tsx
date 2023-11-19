@@ -4,7 +4,7 @@ import { BiSolidTrashAlt } from "react-icons/bi";
 import { BaseInput } from "@/components/inputs";
 import { formatAmount } from "@/utils/formatters";
 
-interface InvoiceFormItemProps {}
+interface InvoiceFormItemProps { }
 
 const InvoiceFormItem: FunctionComponent<InvoiceFormItemProps> = () => {
   return (
@@ -80,7 +80,7 @@ const InvoiceFormItemStyles = styled.div`
     }
 
     .icon {
-      color: ${({ theme }) => theme.palette.text.disabled};
+      color: ${({ theme }) => theme.palette.text.fourth};
       height: 1.25rem;
       width: 1.25rem;
     }

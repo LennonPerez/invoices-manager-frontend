@@ -3,7 +3,6 @@ import styled from "styled-components";
 import BackButton from "../shared/BackButton";
 import InvoiceForm from "./InvoiceForm";
 import InvoiceFormButtons from "./InvoiceFormButtons";
-import invoices from "@/mocks/invoices";
 
 interface InvoiceFormPageProps {
   onClose: () => void;
@@ -12,8 +11,8 @@ interface InvoiceFormPageProps {
 const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = (props) => {
   const [show, setShow] = useState(false);
 
-  const invoice = invoices[1];
-  const isEditing = true;
+  const invoice = undefined;
+  const isEditing = false;
 
   useEffect(() => {
     setShow(true);
@@ -46,7 +45,11 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = (props) => {
   );
 };
 
-const InvoiceFormPageStyles = styled.div<{ $show: boolean }>`
+interface InvoiceFormPageStylesProps {
+  $show: boolean;
+}
+
+const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
   background-color: ${({ theme }) => theme.page.background};
   position: fixed;
   top: ${({ $show }) => ($show ? "4.5rem" : "100vh")};
@@ -74,8 +77,8 @@ const InvoiceFormPageStyles = styled.div<{ $show: boolean }>`
     margin-bottom: 1.5rem;
 
     span {
+      color: ${({ theme }) => theme.palette.text.fourth};
       font-weight: 700;
-      color: ${({ theme }) => theme.palette.text.disabled};
     }
   }
 `;

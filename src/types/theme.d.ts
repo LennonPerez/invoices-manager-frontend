@@ -8,7 +8,8 @@ declare module "styled-components" {
       text: {
         primary: string;
         secondary: string;
-        disabled: string;
+        tertiary: string;
+        fourth: string;
       };
       common: {
         black: string;
@@ -41,6 +42,12 @@ declare module "styled-components" {
     page: {
       background: string;
       scrollbarThumb: string;
+    };
+    modal: {
+      background: string;
+      primaryText: string;
+      secondaryText: string;
+      shadow: string;
     };
     card: {
       background: string;

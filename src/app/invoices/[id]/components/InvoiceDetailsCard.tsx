@@ -127,7 +127,7 @@ const InvoiceDetailsCardStyles = styled.div`
           margin-bottom: 0.25rem;
 
           span {
-            color: ${({ theme }) => theme.palette.text.disabled};
+            color: ${({ theme }) => theme.palette.text.fourth};
           }
         }
       }
@@ -232,7 +232,7 @@ const InvoiceDetailsCardStyles = styled.div`
             }
 
             .item-price {
-              color: ${({ theme }) => theme.palette.text.disabled};
+              color: ${({ theme }) => theme.palette.text.fourth};
               font-size: 0.75rem;
               font-weight: 700;
               line-height: 0.9375rem;

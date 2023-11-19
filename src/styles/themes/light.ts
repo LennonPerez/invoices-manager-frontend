@@ -8,6 +8,7 @@ const white = "#FFFFFF";
 const richBlack = "#0C0E16";
 const slateBlueLight = "#7E88C3";
 const cadetBlue = "#888EB0";
+const blueGray = "#777F98";
 
 // Primary colors
 const lightRoyalPurple = "#9277FF";
@@ -41,7 +42,8 @@ const lightTheme: DefaultTheme = {
     text: {
       primary: richBlack,
       secondary: slateBlueLight,
-      disabled: cadetBlue,
+      tertiary: blueGray,
+      fourth: cadetBlue,
     },
     common: {
       black: black,
@@ -74,6 +76,12 @@ const lightTheme: DefaultTheme = {
   page: {
     background: defaultPaper,
     scrollbarThumb: slateBlueMain,
+  },
+  modal: {
+    background: white,
+    primaryText: richBlack,
+    secondaryText: cadetBlue,
+    shadow: mutedBlue,
   },
   card: {
     background: whitePaper,
