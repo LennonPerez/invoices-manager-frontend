@@ -1,8 +1,8 @@
 import { FunctionComponent, RefObject, useState } from "react";
 import styled from "styled-components";
-import DatePickerSelector, { DatePicked } from "./DatePickerSelector";
 import BaseInput, { InputCalendarIcon } from "./Input";
 import { formatDate } from "@/utils/formatters";
+import { DatePickerSelector } from "./selectors";
 
 interface InputDatePickerProps {
   reference?: RefObject<HTMLInputElement>;
@@ -15,7 +15,7 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
   props,
 ) => {
   const [isSelectorOpened, setIsSelectorOpened] = useState<boolean>(false);
-  const [datePicked, setDatePicked] = useState<DatePicked>({
+  const [datePicked, setDatePicked] = useState({
     year: new Date().getFullYear(),
     month: new Date().getMonth(),
     day: new Date().getDate(),

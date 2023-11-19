@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { LuChevronLeft } from "react-icons/lu";
-import { FourthButton } from "@/components/Button";
+import { TransparentButton } from "@/components/buttons";
 
 interface BackButtonProps {
   onClick: () => void;
@@ -10,10 +10,10 @@ interface BackButtonProps {
 const BackButton: FunctionComponent<BackButtonProps> = (props) => {
   return (
     <BackButtonStyles>
-      <FourthButton $padding="0" $minHeight="0" onClick={props.onClick}>
+      <TransparentButton $padding="0" $minHeight="0" onClick={props.onClick}>
         <LuChevronLeft className="chevron-icon" />
         Go back
-      </FourthButton>
+      </TransparentButton>
     </BackButtonStyles>
   );
 };

@@ -2,21 +2,21 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { ImCheckmark } from "react-icons/im";
 
-interface CheckboxProps {
+interface InputCheckboxProps {
   id: string;
   value: string;
   isChecked: boolean;
   onChange: (value: string) => void;
 }
 
-const Checkbox: FunctionComponent<CheckboxProps> = ({
+const InputCheckbox: FunctionComponent<InputCheckboxProps> = ({
   id,
   value,
   isChecked,
   onChange,
 }) => {
   return (
-    <CheckboxStyles onClick={() => onChange(value)}>
+    <InputCheckboxStyles onClick={() => onChange(value)}>
       <input
         id={id}
         type="checkbox"
@@ -27,11 +27,11 @@ const Checkbox: FunctionComponent<CheckboxProps> = ({
       <div className="checkmark-container">
         <ImCheckmark className="checkmark" />
       </div>
-    </CheckboxStyles>
+    </InputCheckboxStyles>
   );
 };
 
-const CheckboxStyles = styled.button`
+const InputCheckboxStyles = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,4 +80,4 @@ const CheckboxStyles = styled.button`
   }
 `;
 
-export default Checkbox;
+export default InputCheckbox;

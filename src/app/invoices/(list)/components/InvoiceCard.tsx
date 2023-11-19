@@ -1,8 +1,8 @@
-import StatusBox from "@/components/StatusBox";
-import { InvoiceStatus } from "@/types/invoice";
-import { formatDate, formatAmount } from "@/utils/formatters";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
+import { InvoiceStatus } from "@/types/invoice";
+import { formatDate, formatAmount } from "@/utils/formatters";
+import StatusBox from "@/app/invoices/components/shared/StatusBox";
 
 interface InvoiceCardProps {
   id: string;

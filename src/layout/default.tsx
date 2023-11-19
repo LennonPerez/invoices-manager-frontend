@@ -1,8 +1,8 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
 import { FunctionComponent, ReactNode } from "react";
 import styled from "styled-components";
+import Navbar from "@/layout/Navbar";
 
 interface DefaultLayoutProps {
   children: ReactNode;

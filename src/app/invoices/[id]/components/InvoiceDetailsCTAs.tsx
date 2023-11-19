@@ -2,7 +2,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   DangerButton,
-} from "@/components/Button";
+} from "@/components/buttons";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 

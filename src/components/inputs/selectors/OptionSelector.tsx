@@ -15,7 +15,7 @@ export interface SelectorOption {
   value: string;
 }
 
-export const OptionSelector: FunctionComponent<OptionSelectorProps> = ({
+const OptionSelector: FunctionComponent<OptionSelectorProps> = ({
   isOpened,
   selectedOption,
   options,
@@ -80,3 +80,5 @@ const OptionSelectorStyles = styled.div`
     }
   } */
 `;
+
+export default OptionSelector;

@@ -3,7 +3,7 @@ import { FunctionComponent, RefObject, useEffect, useState } from "react";
 import styled from "styled-components";
 import Option from "@/types/option";
 import BaseInput, { InputSelectIcon } from "./Input";
-import { OptionSelector } from "./OptionSelector";
+import { OptionSelector } from "./selectors";
 
 interface InputSelectProps {
   reference?: RefObject<HTMLInputElement>;

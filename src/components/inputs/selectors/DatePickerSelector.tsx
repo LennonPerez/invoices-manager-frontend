@@ -15,7 +15,7 @@ interface DatePickerSelectorProps {
   onSelectYear: (year: number) => void;
 }
 
-export interface DatePicked {
+interface DatePicked {
   year: number;
   month: number;
   day: number;

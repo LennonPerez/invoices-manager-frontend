@@ -1,12 +1,10 @@
-import BaseInput from "@/components/Input";
-import styled from "styled-components";
-import InputDatePicker from "@/components/InputDatePicker";
-import InputSelect from "@/components/InputSelect";
-import { paymentTermsOptions } from "@/utils/options";
 import { FunctionComponent } from "react";
-import { SecondaryButton } from "@/components/Button";
-import InvoiceFormItem from "./InvoiceFormItem";
+import styled from "styled-components";
 import { Invoice } from "@/types/invoice";
+import { paymentTermsOptions } from "@/utils/options";
+import { BaseInput, InputSelect, InputDatePicker } from "@/components/inputs";
+import { SecondaryButton } from "@/components/buttons";
+import InvoiceFormItem from "./InvoiceFormItem";
 
 interface InvoiceFormProps {
   invoice: Invoice | undefined;

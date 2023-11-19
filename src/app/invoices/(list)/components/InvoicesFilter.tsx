@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { LuChevronDown, LuChevronUp } from "react-icons/lu";
-import { FourthButton } from "@/components/Button";
-import { MultipleOptionSelector } from "@/components/MultipleOptionSelector";
+import { TransparentButton } from "@/components/buttons";
+import { MultipleOptionSelector } from "@/components/inputs/selectors";
 import { statusOptions } from "@/utils/options";
 import styled from "styled-components";
 
@@ -26,7 +26,7 @@ const InvoicesFilter: FunctionComponent<InvoicesFilterProps> = () => {
 
   return (
     <InvoicesFilterStyles>
-      <FourthButton
+      <TransparentButton
         $padding="0.25rem 0.5rem 0.25rem 1.25rem"
         onClick={() => setIsSelectorOpened(true)}
       >
@@ -34,7 +34,7 @@ const InvoicesFilter: FunctionComponent<InvoicesFilterProps> = () => {
         <div className="chevron-icon-container">
           <Icon className="chevron-icon" />
         </div>
-      </FourthButton>
+      </TransparentButton>
       <MultipleOptionSelector
         isOpened={isSelectorOpened}
         options={statusOptions}

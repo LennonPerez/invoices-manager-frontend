@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { Invoice } from "@/types/invoice";
-import StatusBox from "@/components/StatusBox";
+import StatusBox from "@/app/invoices/components/shared/StatusBox";
 import { formatAmount, formatDate } from "@/utils/formatters";
 interface InvoiceDetailsCardProps {
   invoice: Invoice;

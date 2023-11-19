@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { HiPlusSm } from "react-icons/hi";
-import { PrimaryButton } from "@/components/Button";
+import { PrimaryButton } from "@/components/buttons";
 import InvoicesFilter from "./InvoicesFilter";
 
 const InvoicesPageHeader = () => {

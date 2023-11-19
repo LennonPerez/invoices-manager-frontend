@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Option from "@/types/option";
-import Checkbox from "./Checkbox";
+import { InputCheckbox } from "../index";
 import BaseSelector from "./Selector";
 
 interface MultipleOptionSelectorProps {
@@ -12,7 +12,7 @@ interface MultipleOptionSelectorProps {
   onSelectOption: (arg: string) => void;
 }
 
-export const MultipleOptionSelector: FunctionComponent<
+const MultipleOptionSelector: FunctionComponent<
   MultipleOptionSelectorProps
 > = ({ isOpened, selectedOptions, options, onClose, onSelectOption }) => {
   if (!isOpened) return null;
@@ -23,7 +23,7 @@ export const MultipleOptionSelector: FunctionComponent<
         <div className="options-container">
           {options.map((e) => (
             <label key={e.value} htmlFor={e.value} className="option">
-              <Checkbox
+              <InputCheckbox
                 id={e.value}
                 value={e.value}
                 isChecked={selectedOptions.includes(e.value)}
@@ -71,3 +71,5 @@ const MultipleOptionSelectorStyles = styled.div`
     }
   }
 `;
+
+export default MultipleOptionSelector;

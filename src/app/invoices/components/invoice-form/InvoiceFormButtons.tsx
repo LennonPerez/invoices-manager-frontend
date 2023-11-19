@@ -4,7 +4,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   TertiaryButton,
-} from "@/components/Button";
+} from "@/components/buttons";
 
 interface InvoiceFormButtonsProps {
   isLoadingAction: boolean;
