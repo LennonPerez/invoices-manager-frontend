@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import BaseSelector from "./Selector";
 
-interface OptionsSelectorProps {
+interface OptionSelectorProps {
   isOpened: boolean;
   selectedOption: string | null;
   options: SelectorOption[];
@@ -15,7 +15,7 @@ export interface SelectorOption {
   value: string;
 }
 
-export const OptionsSelector: FunctionComponent<OptionsSelectorProps> = ({
+export const OptionSelector: FunctionComponent<OptionSelectorProps> = ({
   isOpened,
   selectedOption,
   options,
@@ -25,9 +25,8 @@ export const OptionsSelector: FunctionComponent<OptionsSelectorProps> = ({
   if (!isOpened) return null;
 
   return (
-    <InputOptionsSelectorStyles>
-      <div className="invisible-box" onClick={onClose} />
-      <BaseSelector>
+    <OptionSelectorStyles>
+      <BaseSelector onClose={onClose}>
         {options.map((e) => (
           <div
             key={e.value}
@@ -38,24 +37,15 @@ export const OptionsSelector: FunctionComponent<OptionsSelectorProps> = ({
           </div>
         ))}
       </BaseSelector>
-    </InputOptionsSelectorStyles>
+    </OptionSelectorStyles>
   );
 };
 
-const InputOptionsSelectorStyles = styled.div`
+const OptionSelectorStyles = styled.div`
   position: absolute;
   top: 6rem;
   left: 0;
   right: 0;
-
-  .invisible-box {
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
 
   .option {
     border-bottom: 0.0625rem solid ${({ theme }) => theme.selector.border};
@@ -84,9 +74,9 @@ const InputOptionsSelectorStyles = styled.div`
     }
   }
 
-  .selected {
+  /* .selected {
     p {
       color: ${({ theme }) => theme.selector.activeText};
     }
-  }
+  } */
 `;

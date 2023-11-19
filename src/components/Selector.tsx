@@ -4,10 +4,16 @@ import styled from "styled-components";
 
 interface BaseSelectorProps {
   children: ReactNode;
+  onClose: () => void;
 }
 
-const BaseSelector: FunctionComponent<BaseSelectorProps> = ({ children }) => {
-  return <BaseSelectorStyles>{children}</BaseSelectorStyles>;
+const BaseSelector: FunctionComponent<BaseSelectorProps> = (props) => {
+  return (
+    <BaseSelectorStyles>
+      <div className="invisible-box" onClick={props.onClose} />
+      {props.children}
+    </BaseSelectorStyles>
+  );
 };
 
 const BaseSelectorStyles = styled.div`
@@ -16,6 +22,15 @@ const BaseSelectorStyles = styled.div`
   border-radius: 0.75rem;
   position: relative;
   z-index: 3;
+
+  .invisible-box {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 `;
 
 export default BaseSelector;

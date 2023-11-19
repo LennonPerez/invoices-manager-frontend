@@ -1,20 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FunctionComponent, RefObject, useEffect, useState } from "react";
 import styled from "styled-components";
+import Option from "@/types/option";
 import BaseInput, { InputSelectIcon } from "./Input";
-import { OptionsSelector, SelectorOption } from "./OptionsSelector";
+import { OptionSelector } from "./OptionSelector";
 
 interface InputSelectProps {
   reference?: RefObject<HTMLInputElement>;
   label?: string;
   value?: string | null;
   isRequired?: boolean;
-  options: SelectorOption[];
+  options: Option[];
 }
 
 export const InputSelect: FunctionComponent<InputSelectProps> = (props) => {
   const [isSelectorOpened, setIsSelectorOpened] = useState<boolean>(false);
-  const [selected, setSelected] = useState<SelectorOption | null>(null);
+  const [selected, setSelected] = useState<Option | null>(null);
 
   useEffect(() => {
     if (!props.value) return;
@@ -39,7 +40,7 @@ export const InputSelect: FunctionComponent<InputSelectProps> = (props) => {
         onFocus={onOpenSelector}
         // onBlur={() => setTimeout(onCloseSelector, 100)}
       />
-      <OptionsSelector
+      <OptionSelector
         isOpened={isSelectorOpened}
         selectedOption={selected?.value ?? null}
         options={props.options}
@@ -59,8 +60,8 @@ const InputSelectStyles = styled.div`
 
 export const searchOptionByString = (
   text: string,
-  options: SelectorOption[],
-): SelectorOption | undefined => {
+  options: Option[],
+): Option | undefined => {
   return options.find((o) => o.text === text);
 };
 

@@ -134,8 +134,7 @@ const DatePickerSelector: FunctionComponent<DatePickerSelectorProps> = ({
 
   return (
     <InputDatePickerSelectorStyles>
-      <div className="invisible-box" onClick={onClose} />
-      <BaseSelector>
+      <BaseSelector onClose={onClose}>
         <div className="date-picker-container">
           <div className="filters-container">
             <div
@@ -226,15 +225,6 @@ const InputDatePickerSelectorStyles = styled.div`
   top: 6rem;
   left: 0;
   right: 0;
-
-  .invisible-box {
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
 
   p {
     font-weight: 700;
