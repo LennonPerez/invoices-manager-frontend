@@ -43,7 +43,10 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
   useEffect(() => setInputId(generateUniqueId()), []);
 
   const onClickInput = () => {
+    if (props.isDisabled || props.isDisabled) return;
+
     ref.current?.focus();
+
     if (!props.onClick) return;
     props.onClick();
   };
@@ -71,6 +74,8 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
   return (
     <BaseInputStyles
       $hasSuffix={!!props.suffixContent}
+      $isDisabled={!!props.isDisabled}
+      $isReadOnly={!!props.isReadOnly}
       $cantWrite={!!props.cantWrite}
       $isFocused={isFocused}
     >
@@ -110,6 +115,8 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
 interface BaseInputStylesProps {
   $isFocused: boolean;
   $hasSuffix: boolean;
+  $isReadOnly: boolean;
+  $isDisabled: boolean;
   $cantWrite: boolean;
 }
 
@@ -133,7 +140,12 @@ const BaseInputStyles = styled.div<BaseInputStylesProps>`
     border: 1px solid
       ${({ theme, $isFocused }) =>
         $isFocused ? theme.inputs.borderActive : theme.inputs.border};
-    cursor: ${({ $cantWrite }) => ($cantWrite ? "pointer" : "text")};
+    cursor: ${({ $cantWrite, $isDisabled, $isReadOnly }) =>
+      $isDisabled || $isReadOnly
+        ? "not-allowed"
+        : $cantWrite
+          ? "pointer"
+          : "text"};
     padding: 0 ${(props) => (props.$hasSuffix ? "0" : "1rem ")} 0 1rem;
     border-radius: 0.25rem;
     display: flex;

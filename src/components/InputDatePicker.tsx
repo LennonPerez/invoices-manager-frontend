@@ -8,6 +8,7 @@ interface InputDatePickerProps {
   reference?: RefObject<HTMLInputElement>;
   label?: string;
   isRequired?: boolean;
+  isDisabled?: boolean;
 }
 
 export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (

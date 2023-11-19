@@ -9,6 +9,16 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         transition: color, background 0.2s ease-in-out;
         font-family: var(--main-font);
+
+        &::-webkit-scrollbar {
+            background-color: ${({ theme }) =>
+              theme.palette.background.default};
+            width: 0.5rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: ${({ theme }) => theme.inputs.border};
+        }
     }
 
     html,
