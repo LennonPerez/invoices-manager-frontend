@@ -4,12 +4,15 @@ import styled from "styled-components";
 import { HiPlusSm } from "react-icons/hi";
 import { PrimaryButton } from "@/components/buttons";
 import InvoicesFilter from "./InvoicesFilter";
+import { FunctionComponent } from "react";
 
-const InvoicesPageHeader = () => {
-  const openNewInvoiceForm = () => {
-    console.log("New form here");
-  };
+interface InvoicesPageHeaderProps {
+  onOpenForm: () => void;
+}
 
+const InvoicesPageHeader: FunctionComponent<InvoicesPageHeaderProps> = ({
+  onOpenForm,
+}) => {
   return (
     <InvoicesListHeaderStyles>
       <div className="left-side">
@@ -20,7 +23,7 @@ const InvoicesPageHeader = () => {
         <InvoicesFilter />
         <PrimaryButton
           $padding="0.25rem 1.25rem 0.25rem 0.5rem"
-          onClick={openNewInvoiceForm}
+          onClick={onOpenForm}
         >
           <div className="plus-icon-container">
             <HiPlusSm className="plus-icon" />

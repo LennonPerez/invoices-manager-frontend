@@ -8,12 +8,12 @@ import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
 import { useState } from "react";
 
 const Home = () => {
-  const [isFormOpen, setIsFormOpen] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <HomePageStyles>
       <div className="header-container">
-        <InvoicesPageHeader />
+        <InvoicesPageHeader onOpenForm={() => setIsFormOpen(true)} />
       </div>
       <InvoicesList
         invoices={invoices}

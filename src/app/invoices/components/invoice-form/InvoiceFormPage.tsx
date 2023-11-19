@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import styled from "styled-components";
 import BackButton from "../shared/BackButton";
 import InvoiceForm from "./InvoiceForm";
@@ -10,40 +10,54 @@ interface InvoiceFormPageProps {
 }
 
 const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = (props) => {
+  const [show, setShow] = useState(false);
+
   const invoice = invoices[1];
   const isEditing = true;
 
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
+  const onClose = () => {
+    setShow(false);
+    setTimeout(props.onClose, 300);
+  };
+
   return (
-    <InvoiceFormPageStyles>
-      <div className="page-content">
-        <div className="back-button-container">
-          <BackButton onClick={props.onClose} />
+    <InvoiceFormPageStyles $show={show}>
+      <form>
+        <div className="form-content">
+          <div className="back-button-container">
+            <BackButton onClick={onClose} />
+          </div>
+          {isEditing ? (
+            <h1 className="title">
+              Edit <span className="hash">#</span>XM9141
+            </h1>
+          ) : (
+            <h1 className="title">New Invoice</h1>
+          )}
+          <InvoiceForm invoice={invoice} />
         </div>
-        {isEditing ? (
-          <h1 className="title">
-            Edit <span className="hash">#</span>XM9141
-          </h1>
-        ) : (
-          <h1 className="title">New Invoice</h1>
-        )}
-        <InvoiceForm invoice={invoice} />
-      </div>
-      <InvoiceFormButtons isLoadingAction={false} isEditing={isEditing} />
+        <InvoiceFormButtons isLoadingAction={false} isEditing={isEditing} />
+      </form>
     </InvoiceFormPageStyles>
   );
 };
 
-const InvoiceFormPageStyles = styled.div`
+const InvoiceFormPageStyles = styled.div<{ $show: boolean }>`
   background-color: ${({ theme }) => theme.page.background};
   position: fixed;
-  top: 4.5rem;
+  top: ${({ $show }) => ($show ? "4.5rem" : "100vh")};
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 2;
   overflow-y: auto;
+  transition: top 0.3s ease-in-out;
 
-  .page-content {
+  .form-content {
     padding: 2rem 1.5rem;
     margin-bottom: 4rem;
 
