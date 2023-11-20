@@ -75,7 +75,7 @@ const lightTheme: DefaultTheme = {
   },
   page: {
     background: defaultPaper,
-    scrollbarThumb: slateBlueMain,
+    scrollbarThumb: lavenderBlue,
   },
   modal: {
     background: white,

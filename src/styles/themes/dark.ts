@@ -27,7 +27,7 @@ const darkGrey = "#373B53";
 // Other colors
 const graniteGray = "#494E6E";
 const mutedBlue = "rgba(72, 84, 159, 0.10)";
-const ghostWhite = "rgba(255, 255, 255, 0.1)";
+const opacityBlack = "rgba(0, 0, 0, 0.25)";
 const bittersweet = "#EC5757";
 const lightSalmon = "#FF9797";
 const orangeYellow = "#FF8F00";
@@ -84,7 +84,7 @@ const colorTheme: DefaultTheme = {
     background: midnightBlue,
     lightContrastBackground: outerSpaceLight,
     darkContrastBackground: ebonyClay,
-    shadow: ghostWhite,
+    shadow: mutedBlue,
   },
   inputs: {
     background: midnightBlue,
@@ -99,7 +99,7 @@ const colorTheme: DefaultTheme = {
   },
   selector: {
     background: outerSpaceLight,
-    shadow: ghostWhite,
+    shadow: opacityBlack,
     text: lavenderGrey,
     activeText: lightSlateBlue,
     border: midnightBlue,
