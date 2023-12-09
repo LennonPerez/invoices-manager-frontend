@@ -8,21 +8,22 @@ import InvoiceDetails from "./components/InvoiceDetails";
 import InvoiceDetailsMobileCTAs from "./components/InvoiceDetailsMobileCTAs";
 import BackButton from "../components/shared/BackButton";
 import { ConfirmationModal } from "@/components/modals";
+import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
 
 const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
   params,
 }) => {
-  console.log(params.id);
   const router = useRouter();
   const [modalInfo, setModalInfo] = useState<ModalInfo>(modalInfoInital);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const invoice = invoices[1];
+  const invoice = invoices.find((e) => e.id === params.id);
   const isFetching = false;
 
   const onTapDelete = () => {
     const info = {
       title: "Confirm Deletion",
-      description: `Are you sure you want to delete invoice #${invoice.id}? This action cannot be undone.`,
+      description: `Are you sure you want to delete invoice #${invoice?.id}? This action cannot be undone.`,
       confirmButtonText: "Delete",
       isDanger: true,
       onCancel: () => setModalInfo({ isOpen: false, ...info }),
@@ -32,17 +33,24 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
       ...info,
       isOpen: true,
       onConfirm: () => {
-        console.log("DELETING");
+        // TODO: DELETE func
         info.onCancel();
       },
     });
   };
 
-  const onTapEdit = () => {};
+  const onTapEdit = () => setIsFormOpen(true);
 
   const onTapPaid = () => {};
 
   const onTapPending = () => {};
+
+  const onCloseForm = () => setIsFormOpen(false);
+
+  const onSaveFormChanges = () => {
+    //TODO: on save form func
+    onCloseForm();
+  };
 
   return (
     <InvoiceDetailsPageStyles id="invoice-details-page">
@@ -58,13 +66,19 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
         isInitialLoading={false}
         isLoadingAction={isFetching}
         showDeleteButton={true}
-        showEditButton={invoice.status !== "paid"}
-        showMarkAsPaidButton={invoice.status === "pending"}
-        showMarkAsPendingButton={invoice.status === "draft"}
+        showEditButton={invoice?.status !== "paid"}
+        showMarkAsPaidButton={invoice?.status === "pending"}
+        showMarkAsPendingButton={invoice?.status === "draft"}
         onTapDelete={onTapDelete}
         onTapEdit={onTapEdit}
         onTapPaid={onTapPaid}
         onTapPending={onTapPending}
+      />
+      <InvoiceFormPage
+        isOpen={isFormOpen}
+        invoiceToEdit={invoice}
+        onClose={onCloseForm}
+        onSave={onSaveFormChanges}
       />
       <ConfirmationModal
         {...modalInfo}

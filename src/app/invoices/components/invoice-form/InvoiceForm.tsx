@@ -11,7 +11,7 @@ interface InvoiceFormProps {
 }
 
 const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({ invoice }) => {
-  const isEditing = invoice !== undefined;
+  const isEditing = !!invoice?.id;
 
   return (
     <InvoiceFormStyles>
@@ -50,7 +50,6 @@ const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({ invoice }) => {
       </div>
       <div className="items-list-container">
         <h2>Item List</h2>
-        <InvoiceFormItem />
         <InvoiceFormItem />
       </div>
       <div className="new-item-button">

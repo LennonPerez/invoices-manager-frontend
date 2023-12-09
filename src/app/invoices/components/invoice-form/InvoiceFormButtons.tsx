@@ -7,22 +7,30 @@ import {
 } from "@/components/buttons";
 
 interface InvoiceFormButtonsProps {
-  isLoadingAction: boolean;
   isEditing: boolean;
+  isLoadingAction: boolean;
+  onCancel: () => void;
+  onDraft?: () => void;
+  onSave: () => void;
 }
 
 const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
-  isLoadingAction,
   isEditing,
+  isLoadingAction,
+  onCancel,
+  onDraft,
+  onSave,
 }) => {
   return (
     <InvoiceFormButtonsStyles>
       <div className="cancel-button">
         <SecondaryButton
+          type="button"
           $minHeight="3rem"
           $width="100%"
           $padding="0"
           disabled={isLoadingAction}
+          onClick={onCancel}
         >
           {isEditing ? "Cancel" : "Discard"}
         </SecondaryButton>
@@ -30,10 +38,12 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
       {isEditing ? null : (
         <div className="draft-button">
           <TertiaryButton
+            type="button"
             $minHeight="3rem"
             $width="100%"
             $padding="0"
             disabled={isLoadingAction}
+            onClick={onDraft}
           >
             Save as Draft
           </TertiaryButton>
@@ -41,10 +51,12 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
       )}
       <div className="save-button">
         <PrimaryButton
+          type="button"
           $minHeight="3rem"
           $width="100%"
           $padding="0"
           disabled={isLoadingAction}
+          onClick={onSave}
         >
           {isEditing ? "Save Changes" : "Save & Send"}
         </PrimaryButton>

@@ -18,6 +18,16 @@ const Home = () => {
     setIsFormOpen(false);
   };
 
+  const onSaveFormAsDraft = () => {
+    //TODO: on save form draft func
+    onCloseForm();
+  };
+
+  const onSaveForm = () => {
+    //TODO: on save form func
+    onCloseForm();
+  };
+
   return (
     <HomePageStyles>
       <div className="header-container">
@@ -28,7 +38,12 @@ const Home = () => {
         isFetchingInvoices={false}
         isFetchingMoreInvoices={false}
       />
-      {isFormOpen ? <InvoiceFormPage onClose={onCloseForm} /> : null}
+      <InvoiceFormPage
+        isOpen={isFormOpen}
+        onClose={onCloseForm}
+        onSave={onSaveForm}
+        onDraft={onSaveFormAsDraft}
+      />
     </HomePageStyles>
   );
 };

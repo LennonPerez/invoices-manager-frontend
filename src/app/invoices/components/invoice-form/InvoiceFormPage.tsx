@@ -1,45 +1,75 @@
-import { FunctionComponent, useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Invoice } from "@/types/invoice";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import BackButton from "../shared/BackButton";
 import InvoiceForm from "./InvoiceForm";
 import InvoiceFormButtons from "./InvoiceFormButtons";
 
 interface InvoiceFormPageProps {
+  isOpen: boolean;
+  invoiceToEdit?: Invoice | undefined;
   onClose: () => void;
+  onDraft?: () => void;
+  onSave: () => void;
 }
 
-const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = (props) => {
+const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = ({
+  isOpen,
+  invoiceToEdit,
+  onClose,
+  onDraft,
+  onSave,
+}) => {
+  const formRef = useRef<HTMLDivElement>(null);
+  const [render, setRender] = useState(false);
   const [show, setShow] = useState(false);
 
-  const invoice = undefined;
-  const isEditing = false;
+  const isEditing = !!invoiceToEdit?.id;
 
   useEffect(() => {
-    setShow(true);
-  }, []);
+    if (isOpen) {
+      setRender(true);
+      setTimeout(() => {
+        setShow(true);
+      }, 50);
+      formRef?.current?.scrollTo({ top: 0 });
+    } else {
+      goBack();
+    }
+  }, [isOpen]);
 
-  const onClose = () => {
+  const goBack = () => {
     setShow(false);
-    setTimeout(props.onClose, 300);
+    setTimeout(onClose, 300);
   };
 
+  if (!render) return null;
+
   return (
-    <InvoiceFormPageStyles $show={show}>
+    <InvoiceFormPageStyles $show={show} ref={formRef}>
       <form>
         <div className="form-content">
           <div className="back-button-container">
-            <BackButton onClick={onClose} />
+            <BackButton onClick={goBack} />
           </div>
           {isEditing ? (
             <h1 className="title">
-              Edit <span className="hash">#</span>XM9141
+              Edit <span className="hash">#</span>
+              {invoiceToEdit?.id}
             </h1>
           ) : (
             <h1 className="title">New Invoice</h1>
           )}
-          <InvoiceForm invoice={invoice} />
+          <InvoiceForm invoice={invoiceToEdit} />
         </div>
-        <InvoiceFormButtons isLoadingAction={false} isEditing={isEditing} />
+        <InvoiceFormButtons
+          isEditing={isEditing}
+          isLoadingAction={false}
+          onCancel={onClose}
+          onDraft={onDraft}
+          onSave={onSave}
+        />
       </form>
     </InvoiceFormPageStyles>
   );
