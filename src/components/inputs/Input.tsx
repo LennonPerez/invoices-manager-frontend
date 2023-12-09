@@ -19,13 +19,13 @@ export interface BaseInputProps {
   name?: string;
   value?: string;
   label?: string;
-  isRequired?: boolean;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
-  cantWrite?: boolean;
-  suffixContent?: ReactNode;
   pattern?: string;
+  required?: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
+  cantWrite?: boolean;
   errorMessage?: string;
+  suffixContent?: ReactNode;
   onClick?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -43,7 +43,7 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
   useEffect(() => setInputId(generateUniqueId()), []);
 
   const onClickInput = () => {
-    if (props.isDisabled || props.isDisabled) return;
+    if (props.disabled) return;
 
     ref.current?.focus();
 
@@ -57,8 +57,8 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
   };
 
   const onFocusInput = () => {
-    setFocus(!props.isDisabled);
-    if (props.onFocus && !props.isDisabled) props.onFocus();
+    setFocus(!props.disabled);
+    if (props.onFocus && !props.disabled) props.onFocus();
   };
 
   const onBlurInput = () => {
@@ -74,8 +74,8 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
   return (
     <BaseInputStyles
       $hasSuffix={!!props.suffixContent}
-      $isDisabled={!!props.isDisabled}
-      $isReadOnly={!!props.isReadOnly}
+      $isDisabled={!!props.disabled}
+      $isReadOnly={!!props.readOnly}
       $cantWrite={!!props.cantWrite}
       $isFocused={isFocused}
     >
@@ -91,9 +91,9 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
           type={props.type}
           value={props.value}
           name={props.name}
-          required={props.isRequired ?? true}
-          disabled={props.isDisabled}
-          readOnly={props.isReadOnly}
+          required={props.required}
+          disabled={props.disabled}
+          readOnly={props.readOnly}
           inputMode={props.cantWrite ? "none" : undefined}
           pattern={props.pattern}
           onChange={onChangeInput}

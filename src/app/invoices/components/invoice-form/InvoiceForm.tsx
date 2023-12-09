@@ -53,7 +53,7 @@ const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({ invoice }) => {
         <InvoiceFormItem />
       </div>
       <div className="new-item-button">
-        <SecondaryButton $width="100%">+ Add New Item</SecondaryButton>
+        <SecondaryButton width="100%">+ Add New Item</SecondaryButton>
       </div>
     </InvoiceFormStyles>
   );

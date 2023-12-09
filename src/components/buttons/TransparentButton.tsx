@@ -1,8 +1,12 @@
 import { FunctionComponent } from "react";
 import { useTheme } from "@/providers/themes";
-import BaseButton, { ButtonColor, ButtonProps } from "./Button";
+import BaseButton, { ButtonColor, BaseButtonProps } from "./Button";
 
-const TransparentButton: FunctionComponent<ButtonProps> = (props) => {
+type TransparentButtonProps = Omit<BaseButtonProps, "buttonColor">;
+
+const TransparentButton: FunctionComponent<TransparentButtonProps> = (
+  props,
+) => {
   const { theme } = useTheme();
 
   const colors: ButtonColor = {

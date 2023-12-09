@@ -1,8 +1,10 @@
 import { FunctionComponent } from "react";
 import { useTheme } from "@/providers/themes";
-import BaseButton, { ButtonColor, ButtonProps } from "./Button";
+import BaseButton, { ButtonColor, BaseButtonProps } from "./Button";
 
-const ScondaryButton: FunctionComponent<ButtonProps> = (props) => {
+type SecondaryButtonProps = Omit<BaseButtonProps, "buttonColor">;
+
+const ScondaryButton: FunctionComponent<SecondaryButtonProps> = (props) => {
   const { theme } = useTheme();
 
   const colors: ButtonColor = {

@@ -3,7 +3,7 @@
 import { ButtonHTMLAttributes, FunctionComponent } from "react";
 import styled from "styled-components";
 
-const BaseButton: FunctionComponent<ButtonProps> = ({
+const BaseButton: FunctionComponent<BaseButtonProps> = ({
   padding,
   width,
   minHeight,
@@ -57,7 +57,8 @@ const ButtonStyles = styled.button<ButtonStylesProps>`
   }
 `;
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface BaseButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   padding?: string;
   width?: string;
   minHeight?: string;
