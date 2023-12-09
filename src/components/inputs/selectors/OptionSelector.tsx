@@ -58,9 +58,11 @@ const OptionSelectorStyles = styled.div`
       font-weight: 700;
     }
 
-    &:hover {
-      p {
-        color: ${({ theme }) => theme.selector.activeText};
+    @media (hover: hover) {
+      &:hover {
+        p {
+          color: ${({ theme }) => theme.selector.activeText};
+        }
       }
     }
 

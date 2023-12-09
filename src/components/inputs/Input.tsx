@@ -153,8 +153,10 @@ const BaseInputStyles = styled.div<BaseInputStylesProps>`
     height: 3rem;
     width: 100%;
 
-    &:hover {
-      border-color: ${({ theme }) => theme.inputs.borderActive};
+    @media (hover: hover) {
+      &:hover {
+        border-color: ${({ theme }) => theme.inputs.borderActive};
+      }
     }
 
     input {

@@ -1,10 +1,10 @@
+import { FunctionComponent } from "react";
+import styled from "styled-components";
 import {
   PrimaryButton,
   SecondaryButton,
   DangerButton,
 } from "@/components/buttons";
-import { FunctionComponent } from "react";
-import styled from "styled-components";
 
 const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
   isLoadingAction,
@@ -12,6 +12,10 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
   showDeleteButton,
   showMarkAsPaidButton,
   showMarkAsPendingButton,
+  onTapEdit,
+  onTapDelete,
+  onTapPaid,
+  onTapPending,
 }) => {
   return (
     <InvoiceDetailsCTAsStyles>
@@ -21,6 +25,7 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
             $minHeight="3rem"
             $width="100%"
             disabled={isLoadingAction}
+            onClick={onTapEdit}
           >
             Edit
           </SecondaryButton>
@@ -32,6 +37,7 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
             $minHeight="3rem"
             $width="100%"
             disabled={isLoadingAction}
+            onClick={onTapDelete}
           >
             Delete
           </DangerButton>
@@ -43,6 +49,7 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
             $minHeight="3rem"
             $width="100%"
             disabled={isLoadingAction}
+            onClick={onTapPaid}
           >
             Mark as Paid
           </PrimaryButton>
@@ -54,6 +61,7 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
             $minHeight="3rem"
             $width="100%"
             disabled={isLoadingAction}
+            onClick={onTapPending}
           >
             Mark as Pending
           </PrimaryButton>
@@ -96,11 +104,15 @@ const InvoiceDetailsCTAsStyles = styled.div`
 `;
 
 export interface InvoiceDetailsCTAsProps {
-  isLoadingAction: boolean;
-  showEditButton: boolean;
-  showDeleteButton: boolean;
-  showMarkAsPaidButton: boolean;
-  showMarkAsPendingButton: boolean;
+  isLoadingAction?: boolean;
+  showEditButton?: boolean;
+  showDeleteButton?: boolean;
+  showMarkAsPaidButton?: boolean;
+  showMarkAsPendingButton?: boolean;
+  onTapEdit?: () => void | undefined;
+  onTapDelete?: () => void | undefined;
+  onTapPaid?: () => void | undefined;
+  onTapPending?: () => void | undefined;
 }
 
 export default InvoiceDetailsMobileCTAs;

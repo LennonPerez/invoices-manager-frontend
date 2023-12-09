@@ -56,8 +56,10 @@ const MultipleOptionSelectorStyles = styled.div`
       justify-content: flex-start;
       margin-bottom: 1.5rem;
 
-      &:hover input ~ .checkmark-container {
-        border-color: ${({ theme }) => theme.inputs.selector};
+      @media (hover: hover) {
+        &:hover input ~ .checkmark-container {
+          border-color: ${({ theme }) => theme.inputs.selector};
+        }
       }
 
       &:last-child {

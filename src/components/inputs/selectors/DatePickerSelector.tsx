@@ -251,8 +251,10 @@ const InputDatePickerSelectorStyles = styled.div`
         border-radius: 0.25rem;
         padding: 0.5rem;
 
-        &:hover {
-          background-color: ${({ theme }) => theme.selector.border};
+        @media (hover: hover) {
+          &:hover {
+            background-color: ${({ theme }) => theme.selector.border};
+          }
         }
 
         .icon {
@@ -276,8 +278,10 @@ const InputDatePickerSelectorStyles = styled.div`
         border-radius: 0.25rem;
         cursor: pointer;
 
-        &:hover {
-          background-color: ${({ theme }) => theme.selector.border};
+        @media (hover: hover) {
+          &:hover {
+            background-color: ${({ theme }) => theme.selector.border};
+          }
         }
 
         p {
@@ -314,11 +318,13 @@ const InputDatePickerSelectorStyles = styled.div`
         padding: 1rem;
         width: 100%;
 
-        &:hover {
-          background-color: ${({ theme }) => theme.selector.border};
+        @media (hover: hover) {
+          &:hover {
+            background-color: ${({ theme }) => theme.selector.border};
 
-          p {
-            color: ${({ theme }) => theme.selector.activeText};
+            p {
+              color: ${({ theme }) => theme.selector.activeText};
+            }
           }
         }
       }
@@ -343,11 +349,13 @@ const InputDatePickerSelectorStyles = styled.div`
         border-radius: 0.25rem;
         padding: 1rem 0.5rem;
 
-        &:hover {
-          background-color: ${({ theme }) => theme.selector.border};
+        @media (hover: hover) {
+          &:hover {
+            background-color: ${({ theme }) => theme.selector.border};
 
-          p {
-            color: ${({ theme }) => theme.selector.activeText};
+            p {
+              color: ${({ theme }) => theme.selector.activeText};
+            }
           }
         }
       }

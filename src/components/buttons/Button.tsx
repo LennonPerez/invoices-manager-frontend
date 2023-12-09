@@ -27,15 +27,18 @@ const ButtonStyles = styled.button<BaseButtonProps>`
   line-height: 0.9375rem;
   letter-spacing: -0.01563rem;
 
-  &:hover {
-    background-color: ${(props) =>
-      props.disabled
-        ? props.$colors.backgroundColor
-        : props.$colors.hoverBackgroundColor ?? props.$colors.backgroundColor};
-    color: ${(props) =>
-      props.disabled
-        ? props.$colors.textColor
-        : props.$colors.hoverTextColor ?? props.$colors.textColor};
+  @media (hover: hover) {
+    &:hover {
+      background-color: ${(props) =>
+        props.disabled
+          ? props.$colors.backgroundColor
+          : props.$colors.hoverBackgroundColor ??
+            props.$colors.backgroundColor};
+      color: ${(props) =>
+        props.disabled
+          ? props.$colors.textColor
+          : props.$colors.hoverTextColor ?? props.$colors.textColor};
+    }
   }
 `;
 

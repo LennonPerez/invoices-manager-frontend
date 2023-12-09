@@ -73,14 +73,15 @@ const InvoiceFormItemStyles = styled.div`
     cursor: pointer;
     border-radius: 0.5rem;
 
-    &:hover {
-      background-color: ${({ theme }) => theme.palette.background.lightPaper};
+    @media (hover: hover) {
+      &:hover {
+        background-color: ${({ theme }) => theme.palette.background.lightPaper};
 
-      .icon {
-        color: ${({ theme }) => theme.buttons.danger.background};
+        .icon {
+          color: ${({ theme }) => theme.buttons.danger.background};
+        }
       }
     }
-
     .icon {
       color: ${({ theme }) => theme.palette.text.fourth};
       height: 1.25rem;
