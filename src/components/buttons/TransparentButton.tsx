@@ -12,7 +12,7 @@ const TransparentButton: FunctionComponent<ButtonProps> = (props) => {
   };
 
   return (
-    <BaseButton {...props} $colors={colors}>
+    <BaseButton {...props} buttonColor={colors}>
       {props.children}
     </BaseButton>
   );

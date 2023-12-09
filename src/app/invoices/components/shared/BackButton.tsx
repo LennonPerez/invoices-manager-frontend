@@ -10,7 +10,7 @@ interface BackButtonProps {
 const BackButton: FunctionComponent<BackButtonProps> = (props) => {
   return (
     <BackButtonStyles>
-      <TransparentButton $padding="0" $minHeight="0" onClick={props.onClick}>
+      <TransparentButton padding="0" $minHeight="0" onClick={props.onClick}>
         <LuChevronLeft className="chevron-icon" />
         Go back
       </TransparentButton>

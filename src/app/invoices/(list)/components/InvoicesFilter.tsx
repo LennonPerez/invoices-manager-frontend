@@ -5,7 +5,7 @@ import { MultipleOptionSelector } from "@/components/inputs/selectors";
 import { statusOptions } from "@/utils/options";
 import styled from "styled-components";
 
-interface InvoicesFilterProps {}
+interface InvoicesFilterProps { }
 
 const InvoicesFilter: FunctionComponent<InvoicesFilterProps> = () => {
   const [isSelectorOpened, setIsSelectorOpened] = useState(false);
@@ -27,7 +27,7 @@ const InvoicesFilter: FunctionComponent<InvoicesFilterProps> = () => {
   return (
     <InvoicesFilterStyles>
       <TransparentButton
-        $padding="0.25rem 0.5rem 0.25rem 1.25rem"
+        padding="0.25rem 0.5rem 0.25rem 1.25rem"
         onClick={() => setIsSelectorOpened(true)}
       >
         Filter

@@ -3,12 +3,12 @@
 import { FunctionComponent, useState } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import invoices from "@/mocks/invoices";
 import InvoiceDetails from "./components/InvoiceDetails";
 import InvoiceDetailsMobileCTAs from "./components/InvoiceDetailsMobileCTAs";
 import BackButton from "../components/shared/BackButton";
-import { ConfirmationModal } from "@/components/modals";
 import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
+import { ConfirmationModal } from "@/components/modals";
+import invoices from "@/mocks/invoices";
 
 const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
   params,

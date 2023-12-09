@@ -22,7 +22,7 @@ const InvoicesPageHeader: FunctionComponent<InvoicesPageHeaderProps> = ({
       <div className="right-side">
         <InvoicesFilter />
         <PrimaryButton
-          $padding="0.25rem 1.25rem 0.25rem 0.5rem"
+          padding="0.25rem 1.25rem 0.25rem 0.5rem"
           onClick={onOpenForm}
         >
           <div className="plus-icon-container">

@@ -1,15 +1,31 @@
 "use client";
 
-import { FunctionComponent, ReactNode } from "react";
+import { ButtonHTMLAttributes, FunctionComponent } from "react";
 import styled from "styled-components";
 
-const BaseButton: FunctionComponent<BaseButtonProps> = (props) => {
-  return <ButtonStyles {...props}>{props.children}</ButtonStyles>;
+const BaseButton: FunctionComponent<ButtonProps> = ({
+  padding,
+  width,
+  minHeight,
+  buttonColor,
+  ...props
+}) => {
+  const stylesProps: ButtonStylesProps = {
+    $padding: padding,
+    $width: width,
+    $minHeight: minHeight,
+    $color: buttonColor,
+  };
+  return (
+    <ButtonStyles {...stylesProps} {...props}>
+      {props.children}
+    </ButtonStyles>
+  );
 };
 
-const ButtonStyles = styled.button<BaseButtonProps>`
-  background-color: ${(props) => props.$colors.backgroundColor};
-  color: ${(props) => props.$colors.textColor};
+const ButtonStyles = styled.button<ButtonStylesProps>`
+  background-color: ${(props) => props.$color.backgroundColor};
+  color: ${(props) => props.$color.textColor};
   padding: ${(props) => props.$padding ?? "0.25rem 1.25rem"};
   min-height: ${(props) => props.$minHeight ?? "2.75rem"};
   width: ${(props) => props.$width ?? "auto"};
@@ -31,29 +47,28 @@ const ButtonStyles = styled.button<BaseButtonProps>`
     &:hover {
       background-color: ${(props) =>
         props.disabled
-          ? props.$colors.backgroundColor
-          : props.$colors.hoverBackgroundColor ??
-            props.$colors.backgroundColor};
+          ? props.$color.backgroundColor
+          : props.$color.hoverBackgroundColor ?? props.$color.backgroundColor};
       color: ${(props) =>
         props.disabled
-          ? props.$colors.textColor
-          : props.$colors.hoverTextColor ?? props.$colors.textColor};
+          ? props.$color.textColor
+          : props.$color.hoverTextColor ?? props.$color.textColor};
     }
   }
 `;
 
-export interface ButtonProps {
-  children: ReactNode;
-  type?: "button" | "submit";
-  disabled?: boolean;
-  onClick?: () => void;
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  padding?: string;
+  width?: string;
+  minHeight?: string;
+  buttonColor: ButtonColor;
+}
+
+export interface ButtonStylesProps {
   $padding?: string;
   $width?: string;
   $minHeight?: string;
-}
-
-export interface BaseButtonProps extends ButtonProps {
-  $colors: ButtonColor;
+  $color: ButtonColor;
 }
 
 export interface ButtonColor {

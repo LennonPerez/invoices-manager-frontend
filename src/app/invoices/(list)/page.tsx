@@ -1,11 +1,11 @@
 "use client";
 
-import styled from "styled-components";
-import InvoicesPageHeader from "@/app/invoices/(list)/components/InvoicesHeader";
-import InvoicesList from "@/app/invoices/(list)/components/InvoicesList";
-import invoices from "@/mocks/invoices";
-import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
 import { useState } from "react";
+import styled from "styled-components";
+import InvoicesPageHeader from "./components/InvoicesHeader";
+import InvoicesList from "./components/InvoicesList";
+import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
+import invoices from "@/mocks/invoices";
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);

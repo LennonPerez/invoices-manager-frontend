@@ -28,7 +28,7 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
           type="button"
           $minHeight="3rem"
           $width="100%"
-          $padding="0"
+          padding="0"
           disabled={isLoadingAction}
           onClick={onCancel}
         >
@@ -41,7 +41,7 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
             type="button"
             $minHeight="3rem"
             $width="100%"
-            $padding="0"
+            padding="0"
             disabled={isLoadingAction}
             onClick={onDraft}
           >
@@ -54,7 +54,7 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
           type="button"
           $minHeight="3rem"
           $width="100%"
-          $padding="0"
+          padding="0"
           disabled={isLoadingAction}
           onClick={onSave}
         >
