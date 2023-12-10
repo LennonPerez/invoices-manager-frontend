@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <HomePageStyles>
       <div className="header-container">
-        <InvoicesPageHeader onOpenForm={onOpenForm} />
+        <InvoicesPageHeader invoicesQuantity={7} onOpenForm={onOpenForm} />
       </div>
       <InvoicesList
         invoices={invoices}
@@ -53,8 +53,18 @@ const HomePageStyles = styled.main`
   max-height: calc(100vh - 4.5rem);
   overflow-y: auto;
 
+  @media (min-width: 768px) {
+    /* padding: 3.5rem 3rem 3.5rem 0; */
+    padding: 3.5rem 3rem;
+    max-height: calc(100vh - 5rem);
+  }
+
   .header-container {
     margin-bottom: 2.25rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 3.5rem;
+    }
   }
 `;
 

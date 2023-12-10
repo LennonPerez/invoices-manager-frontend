@@ -30,6 +30,10 @@ const DefaultLayoutWrapper = styled.div`
 
   .content {
     padding-top: 4.5rem;
+
+    @media (min-width: 768px) {
+      padding-top: 5rem;
+    }
   }
 `;
 

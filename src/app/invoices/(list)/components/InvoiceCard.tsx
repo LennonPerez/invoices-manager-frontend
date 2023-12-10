@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { InvoiceStatus } from "@/types/invoice";
 import { formatDate, formatAmount } from "@/utils/formatters";
 import StatusBox from "@/app/invoices/components/shared/StatusBox";
+import { FaChevronRight } from "react-icons/fa";
+import useIsMobile from "@/hooks/useIsMobile";
 
 interface InvoiceCardProps {
   id: string;
@@ -13,19 +15,50 @@ interface InvoiceCardProps {
 }
 
 const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
+  const isMobileSize = useIsMobile();
+
+  const InvoiceID = () => (
+    <h4 className="invoice-id">
+      <span>#</span>
+      {props.id}
+    </h4>
+  );
+
+  const ClientName = () => <p className="client-name">{props.clientName}</p>;
+
+  const InvoiceDate = () => (
+    <p className="date">{`Due ${formatDate(props.date)}`}</p>
+  );
+
+  const InvoiceAmount = () => (
+    <h5 className="amount">{formatAmount(props.amount)}</h5>
+  );
+
+  if (!isMobileSize) {
+    return (
+      <InvoiceCardStyles>
+        <InvoiceID />
+        <InvoiceDate />
+        <ClientName />
+        <InvoiceAmount />
+        <div className="right-column-container">
+          <StatusBox status={props.status} />
+          <FaChevronRight className="chevron-icon" />
+        </div>
+      </InvoiceCardStyles>
+    );
+  }
+
   return (
     <InvoiceCardStyles>
       <div className="top-row-container">
-        <h4 className="invoice-id">
-          <span>#</span>
-          {props.id}
-        </h4>
-        <p className="client-name">{props.clientName}</p>
+        <InvoiceID />
+        <ClientName />
       </div>
       <div className="bottom-row-container">
         <div className="left-column">
-          <p className="date">{`Due ${formatDate(props.date)}`}</p>
-          <h5 className="amount">{formatAmount(props.amount)}</h5>
+          <InvoiceDate />
+          <InvoiceAmount />
         </div>
         <StatusBox status={props.status} />
       </div>
@@ -44,18 +77,20 @@ const InvoiceCardStyles = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  @media (min-width: 768px) {
+    padding: 1.05rem 1.5rem;
+    min-height: 4.5rem;
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 3.75rem 6.75rem repeat(3, 1fr);
+    grid-column-gap: 1.5rem;
+    align-items: center;
+  }
+
   .top-row-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .invoice-id {
-      font-size: 0.75rem;
-
-      span {
-        color: ${({ theme }) => theme.palette.secondary.main};
-      }
-    }
   }
 
   .bottom-row-container {
@@ -66,15 +101,61 @@ const InvoiceCardStyles = styled.div`
     .left-column {
       display: flex;
       flex-direction: column;
-
-      .date {
-        margin-bottom: 0.75rem;
-      }
-
-      .amount {
-        font-size: 1rem;
-      }
+      gap: 0.75rem;
     }
+  }
+
+  .right-column-container {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+
+    @media (min-width: 768px) {
+      margin-left: 1rem;
+    }
+  }
+
+  .invoice-id {
+    font-size: 0.75rem;
+
+    @media (min-width: 768px) {
+      max-width: fit-content;
+      text-align: start;
+    }
+
+    span {
+      color: ${({ theme }) => theme.palette.secondary.main};
+    }
+  }
+
+  .client-name {
+    color: ${({ theme }) => theme.palette.text.primary};
+
+    @media (min-width: 768px) {
+      text-align: start;
+    }
+  }
+
+  .date {
+    color: ${({ theme }) => theme.palette.text.secondary};
+
+    @media (min-width: 768px) {
+      text-align: start;
+    }
+  }
+
+  .amount {
+    font-size: 1rem;
+
+    @media (min-width: 768px) {
+      text-align: end;
+    }
+  }
+
+  .chevron-icon {
+    color: ${({ theme }) => theme.palette.primary.main};
+    width: 0.5rem;
+    height: 1rem;
   }
 `;
 

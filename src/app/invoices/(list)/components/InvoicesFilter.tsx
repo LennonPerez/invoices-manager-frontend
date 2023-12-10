@@ -4,10 +4,12 @@ import { TransparentButton } from "@/components/buttons";
 import { MultipleOptionSelector } from "@/components/inputs/selectors";
 import { statusOptions } from "@/utils/options";
 import styled from "styled-components";
+import useIsMobile from "@/hooks/useIsMobile";
 
-interface InvoicesFilterProps { }
+interface InvoicesFilterProps {}
 
 const InvoicesFilter: FunctionComponent<InvoicesFilterProps> = () => {
+  const isMobileSize = useIsMobile();
   const [isSelectorOpened, setIsSelectorOpened] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
@@ -30,7 +32,7 @@ const InvoicesFilter: FunctionComponent<InvoicesFilterProps> = () => {
         padding="0.25rem 0.5rem 0.25rem 1.25rem"
         onClick={() => setIsSelectorOpened(true)}
       >
-        Filter
+        {isMobileSize ? "Filter" : "Filter by status"}
         <div className="chevron-icon-container">
           <Icon className="chevron-icon" />
         </div>

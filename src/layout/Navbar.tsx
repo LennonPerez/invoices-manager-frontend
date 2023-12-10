@@ -39,12 +39,20 @@ const NavbarWrapper = styled.header`
   flex-direction: row;
   justify-content: space-between;
 
+  @media (min-width: 768px) {
+    height: 5rem;
+  }
+
   .logo-container {
     background-color: ${({ theme }) => theme.palette.primary.main};
     height: 100%;
     width: 4.5rem;
     position: relative;
     border-radius: 0 1.25rem 1.25rem 0;
+
+    @media (min-width: 768px) {
+      width: 5rem;
+    }
 
     .logo {
       width: 1.75rem;
@@ -77,6 +85,10 @@ const NavbarWrapper = styled.header`
       height: 1.25rem;
       margin-right: 1.5rem;
 
+      @media (min-width: 768px) {
+        margin-right: 2rem;
+      }
+
       .theme-icon {
         color: ${({ theme }) => theme.navbar.icon};
         width: 100%;
@@ -91,6 +103,10 @@ const NavbarWrapper = styled.header`
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @media (min-width: 768px) {
+        width: 6rem;
+      }
 
       .user-avatar-container {
         background-color: ${({ theme }) => theme.palette.common.white};

@@ -107,14 +107,24 @@ const InvoicesEmptyStateSyles = styled.div`
   align-items: center;
   justify-content: center;
   max-width: 13.56rem;
-  padding-top: 4rem; // TODO: kill this, this must be centered by container height
+  height: calc(100vh - 16rem);
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    height: calc(100vh - 20rem);
+  }
 
   .empty-state-image {
     position: relative;
     width: 12rem;
     height: 10rem;
     margin-bottom: 2.25rem;
+
+    @media (min-width: 768px) {
+      width: 15rem;
+      height: 12.5rem;
+      margin-bottom: 4.5rem;
+    }
   }
 
   .empty-state-title {
