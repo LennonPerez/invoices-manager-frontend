@@ -66,6 +66,7 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
 
 const InputDatePickerStyles = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const getDateByString = (text: string): Date | null => {

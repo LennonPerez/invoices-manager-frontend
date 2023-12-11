@@ -121,9 +121,10 @@ interface BaseInputStylesProps {
 }
 
 const BaseInputStyles = styled.div<BaseInputStylesProps>`
+  opacity: ${({ $isDisabled }) => ($isDisabled ? "0.5" : "1")};
   display: flex;
   flex-direction: column;
-  opacity: ${({ $isDisabled }) => ($isDisabled ? "0.5" : "1")};
+  flex-grow: 1;
 
   label {
     color: ${({ theme }) => theme.inputs.label};
@@ -134,6 +135,10 @@ const BaseInputStyles = styled.div<BaseInputStylesProps>`
     line-height: 0.9375rem;
     letter-spacing: -0.01563rem;
     margin-bottom: 0.625rem;
+
+    @media (min-width: 768px) {
+      color: ${({ theme }) => theme.palette.text.secondary};
+    }
   }
 
   .input-container {

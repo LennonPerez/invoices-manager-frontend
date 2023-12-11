@@ -26,8 +26,8 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
       <div className="cancel-button">
         <SecondaryButton
           type="button"
-          $minHeight="3rem"
-          $width="100%"
+          minHeight="3rem"
+          width="100%"
           padding="0"
           disabled={isLoadingAction}
           onClick={onCancel}
@@ -39,8 +39,8 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
         <div className="draft-button">
           <TertiaryButton
             type="button"
-            $minHeight="3rem"
-            $width="100%"
+            minHeight="3rem"
+            width="100%"
             padding="0"
             disabled={isLoadingAction}
             onClick={onDraft}
@@ -52,8 +52,8 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
       <div className="save-button">
         <PrimaryButton
           type="button"
-          $minHeight="3rem"
-          $width="100%"
+          minHeight="3rem"
+          width="100%"
           padding="0"
           disabled={isLoadingAction}
           onClick={onSave}
@@ -75,6 +75,12 @@ const InvoiceFormButtonsStyles = styled.div`
   align-items: center;
   justify-content: end;
   gap: 0.5rem;
+
+  @media (min-width: 768px) {
+    background-color: transparent;
+    border-radius: 0 0 20px 0;
+    padding: 2rem 3.5rem;
+  }
 
   .cancel-button {
     width: 100%;

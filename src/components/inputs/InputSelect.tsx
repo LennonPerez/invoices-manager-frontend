@@ -56,6 +56,7 @@ export const InputSelect: FunctionComponent<InputSelectProps> = (props) => {
 
 const InputSelectStyles = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const searchOptionByString = (

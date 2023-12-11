@@ -35,7 +35,7 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = ({
       }, 50);
       formRef?.current?.scrollTo({ top: 0 });
     } else {
-      goBack();
+      setRender(false);
     }
   }, [isOpen]);
 
@@ -47,30 +47,33 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = ({
   if (!render) return null;
 
   return (
-    <InvoiceFormPageStyles $show={show} ref={formRef}>
-      <form>
-        <div className="form-content">
-          <div className="back-button-container">
-            <BackButton onClick={goBack} />
+    <InvoiceFormPageStyles ref={formRef} $show={show}>
+      <div className="form-container">
+        <form>
+          <div className="form-content">
+            <div className="back-button-container">
+              <BackButton onClick={goBack} />
+            </div>
+            {isEditing ? (
+              <h1 className="title">
+                Edit <span className="hash">#</span>
+                {invoiceToEdit?.id}
+              </h1>
+            ) : (
+              <h1 className="title">New Invoice</h1>
+            )}
+            <InvoiceForm invoice={invoiceToEdit} />
           </div>
-          {isEditing ? (
-            <h1 className="title">
-              Edit <span className="hash">#</span>
-              {invoiceToEdit?.id}
-            </h1>
-          ) : (
-            <h1 className="title">New Invoice</h1>
-          )}
-          <InvoiceForm invoice={invoiceToEdit} />
-        </div>
-        <InvoiceFormButtons
-          isEditing={isEditing}
-          isLoadingAction={false}
-          onCancel={onClose}
-          onDraft={onDraft}
-          onSave={onSave}
-        />
-      </form>
+          <InvoiceFormButtons
+            isEditing={isEditing}
+            isLoadingAction={false}
+            onCancel={goBack}
+            onDraft={onDraft}
+            onSave={onSave}
+          />
+        </form>
+      </div>
+      <div className="overlay" onClick={goBack} />
     </InvoiceFormPageStyles>
   );
 };
@@ -80,35 +83,96 @@ interface InvoiceFormPageStylesProps {
 }
 
 const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
-  background-color: ${({ theme }) => theme.page.background};
-  position: fixed;
-  top: ${({ $show }) => ($show ? "4.5rem" : "100vh")};
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  overflow-y: auto;
-  transition: top 0.3s ease-in-out;
+  .form-container,
+  form {
+    background-color: ${({ theme }) => theme.page.background};
+    top: ${({ $show }) => ($show ? "4.5rem" : "100vh")};
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 5;
+    transition: top 0.3s ease-in-out;
 
-  .form-content {
-    padding: 2rem 1.5rem;
-    margin-bottom: 4rem;
-
-    .back-button-container {
-      margin-bottom: 1.5rem;
+    @media (min-width: 768px) {
+      top: 5rem;
+      transition: right 0.3s ease-in-out;
+      border-radius: 0px 20px 20px 0px;
     }
   }
 
-  .title,
-  .hash {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    letter-spacing: -0.03125rem;
-    margin-bottom: 1.5rem;
+  @media (min-width: 768px) {
+    .form-container {
+      right: ${({ $show }) => ($show ? "calc(20vw - 0.5rem)" : "100vw")};
+    }
+  }
 
-    span {
-      color: ${({ theme }) => theme.palette.text.fourth};
-      font-weight: 700;
+  form {
+    max-height: calc(100vh - 4.5rem);
+    overflow-y: auto;
+
+    @media (min-width: 768px) {
+      right: ${({ $show }) => ($show ? "20vw" : "100vw")};
+
+      &::-webkit-scrollbar-button:start {
+        display: block;
+      }
+
+      &::-webkit-scrollbar-button:end {
+        display: block;
+      }
+    }
+
+    .form-content {
+      padding: 2rem 1.5rem;
+      margin-bottom: 4rem;
+
+      @media (min-width: 768px) {
+        padding: 3.5rem 3rem 1rem 3.5rem;
+        margin-bottom: 0;
+      }
+
+      .back-button-container {
+        margin-bottom: 1.5rem;
+
+        @media (min-width: 768px) {
+          display: none;
+        }
+      }
+    }
+
+    .title,
+    .hash {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      letter-spacing: -0.03125rem;
+      margin-bottom: 1.5rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 3rem;
+      }
+
+      span {
+        color: ${({ theme }) => theme.palette.text.fourth};
+        font-weight: 700;
+      }
+    }
+  }
+
+  .overlay {
+    opacity: ${({ $show }) => ($show ? "0.5" : "0")};
+    background-color: #000;
+    transition: opacity 0.3s ease-in-out;
+    display: none;
+    position: fixed;
+    top: 5rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+
+    @media (min-width: 768px) {
+      display: block;
     }
   }
 `;

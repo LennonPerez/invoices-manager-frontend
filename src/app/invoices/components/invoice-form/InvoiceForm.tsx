@@ -22,9 +22,14 @@ const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({ invoice }) => {
         <div className="row">
           <BaseInput label="City" />
           <BaseInput label="Post Code" />
+          <div className="country-input">
+            <BaseInput label="Country" />
+          </div>
         </div>
         <Divider />
-        <BaseInput label="Country" />
+        <div className="country-input">
+          <BaseInput label="Country" />
+        </div>
       </div>
       <div className="section">
         <h3>Bill To</h3>
@@ -37,14 +42,25 @@ const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({ invoice }) => {
         <div className="row">
           <BaseInput label="City" />
           <BaseInput label="Post Code" />
+          <div className="country-input">
+            <BaseInput label="Country" />
+          </div>
         </div>
         <Divider />
-        <BaseInput label="Country" />
+        <div className="country-input">
+          <BaseInput label="Country" />
+        </div>
       </div>
-      <div className="section">
-        <InputDatePicker label="Invoice Date" isDisabled={isEditing} />
-        <Divider />
-        <InputSelect label="Payment Terms" options={paymentTermsOptions} />
+      <div className="section last">
+        <div className="row date-terms-row">
+          <InputDatePicker label="Invoice Date" isDisabled={isEditing} />
+          <InputSelect label="Payment Terms" options={paymentTermsOptions} />
+        </div>
+        <div className="date-terms-column">
+          <InputDatePicker label="Invoice Date" isDisabled={isEditing} />
+          <Divider />
+          <InputSelect label="Payment Terms" options={paymentTermsOptions} />
+        </div>
         <Divider />
         <BaseInput label="Project / Description" />
       </div>
@@ -69,14 +85,56 @@ const InvoiceFormStyles = styled.div`
   .section {
     margin-bottom: 3rem;
 
+    .country-input {
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
     .row {
       display: flex;
       gap: 1.5rem;
+
+      .country-input {
+        display: none;
+
+        @media (min-width: 768px) {
+          display: block;
+        }
+      }
+    }
+
+    .date-terms-row {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: flex;
+      }
+    }
+
+    .date-terms-column {
+      @media (min-width: 768px) {
+        display: none;
+
+        .input {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .last {
+    @media (min-width: 768px) {
+      margin-bottom: 0;
     }
   }
 
   .items-list-container {
     margin-top: 4rem;
+
+    @media (min-width: 768px) {
+      margin-top: 1.5rem;
+    }
 
     h2 {
       color: ${({ theme }) => theme.palette.text.tertiary};
@@ -85,6 +143,10 @@ const InvoiceFormStyles = styled.div`
       line-height: 2rem;
       letter-spacing: -0.02344rem;
       margin-bottom: 2rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 1rem;
+      }
     }
 
     .new-item-button {
