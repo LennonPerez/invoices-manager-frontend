@@ -24,14 +24,16 @@ const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
     </h4>
   );
 
-  const ClientName = () => <p className="client-name">{props.clientName}</p>;
+  const InvoiceClientName = () => (
+    <p className="invoice-client-name">{props.clientName}</p>
+  );
 
   const InvoiceDate = () => (
-    <p className="date">{`Due ${formatDate(props.date)}`}</p>
+    <p className="invoice-date">{`Due ${formatDate(props.date)}`}</p>
   );
 
   const InvoiceAmount = () => (
-    <h5 className="amount">{formatAmount(props.amount)}</h5>
+    <h5 className="invoice-amount">{formatAmount(props.amount)}</h5>
   );
 
   if (!isMobileSize) {
@@ -39,7 +41,7 @@ const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
       <InvoiceCardStyles>
         <InvoiceID />
         <InvoiceDate />
-        <ClientName />
+        <InvoiceClientName />
         <InvoiceAmount />
         <div className="right-column-container">
           <StatusBox status={props.status} />
@@ -53,7 +55,7 @@ const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
     <InvoiceCardStyles>
       <div className="top-row-container">
         <InvoiceID />
-        <ClientName />
+        <InvoiceClientName />
       </div>
       <div className="bottom-row-container">
         <div className="left-column">
@@ -129,7 +131,7 @@ const InvoiceCardStyles = styled.div`
     }
   }
 
-  .client-name {
+  .invoice-client-name {
     color: ${({ theme }) => theme.palette.text.primary};
 
     @media (min-width: 768px) {
@@ -137,7 +139,7 @@ const InvoiceCardStyles = styled.div`
     }
   }
 
-  .date {
+  .invoice-date {
     color: ${({ theme }) => theme.palette.text.secondary};
 
     @media (min-width: 768px) {
@@ -145,7 +147,7 @@ const InvoiceCardStyles = styled.div`
     }
   }
 
-  .amount {
+  .invoice-amount {
     font-size: 1rem;
 
     @media (min-width: 768px) {

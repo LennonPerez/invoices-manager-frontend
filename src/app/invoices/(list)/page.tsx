@@ -3,12 +3,14 @@
 import { useState } from "react";
 import styled from "styled-components";
 import InvoicesPageHeader from "./components/InvoicesHeader";
-import InvoicesList from "./components/InvoicesList";
+import InvoicesListView from "./components/InvoicesListView";
 import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
 import invoices from "@/mocks/invoices";
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const isFetching = false;
+  const isFetchingMore = false;
 
   const onOpenForm = () => {
     setIsFormOpen(true);
@@ -33,10 +35,10 @@ const Home = () => {
       <div className="header-container">
         <InvoicesPageHeader invoicesQuantity={7} onOpenForm={onOpenForm} />
       </div>
-      <InvoicesList
+      <InvoicesListView
         invoices={invoices}
-        isFetchingInvoices={false}
-        isFetchingMoreInvoices={false}
+        isFetchingInvoices={isFetching}
+        isFetchingMoreInvoices={isFetchingMore}
       />
       <InvoiceFormPage
         isOpen={isFormOpen}
@@ -54,7 +56,6 @@ const HomePageStyles = styled.main`
   overflow-y: auto;
 
   @media (min-width: 768px) {
-    /* padding: 3.5rem 3rem 3.5rem 0; */
     padding: 3.5rem 3rem;
     max-height: calc(100vh - 5rem);
   }
