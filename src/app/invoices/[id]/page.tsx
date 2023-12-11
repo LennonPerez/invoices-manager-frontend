@@ -93,8 +93,17 @@ const InvoiceDetailsPageStyles = styled.div`
   max-height: calc(100vh - 4.5rem);
   overflow-y: auto;
 
+  @media (min-width: 768px) {
+    padding: 3rem 2.5rem;
+    max-height: calc(100vh - 5rem);
+  }
+
   .back-button-container {
     margin-bottom: 1.85rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 2rem;
+    }
   }
 `;
 

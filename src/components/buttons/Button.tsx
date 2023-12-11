@@ -55,6 +55,11 @@ const ButtonStyles = styled.button<ButtonStylesProps>`
           : props.$color.hoverTextColor ?? props.$color.textColor};
     }
   }
+
+  @media (min-width: 768px) {
+    padding: ${(props) => props.$padding ?? "0.25rem 1.5rem"};
+    min-height: ${(props) => props.$minHeight ?? "3rem"};
+  }
 `;
 
 export interface BaseButtonProps

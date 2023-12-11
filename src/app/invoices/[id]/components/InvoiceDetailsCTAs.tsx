@@ -1,12 +1,11 @@
 import { FunctionComponent } from "react";
-import styled from "styled-components";
 import {
   PrimaryButton,
   SecondaryButton,
   DangerButton,
 } from "@/components/buttons";
 
-const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
+const InvoiceDetailsCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
   isLoadingAction,
   showEditButton,
   showDeleteButton,
@@ -18,12 +17,12 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
   onTapPending,
 }) => {
   return (
-    <InvoiceDetailsCTAsStyles>
+    <>
       {showEditButton ? (
         <div className="edit-button">
           <SecondaryButton
-            $minHeight="3rem"
-            $width="100%"
+            minHeight="3rem"
+            width="100%"
             disabled={isLoadingAction}
             onClick={onTapEdit}
           >
@@ -34,8 +33,8 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
       {showDeleteButton ? (
         <div className="delete-button">
           <DangerButton
-            $minHeight="3rem"
-            $width="100%"
+            minHeight="3rem"
+            width="100%"
             disabled={isLoadingAction}
             onClick={onTapDelete}
           >
@@ -46,8 +45,8 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
       {showMarkAsPaidButton ? (
         <div className="mark-as-paid-button">
           <PrimaryButton
-            $minHeight="3rem"
-            $width="100%"
+            minHeight="3rem"
+            width="100%"
             disabled={isLoadingAction}
             onClick={onTapPaid}
           >
@@ -58,8 +57,8 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
       {showMarkAsPendingButton ? (
         <div className="mark-as-pending-button">
           <PrimaryButton
-            $minHeight="3rem"
-            $width="100%"
+            minHeight="3rem"
+            width="100%"
             disabled={isLoadingAction}
             onClick={onTapPending}
           >
@@ -67,41 +66,9 @@ const InvoiceDetailsMobileCTAs: FunctionComponent<InvoiceDetailsCTAsProps> = ({
           </PrimaryButton>
         </div>
       ) : null}
-    </InvoiceDetailsCTAsStyles>
+    </>
   );
 };
-
-const InvoiceDetailsCTAsStyles = styled.div`
-  background-color: ${({ theme }) => theme.card.background};
-  box-shadow: 0px 10px 10px -10px ${({ theme }) => theme.card.shadow};
-  min-height: 5.6875rem;
-  padding: 1.5rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 0.5rem;
-
-  .edit-button {
-    width: 100%;
-    max-width: 4.5625rem;
-  }
-
-  .delete-button {
-    width: 100%;
-    max-width: 5.5625rem;
-  }
-
-  .mark-as-paid-button {
-    width: 100%;
-    max-width: 9.3125rem;
-  }
-
-  .mark-as-pending-button {
-    width: 100%;
-    max-width: 9.3125rem;
-  }
-`;
 
 export interface InvoiceDetailsCTAsProps {
   isLoadingAction?: boolean;
@@ -115,4 +82,4 @@ export interface InvoiceDetailsCTAsProps {
   onTapPending?: () => void | undefined;
 }
 
-export default InvoiceDetailsMobileCTAs;
+export default InvoiceDetailsCTAs;

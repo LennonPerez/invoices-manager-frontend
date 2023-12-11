@@ -45,11 +45,40 @@ const InnerComponent: FunctionComponent<InvoiceDetailsMobileCTAsProps> = (
 };
 
 const InvoiceDetailsMobileCTAsStyles = styled.div<{ $show: boolean }>`
-  position: fixed;
+  background-color: ${({ theme }) => theme.card.background};
+  box-shadow: 0px 10px 10px -10px ${({ theme }) => theme.card.shadow};
+  bottom: ${(props) => (props.$show ? "0" : "-6rem")};
   left: 0;
   right: 0;
-  bottom: ${(props) => (props.$show ? "0" : "-6rem")};
+  position: fixed;
   transition: bottom 0.3s ease-in-out;
+  min-height: 5.6875rem;
+  padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 0.5rem;
+
+  .edit-button {
+    width: 100%;
+    max-width: 4.5625rem;
+  }
+
+  .delete-button {
+    width: 100%;
+    max-width: 5.5625rem;
+  }
+
+  .mark-as-paid-button {
+    width: 100%;
+    max-width: 9.3125rem;
+  }
+
+  .mark-as-pending-button {
+    width: 100%;
+    max-width: 9.3125rem;
+  }
 `;
 
 export default InvoiceDetailsMobileCTAs;

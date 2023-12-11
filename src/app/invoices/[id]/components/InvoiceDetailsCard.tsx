@@ -2,7 +2,10 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { Invoice } from "@/types/invoice";
 import StatusBox from "@/app/invoices/components/shared/StatusBox";
-import { formatAmount, formatDate } from "@/utils/formatters";
+import { formatDate } from "@/utils/formatters";
+import InvoiceDetailsCTAsProps from "./InvoiceDetailsCTAs";
+import useIsMobile from "@/hooks/useIsMobile";
+import InvoicesDetailsItemsCard from "./InvoicesDetailsItemsCard";
 
 interface InvoiceDetailsCardProps {
   invoice: Invoice;
@@ -11,11 +14,24 @@ interface InvoiceDetailsCardProps {
 const InvoiceDetailsCard: FunctionComponent<InvoiceDetailsCardProps> = ({
   invoice,
 }) => {
+  const isMobile = useIsMobile();
   return (
     <InvoiceDetailsCardStyles>
-      <div className="card status-container">
-        <p>Status</p>
-        <StatusBox status={invoice.status} />
+      <div className="card top-card-container">
+        <div className="status-container">
+          <p>Status</p>
+          <StatusBox status={invoice.status} />
+        </div>
+        {isMobile ? null : (
+          <div className="ctas-container">
+            <InvoiceDetailsCTAsProps
+              showDeleteButton={true}
+              showEditButton={invoice.status !== "paid"}
+              showMarkAsPaidButton={invoice.status === "pending"}
+              showMarkAsPendingButton={invoice.status === "draft"}
+            />
+          </div>
+        )}
       </div>
       <div className="card details-container">
         <div className="top-info">
@@ -71,25 +87,11 @@ const InvoiceDetailsCard: FunctionComponent<InvoiceDetailsCardProps> = ({
             <p className="value">{invoice.clientEmail}</p>
           </div>
         </div>
-        <div className="bottom-info">
-          <div className="items-list-container">
-            {invoice.items.map((item) => (
-              <div key={item.id} className="item-container">
-                <div className="info">
-                  <div className="item-name">{item.name}</div>
-                  <div className="item-price">
-                    {`${item.quantity} x ${formatAmount(item.price)}`}
-                  </div>
-                </div>
-                <p className="amount">{formatAmount(item.total)}</p>
-              </div>
-            ))}
-          </div>
-          <div className="total-amount-container">
-            <p className="title">Amount Due</p>
-            <p className="value">{formatAmount(invoice.total)}</p>
-          </div>
-        </div>
+        <InvoicesDetailsItemsCard
+          items={invoice.items}
+          invoiceTotal={invoice.total}
+          isMobile={isMobile}
+        />
       </div>
     </InvoiceDetailsCardStyles>
   );
@@ -103,24 +105,59 @@ const InvoiceDetailsCardStyles = styled.div`
     padding: 1.5rem;
     margin-bottom: 1rem;
 
+    @media (min-width: 768px) {
+      padding: 1.25rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+
     &:last-child {
       margin-bottom: 0;
+
+      @media (min-width: 768px) {
+        padding: 2rem;
+      }
     }
   }
 
-  .status-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .top-card-container {
     min-height: 5.6875rem;
+
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .ctas-container {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      gap: 0.5rem;
+    }
   }
 
   .details-container {
     .top-info {
       margin-bottom: 2rem;
 
+      @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+      }
+
       .id-container {
         margin-bottom: 2rem;
+
+        @media (min-width: 768px) {
+          margin-bottom: 0.5rem;
+        }
 
         .id {
           color: ${({ theme }) => theme.palette.text.primary};
@@ -131,6 +168,13 @@ const InvoiceDetailsCardStyles = styled.div`
             color: ${({ theme }) => theme.palette.text.fourth};
           }
         }
+
+        @media (min-width: 768px) {
+          .id,
+          span {
+            font-size: 1rem;
+          }
+        }
       }
 
       .sender-address-container {
@@ -138,6 +182,10 @@ const InvoiceDetailsCardStyles = styled.div`
           font-size: 0.6875rem;
           line-height: 1.125rem;
           letter-spacing: -0.01431rem;
+
+          @media (min-width: 768px) {
+            text-align: end;
+          }
         }
       }
     }
@@ -146,6 +194,13 @@ const InvoiceDetailsCardStyles = styled.div`
       display: flex;
       flex-direction: column;
       margin-bottom: 2.25rem;
+
+      @media (min-width: 768px) {
+        display: grid;
+        grid-template-rows: 1;
+        grid-template-columns: 65% 35%;
+        margin-bottom: 1rem;
+      }
 
       .billing-info-container {
         display: flex;
@@ -196,82 +251,6 @@ const InvoiceDetailsCardStyles = styled.div`
           color: ${({ theme }) => theme.palette.text.primary};
           font-size: 0.9375rem;
           font-weight: 700;
-        }
-      }
-    }
-
-    .bottom-info {
-      border-radius: 0.5rem;
-
-      .items-list-container {
-        background-color: ${({ theme }) => theme.card.lightContrastBackground};
-        border-radius: 0.5rem 0.5rem 0rem 0rem;
-        padding: 1.5rem;
-
-        .item-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 1.5rem;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-
-          .info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-
-            .item-name {
-              color: ${({ theme }) => theme.palette.text.primary};
-              font-size: 0.75rem;
-              font-weight: 700;
-              line-height: 0.9375rem;
-              letter-spacing: -0.01563rem;
-              margin-bottom: 0.5rem;
-            }
-
-            .item-price {
-              color: ${({ theme }) => theme.palette.text.fourth};
-              font-size: 0.75rem;
-              font-weight: 700;
-              line-height: 0.9375rem;
-              letter-spacing: -0.01563rem;
-            }
-          }
-
-          .amount {
-            color: ${({ theme }) => theme.palette.text.primary};
-            text-align: right;
-            font-weight: 700;
-            line-height: 0.9375rem;
-            letter-spacing: -0.01563rem;
-          }
-        }
-      }
-
-      .total-amount-container {
-        background-color: ${({ theme }) => theme.card.darkContrastBackground};
-        border-radius: 0rem 0rem 0.5rem 0.5rem;
-        padding: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .title {
-          color: ${({ theme }) => theme.palette.common.white};
-          font-size: 0.6875rem;
-          line-height: 1.125rem;
-          letter-spacing: -0.01431rem;
-        }
-
-        .value {
-          color: ${({ theme }) => theme.palette.common.white};
-          font-size: 1.25rem;
-          font-weight: 700;
-          line-height: 2rem;
-          letter-spacing: -0.02606rem;
         }
       }
     }

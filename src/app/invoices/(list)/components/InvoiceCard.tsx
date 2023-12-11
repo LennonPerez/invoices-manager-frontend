@@ -108,6 +108,7 @@ const InvoiceCardStyles = styled.div`
   .right-column-container {
     display: flex;
     align-items: center;
+    justify-content: end;
     gap: 1.25rem;
 
     @media (min-width: 768px) {
