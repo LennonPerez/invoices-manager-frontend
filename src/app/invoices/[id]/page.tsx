@@ -3,7 +3,7 @@
 import { FunctionComponent, useState } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import InvoiceDetails from "./components/InvoiceDetails";
+import InvoiceDetailsView from "./components/InvoiceDetailsView";
 import InvoiceDetailsMobileCTAs from "./components/InvoiceDetailsMobileCTAs";
 import BackButton from "../components/shared/BackButton";
 import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
@@ -57,9 +57,9 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
       <div className="back-button-container">
         <BackButton onClick={router.back} />
       </div>
-      <InvoiceDetails
+      <InvoiceDetailsView
         invoice={invoice}
-        isFetching={isFetching}
+        isLoading={isFetching}
         error={undefined}
       />
       <InvoiceDetailsMobileCTAs

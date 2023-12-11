@@ -3,15 +3,17 @@ import { formatAmount } from "@/utils/formatters";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 
-interface InvoicesDetailsItemsCardProps {
+interface InvoicesDetailsItemsProps {
   items: InvoiceItem[];
   invoiceTotal: number;
   isMobile: boolean;
 }
 
-const InvoicesDetailsItemsCard: FunctionComponent<
-  InvoicesDetailsItemsCardProps
-> = ({ items, invoiceTotal, isMobile }) => {
+const InvoicesDetailsItems: FunctionComponent<InvoicesDetailsItemsProps> = ({
+  items,
+  invoiceTotal,
+  isMobile,
+}) => {
   if (isMobile) {
     return (
       <InvoicesDetailsItemsCardStyles>
@@ -193,4 +195,4 @@ const InvoicesDetailsItemsCardStyles = styled.div`
   }
 `;
 
-export default InvoicesDetailsItemsCard;
+export default InvoicesDetailsItems;

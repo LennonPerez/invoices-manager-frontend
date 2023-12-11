@@ -1,8 +1,9 @@
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import useIsMobile from "@/hooks/useIsMobile";
 import { generateIDs } from "@/utils/generators";
 
-const InvoicesDetailsItemsCardLoader = () => {
+const InvoicesDetailsItemsLoader: FunctionComponent = () => {
   const isMobile = useIsMobile();
   const items = generateIDs(2);
 
@@ -205,4 +206,4 @@ const InvoicesDetailsItemsCardStyles = styled.div`
   }
 `;
 
-export default InvoicesDetailsItemsCardLoader;
+export default InvoicesDetailsItemsLoader;

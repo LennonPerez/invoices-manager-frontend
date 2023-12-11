@@ -1,7 +1,8 @@
+import { FunctionComponent } from "react";
 import styled from "styled-components";
-import InvoicesDetailsItemsCardLoader from "./InvoiceDetailsItemsCardLoader";
+import InvoicesDetailsItemsLoader from "./InvoiceDetailsItemLoader";
 
-const InvoiceDetailsCardLoader = () => {
+const InvoiceDetailsLoader: FunctionComponent = () => {
   return (
     <InvoiceDetailsCardLoaderStyles>
       <div className="card top-card-container">
@@ -55,7 +56,7 @@ const InvoiceDetailsCardLoader = () => {
             <div className="loader value" />
           </div>
         </div>
-        <InvoicesDetailsItemsCardLoader />
+        <InvoicesDetailsItemsLoader />
       </div>
     </InvoiceDetailsCardLoaderStyles>
   );
@@ -269,4 +270,4 @@ const InvoiceDetailsCardLoaderStyles = styled.div`
   }
 `;
 
-export default InvoiceDetailsCardLoader;
+export default InvoiceDetailsLoader;

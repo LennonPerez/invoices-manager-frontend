@@ -37,8 +37,8 @@ const Home = () => {
       </div>
       <InvoicesListView
         invoices={invoices}
-        isFetchingInvoices={isFetching}
-        isFetchingMoreInvoices={isFetchingMore}
+        isLoading={isFetching}
+        isLoadingMore={isFetchingMore}
       />
       <InvoiceFormPage
         isOpen={isFormOpen}

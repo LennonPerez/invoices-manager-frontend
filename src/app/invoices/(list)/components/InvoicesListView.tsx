@@ -7,17 +7,17 @@ import InvoicesListEmptyState from "./InvoiceListEmptyState";
 import InvoicesList from "./InvoicesList";
 
 interface InvoicesListViewProps {
-  invoices: Invoice[] | undefined;
-  error?: ResponseError;
-  isFetchingInvoices: boolean;
-  isFetchingMoreInvoices: boolean;
+  invoices?: Invoice[] | undefined;
+  error?: ResponseError | undefined;
+  isLoading: boolean;
+  isLoadingMore: boolean;
 }
 
 const InvoicesListView: FunctionComponent<InvoicesListViewProps> = ({
   invoices,
   error,
-  isFetchingInvoices,
-  isFetchingMoreInvoices,
+  isLoading: isFetchingInvoices,
+  isLoadingMore: isFetchingMoreInvoices,
 }) => {
   if (isFetchingInvoices) {
     return <InvoicesListLoader />;
