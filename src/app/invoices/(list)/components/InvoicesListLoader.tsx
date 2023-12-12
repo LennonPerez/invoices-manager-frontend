@@ -20,6 +20,7 @@ const InvoicesListLoader: FunctionComponent = () => {
 const InvoicesListLoaderStyles = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 45.625rem;
 
   .invoice-card {
     margin-bottom: 1rem;

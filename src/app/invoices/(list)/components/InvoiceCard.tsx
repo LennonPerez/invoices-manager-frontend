@@ -89,6 +89,11 @@ const InvoiceCardStyles = styled.div`
     align-items: center;
   }
 
+  @media (min-width: 1440px) {
+    padding: 1.05rem 1.5rem 1.05rem 2rem;
+    grid-column-gap: 2.5rem;
+  }
+
   .top-row-container {
     display: flex;
     justify-content: space-between;

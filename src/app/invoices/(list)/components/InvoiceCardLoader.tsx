@@ -58,6 +58,11 @@ const InvoiceCardLoaderStyles = styled.div`
     align-items: center;
   }
 
+  @media (min-width: 1440px) {
+    padding: 1.05rem 1.5rem 1.05rem 2rem;
+    grid-column-gap: 2.5rem;
+  }
+
   .loader {
     border-radius: 0.25rem;
     animation: skeleton-loading 1s linear infinite alternate;

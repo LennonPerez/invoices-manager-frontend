@@ -60,11 +60,25 @@ const HomePageStyles = styled.main`
     max-height: calc(100vh - 5rem);
   }
 
+  @media (min-width: 1440px) {
+    padding: 4.5rem;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .header-container {
     margin-bottom: 2.25rem;
+    max-width: 45.625rem;
 
     @media (min-width: 768px) {
       margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 1440px) {
+      margin-bottom: 4.5rem;
+      width: 100%;
     }
   }
 `;

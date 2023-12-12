@@ -17,10 +17,11 @@ const InvoicesPageHeader: FunctionComponent<InvoicesPageHeaderProps> = ({
   onOpenForm,
 }) => {
   const isMobileSize = useIsMobile();
+  const statusSelected = "total";
 
   const invoicesQuantityMessage = isMobileSize
     ? `${invoicesQuantity} invoices`
-    : `There are ${invoicesQuantity} total invoices`;
+    : `There are ${invoicesQuantity} ${statusSelected} invoices`;
 
   return (
     <InvoicesListHeaderStyles>

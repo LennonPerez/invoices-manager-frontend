@@ -61,6 +61,10 @@ const ConfirmationModalStyles = styled.div`
     line-height: 1.375rem;
     letter-spacing: -0.01563rem;
     margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      color: ${({ theme }) => theme.palette.text.secondary};
+    }
   }
   .buttons {
     display: flex;

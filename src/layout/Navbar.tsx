@@ -43,6 +43,13 @@ const NavbarWrapper = styled.header`
     height: 5rem;
   }
 
+  @media (min-width: 1440px) {
+    flex-direction: column;
+    border-radius: 0rem 1.25rem 1.25rem 0rem;
+    height: 100vh;
+    width: 6.43rem;
+  }
+
   .logo-container {
     background-color: ${({ theme }) => theme.palette.primary.main};
     height: 100%;
@@ -54,6 +61,11 @@ const NavbarWrapper = styled.header`
       width: 5rem;
     }
 
+    @media (min-width: 1440px) {
+      width: 100%;
+      height: 6.43rem;
+    }
+
     .logo {
       width: 1.75rem;
       height: 1.75rem;
@@ -63,6 +75,11 @@ const NavbarWrapper = styled.header`
       top: 50%;
       transform: translate(-50%, -50%);
       z-index: 2;
+
+      @media (min-width: 1440px) {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
     }
 
     .inner-rounded-box {
@@ -80,6 +97,10 @@ const NavbarWrapper = styled.header`
     flex-direction: row;
     align-items: center;
 
+    @media (min-width: 1440px) {
+      flex-direction: column;
+    }
+
     .theme-icon-container {
       width: 1.25rem;
       height: 1.25rem;
@@ -89,8 +110,22 @@ const NavbarWrapper = styled.header`
         margin-right: 2rem;
       }
 
+      @media (min-width: 1440px) {
+        margin-right: 0;
+        margin-bottom: 2rem;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          .theme-icon {
+            color: #dfe3fa;
+          }
+        }
+      }
+
       .theme-icon {
         color: ${({ theme }) => theme.navbar.icon};
+        transition: color 0.3s ease-in-out;
         width: 100%;
         height: 100%;
       }
@@ -108,6 +143,13 @@ const NavbarWrapper = styled.header`
         width: 6rem;
       }
 
+      @media (min-width: 1440px) {
+        border-top: 0.06rem solid ${({ theme }) => theme.navbar.border};
+        border-left: 0;
+        width: 100%;
+        height: 6rem;
+      }
+
       .user-avatar-container {
         background-color: ${({ theme }) => theme.palette.common.white};
         width: 2rem;
@@ -116,6 +158,11 @@ const NavbarWrapper = styled.header`
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media (min-width: 1440px) {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
 
         .user-avatar {
           color: ${({ theme }) => theme.navbar.background};

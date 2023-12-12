@@ -26,6 +26,13 @@ const DefaultLayoutWrapper = styled.div`
     left: 0;
     right: 0;
     z-index: 1;
+
+    @media (min-width: 1440px) {
+      right: calc(100vw - 6.43rem);
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
   }
 
   .content {
@@ -33,6 +40,11 @@ const DefaultLayoutWrapper = styled.div`
 
     @media (min-width: 768px) {
       padding-top: 5rem;
+    }
+
+    @media (min-width: 1440px) {
+      padding-top: 0;
+      padding-left: 6.43rem;
     }
   }
 `;
