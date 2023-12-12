@@ -35,31 +35,33 @@ const InvoiceFormButtons: FunctionComponent<InvoiceFormButtonsProps> = ({
           {isEditing ? "Cancel" : "Discard"}
         </SecondaryButton>
       </div>
-      {isEditing ? null : (
-        <div className="draft-button">
-          <TertiaryButton
+      <div className="right-buttons">
+        {isEditing ? null : (
+          <div className="draft-button">
+            <TertiaryButton
+              type="button"
+              minHeight="3rem"
+              width="100%"
+              padding="0"
+              disabled={isLoadingAction}
+              onClick={onDraft}
+            >
+              Save as Draft
+            </TertiaryButton>
+          </div>
+        )}
+        <div className={isEditing ? "save-changes-button" : "save-new-button"}>
+          <PrimaryButton
             type="button"
             minHeight="3rem"
             width="100%"
             padding="0"
             disabled={isLoadingAction}
-            onClick={onDraft}
+            onClick={onSave}
           >
-            Save as Draft
-          </TertiaryButton>
+            {isEditing ? "Save Changes" : "Save & Send"}
+          </PrimaryButton>
         </div>
-      )}
-      <div className="save-button">
-        <PrimaryButton
-          type="button"
-          minHeight="3rem"
-          width="100%"
-          padding="0"
-          disabled={isLoadingAction}
-          onClick={onSave}
-        >
-          {isEditing ? "Save Changes" : "Save & Send"}
-        </PrimaryButton>
       </div>
     </InvoiceFormButtonsStyles>
   );
@@ -77,9 +79,11 @@ const InvoiceFormButtonsStyles = styled.div`
   gap: 0.5rem;
 
   @media (min-width: 768px) {
+    box-shadow: none;
     background-color: transparent;
-    border-radius: 0 0 20px 0;
+    border-radius: 0 20px 20px 0;
     padding: 2rem 3.5rem;
+    justify-content: space-between;
   }
 
   .cancel-button {
@@ -87,14 +91,27 @@ const InvoiceFormButtonsStyles = styled.div`
     max-width: 6rem;
   }
 
+  .right-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
   .draft-button {
     width: 100%;
     max-width: 8rem;
   }
 
-  .save-button {
+  .save-changes-button {
     width: 100%;
     max-width: 8.625rem;
+  }
+
+  .save-new-button {
+    width: 100%;
+    max-width: 8rem;
   }
 `;
 

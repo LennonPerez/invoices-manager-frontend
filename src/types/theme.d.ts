@@ -43,6 +43,9 @@ declare module "styled-components" {
       background: string;
       scrollbarThumb: string;
     };
+    form: {
+      background: string;
+    };
     modal: {
       background: string;
       primaryText: string;

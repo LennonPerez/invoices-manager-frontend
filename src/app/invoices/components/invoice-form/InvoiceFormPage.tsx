@@ -85,7 +85,7 @@ interface InvoiceFormPageStylesProps {
 const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
   .form-container,
   form {
-    background-color: ${({ theme }) => theme.page.background};
+    background-color: ${({ theme }) => theme.form.background};
     top: ${({ $show }) => ($show ? "4.5rem" : "100vh")};
     bottom: 0;
     left: 0;
@@ -103,7 +103,7 @@ const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
 
   @media (min-width: 768px) {
     .form-container {
-      right: ${({ $show }) => ($show ? "calc(20vw - 0.5rem)" : "100vw")};
+      right: ${({ $show }) => ($show ? "calc(20vw - 1rem)" : "100vw")};
     }
   }
 
@@ -113,6 +113,16 @@ const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
 
     @media (min-width: 768px) {
       right: ${({ $show }) => ($show ? "20vw" : "100vw")};
+
+      scrollbar-base-color: #000;
+
+      &::-webkit-scrollbar {
+        background-color: ${({ theme }) => theme.form.background};
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: ${({ theme }) => theme.form.background};
+      }
 
       &::-webkit-scrollbar-button:start {
         display: block;
@@ -128,7 +138,7 @@ const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
       margin-bottom: 4rem;
 
       @media (min-width: 768px) {
-        padding: 3.5rem 3rem 1rem 3.5rem;
+        padding: 3.5rem 2.5rem 1rem 3.5rem;
         margin-bottom: 0;
       }
 

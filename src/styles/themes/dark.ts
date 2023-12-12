@@ -74,6 +74,9 @@ const colorTheme: DefaultTheme = {
     background: darkLiver,
     scrollbarThumb: outerSpaceLight,
   },
+  form: {
+    background: darkLiver,
+  },
   modal: {
     background: midnightBlue,
     primaryText: white,

@@ -77,6 +77,9 @@ const lightTheme: DefaultTheme = {
     background: defaultPaper,
     scrollbarThumb: lavenderBlue,
   },
+  form: {
+    background: white,
+  },
   modal: {
     background: white,
     primaryText: richBlack,

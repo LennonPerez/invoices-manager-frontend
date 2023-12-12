@@ -15,8 +15,13 @@ const GlobalStyles = createGlobalStyle`
             width: 0.5rem;
         }
 
+        &::-webkit-scrollbar-track {
+            background-color: ${({ theme }) => theme.page.background};
+        }
+
         &::-webkit-scrollbar-thumb {
             background-color: ${({ theme }) => theme.page.scrollbarThumb};
+            border-radius: 0.25rem;
         }
     }
 
