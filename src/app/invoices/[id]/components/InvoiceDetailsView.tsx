@@ -13,10 +13,10 @@ interface InvoiceDetailsViewProps {
 
 const InvoiceDetailsView: FunctionComponent<InvoiceDetailsViewProps> = ({
   invoice,
-  isLoading: isFetching,
+  isLoading,
   error,
 }) => {
-  if (isFetching) {
+  if (isLoading) {
     return <InvoiceDetailsLoader />;
   }
 

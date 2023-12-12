@@ -16,10 +16,10 @@ interface InvoicesListViewProps {
 const InvoicesListView: FunctionComponent<InvoicesListViewProps> = ({
   invoices,
   error,
-  isLoading: isFetchingInvoices,
-  isLoadingMore: isFetchingMoreInvoices,
+  isLoading,
+  isLoadingMore,
 }) => {
-  if (isFetchingInvoices) {
+  if (isLoading) {
     return <InvoicesListLoader />;
   }
 
@@ -37,10 +37,7 @@ const InvoicesListView: FunctionComponent<InvoicesListViewProps> = ({
   }
 
   return (
-    <InvoicesList
-      invoices={invoices}
-      isFetchingMoreInvoices={isFetchingMoreInvoices}
-    />
+    <InvoicesList invoices={invoices} isFetchingMoreInvoices={isLoadingMore} />
   );
 };
 

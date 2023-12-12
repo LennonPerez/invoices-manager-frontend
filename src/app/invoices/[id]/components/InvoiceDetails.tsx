@@ -120,6 +120,10 @@ const InvoiceDetailsCardStyles = styled.div`
       @media (min-width: 768px) {
         padding: 2rem;
       }
+
+      @media (min-width: 1440px) {
+        padding: 3rem;
+      }
     }
   }
 
@@ -176,6 +180,7 @@ const InvoiceDetailsCardStyles = styled.div`
         @media (min-width: 768px) {
           .id,
           span {
+            margin-bottom: 0.75rem;
             font-size: 1rem;
           }
         }

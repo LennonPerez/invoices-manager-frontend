@@ -63,6 +63,9 @@ const InvoiceDetailsLoader: FunctionComponent = () => {
 };
 
 const InvoiceDetailsCardLoaderStyles = styled.div`
+  width: 100%;
+  max-width: 45.625rem;
+
   .loader {
     border-radius: 0.25rem;
     animation: skeleton-loading 1s linear infinite alternate;
@@ -80,6 +83,7 @@ const InvoiceDetailsCardLoaderStyles = styled.div`
   .card {
     background-color: ${({ theme }) => theme.card.background};
     box-shadow: 0px 10px 10px -10px ${({ theme }) => theme.card.shadow};
+    width: 100%;
     border-radius: 0.5rem;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -94,6 +98,10 @@ const InvoiceDetailsCardLoaderStyles = styled.div`
 
       @media (min-width: 768px) {
         padding: 2rem;
+      }
+
+      @media (min-width: 1440px) {
+        padding: 3rem;
       }
     }
   }
@@ -195,6 +203,10 @@ const InvoiceDetailsCardLoaderStyles = styled.div`
 
           @media (min-width: 768px) {
             margin-bottom: 0.5rem;
+          }
+
+          @media (min-width: 1440px) {
+            margin-bottom: 0.75rem;
           }
         }
 
