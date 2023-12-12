@@ -89,6 +89,9 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
 };
 
 const InvoiceDetailsPageStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem 1.5rem 9.5rem 1.5rem;
   max-height: calc(100vh - 4.5rem);
   overflow-y: auto;
@@ -101,9 +104,6 @@ const InvoiceDetailsPageStyles = styled.div`
   @media (min-width: 1440px) {
     padding: 4rem;
     max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .back-button-container {

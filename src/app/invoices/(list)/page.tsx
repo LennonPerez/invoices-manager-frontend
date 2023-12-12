@@ -51,6 +51,9 @@ const Home = () => {
 };
 
 const HomePageStyles = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2.25rem 1.5rem;
   max-height: calc(100vh - 4.5rem);
   overflow-y: auto;
@@ -63,14 +66,12 @@ const HomePageStyles = styled.main`
   @media (min-width: 1440px) {
     padding: 4.5rem;
     max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .header-container {
     margin-bottom: 2.25rem;
     max-width: 45.625rem;
+    width: 100%;
 
     @media (min-width: 768px) {
       margin-bottom: 3.5rem;
@@ -78,7 +79,6 @@ const HomePageStyles = styled.main`
 
     @media (min-width: 1440px) {
       margin-bottom: 4.5rem;
-      width: 100%;
     }
   }
 `;

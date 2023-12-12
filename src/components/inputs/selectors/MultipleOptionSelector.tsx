@@ -46,10 +46,9 @@ const MultipleOptionSelectorStyles = styled.div`
 
   .options-container {
     padding: 1.75rem;
-    width: fit;
+    width: fit-content;
 
     .option {
-      border-bottom: 0.0625rem solid ${({ theme }) => theme.selector.border};
       cursor: pointer;
       display: flex;
       align-items: center;
