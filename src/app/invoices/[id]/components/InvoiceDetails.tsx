@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
+import useIsMobile from "@/hooks/useIsMobile";
 import { Invoice } from "@/types/invoice";
 import StatusBox from "@/app/invoices/components/shared/StatusBox";
 import { formatDate } from "@/utils/formatters";
 import InvoiceDetailsCTAsProps from "./InvoiceDetailsCTAs";
-import useIsMobile from "@/hooks/useIsMobile";
 import InvoicesDetailsItems from "./InvoicesDetailsItems";
 
 interface InvoiceDetailsProps {
@@ -98,9 +98,13 @@ const InvoiceDetails: FunctionComponent<InvoiceDetailsProps> = ({
 };
 
 const InvoiceDetailsCardStyles = styled.div`
+  width: 100%;
+  max-width: 45.625rem;
+
   .card {
     background-color: ${({ theme }) => theme.card.background};
     box-shadow: 0px 10px 10px -10px ${({ theme }) => theme.card.shadow};
+    width: 100%;
     border-radius: 0.5rem;
     padding: 1.5rem;
     margin-bottom: 1rem;

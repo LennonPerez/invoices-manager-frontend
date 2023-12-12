@@ -98,7 +98,19 @@ const InvoiceDetailsPageStyles = styled.div`
     max-height: calc(100vh - 5rem);
   }
 
+  @media (min-width: 1440px) {
+    padding: 4rem;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .back-button-container {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    max-width: 45.625rem;
     margin-bottom: 1.85rem;
 
     @media (min-width: 768px) {
