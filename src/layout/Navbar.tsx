@@ -105,6 +105,7 @@ const NavbarWrapper = styled.header`
       width: 1.25rem;
       height: 1.25rem;
       margin-right: 1.5rem;
+      cursor: pointer;
 
       @media (min-width: 768px) {
         margin-right: 2rem;

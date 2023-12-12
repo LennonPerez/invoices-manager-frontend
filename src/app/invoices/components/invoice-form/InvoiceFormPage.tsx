@@ -48,31 +48,29 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = ({
 
   return (
     <InvoiceFormPageStyles ref={formRef} $show={show}>
-      <div className="form-container">
-        <form>
-          <div className="form-content">
-            <div className="back-button-container">
-              <BackButton onClick={goBack} />
-            </div>
-            {isEditing ? (
-              <h1 className="title">
-                Edit <span className="hash">#</span>
-                {invoiceToEdit?.id}
-              </h1>
-            ) : (
-              <h1 className="title">New Invoice</h1>
-            )}
-            <InvoiceForm invoice={invoiceToEdit} />
+      <form>
+        <div className="form-content">
+          <div className="back-button-container">
+            <BackButton onClick={goBack} />
           </div>
-          <InvoiceFormButtons
-            isEditing={isEditing}
-            isLoadingAction={false}
-            onCancel={goBack}
-            onDraft={onDraft}
-            onSave={onSave}
-          />
-        </form>
-      </div>
+          {isEditing ? (
+            <h1 className="title">
+              Edit <span className="hash">#</span>
+              {invoiceToEdit?.id}
+            </h1>
+          ) : (
+            <h1 className="title">New Invoice</h1>
+          )}
+          <InvoiceForm invoice={invoiceToEdit} />
+        </div>
+        <InvoiceFormButtons
+          isEditing={isEditing}
+          isLoadingAction={false}
+          onCancel={goBack}
+          onDraft={onDraft}
+          onSave={onSave}
+        />
+      </form>
       <div className="overlay" onClick={goBack} />
     </InvoiceFormPageStyles>
   );
@@ -83,38 +81,22 @@ interface InvoiceFormPageStylesProps {
 }
 
 const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
-  .form-container,
   form {
     background-color: ${({ theme }) => theme.form.background};
-    top: ${({ $show }) => ($show ? "4.5rem" : "100vh")};
+    transform: translateY(${({ $show }) => ($show ? "0" : "100vh")});
+    max-width: 38.5rem;
     bottom: 0;
     left: 0;
     right: 0;
     position: fixed;
     z-index: 5;
-    transition: top 0.3s ease-in-out;
-
-    @media (min-width: 768px) {
-      top: 5rem;
-      transition: right 0.3s ease-in-out;
-      border-radius: 0px 20px 20px 0px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .form-container {
-      right: ${({ $show }) => ($show ? "calc(20vw - 1rem)" : "100vw")};
-    }
-  }
-
-  form {
+    transition: transform 0.3s ease-in-out;
     max-height: calc(100vh - 4.5rem);
     overflow-y: auto;
 
     @media (min-width: 768px) {
-      right: ${({ $show }) => ($show ? "20vw" : "100vw")};
-
-      scrollbar-base-color: #000;
+      transform: translateX(${({ $show }) => ($show ? "0" : "-200vw")});
+      border-radius: 0px 20px 20px 0px;
 
       &::-webkit-scrollbar {
         background-color: ${({ theme }) => theme.form.background};
@@ -133,12 +115,18 @@ const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
       }
     }
 
+    @media (min-width: 1440px) {
+      max-height: 100vh;
+      max-width: 44.9375rem;
+      padding-left: 6.43rem;
+    }
+
     .form-content {
       padding: 2rem 1.5rem;
       margin-bottom: 4rem;
 
       @media (min-width: 768px) {
-        padding: 3.5rem 2.5rem 1rem 3.5rem;
+        padding: 3.5rem 3.5rem 1rem 3.5rem;
         margin-bottom: 0;
       }
 
@@ -183,6 +171,11 @@ const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
 
     @media (min-width: 768px) {
       display: block;
+    }
+
+    @media (min-width: 1440px) {
+      top: 0;
+      left: 6.43rem;
     }
   }
 `;

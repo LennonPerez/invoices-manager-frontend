@@ -4,7 +4,7 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { HiPlusSm } from "react-icons/hi";
 import { PrimaryButton } from "@/components/buttons";
-import InvoicesFilter from "./InvoicesFilter";
+import InvoicesStatusFilter from "./InvoicesFilter";
 import useIsMobile from "@/hooks/useIsMobile";
 
 interface InvoicesPageHeaderProps {
@@ -32,7 +32,9 @@ const InvoicesPageHeader: FunctionComponent<InvoicesPageHeaderProps> = ({
         }`}</p>
       </div>
       <div className="right-side">
-        <InvoicesFilter />
+        <div className="invoices-status-container">
+          <InvoicesStatusFilter />
+        </div>
         <PrimaryButton
           padding="0.25rem 1.25rem 0.25rem 0.5rem"
           minHeight={isMobileSize ? undefined : "3rem"}
@@ -77,6 +79,12 @@ const InvoicesListHeaderStyles = styled.div`
   .right-side {
     display: flex;
     align-items: center;
+
+    .invoices-status-container {
+      @media (min-width: 1440px) {
+        margin-right: 1.5rem;
+      }
+    }
 
     .plus-icon-container {
       background-color: ${({ theme }) => theme.palette.common.white};

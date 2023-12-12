@@ -25,7 +25,7 @@ const DefaultLayoutWrapper = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 6;
 
     @media (min-width: 1440px) {
       right: calc(100vw - 6.43rem);

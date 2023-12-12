@@ -70,18 +70,27 @@ const InvoiceCard: FunctionComponent<InvoiceCardProps> = (props) => {
 
 const InvoiceCardStyles = styled.div`
   background: ${({ theme }) => theme.card.background};
+  border: 1px solid ${({ theme }) => theme.card.background};
   box-shadow: 0px 10px 10px -10px ${({ theme }) => theme.card.shadow};
-  min-height: 8.37rem;
+  min-height: calc(8.37rem - 2px);
   width: 100%;
   border-radius: 0.5rem;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: ${({ theme }) => theme.palette.primary.main};
+    }
+  }
 
   @media (min-width: 768px) {
     padding: 1.05rem 1.5rem;
-    min-height: 4.5rem;
+    min-height: calc(4.5rem - 2px);
     display: grid;
     grid-template-rows: 1;
     grid-template-columns: 3.75rem 6.75rem repeat(3, 1fr);
