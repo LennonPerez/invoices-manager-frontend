@@ -42,10 +42,10 @@ const OptionSelector: FunctionComponent<OptionSelectorProps> = ({
 };
 
 const OptionSelectorStyles = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 6rem;
   left: 0;
-  right: 0;
+  right: 0; */
 
   .option {
     border-bottom: 0.0625rem solid ${({ theme }) => theme.selector.border};

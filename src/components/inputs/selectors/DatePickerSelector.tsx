@@ -221,12 +221,17 @@ const generateYears = (startYear: number, endYear: number) => {
 };
 
 const InputDatePickerSelectorStyles = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: 6rem;
   left: 0;
   right: 0;
 
+  @media (min-width: 768px) {
+    top: 5rem;
+  } */
+
   p {
+    color: ${({ theme }) => theme.palette.text.primary};
     font-weight: 700;
   }
 
@@ -236,12 +241,20 @@ const InputDatePickerSelectorStyles = styled.div`
     padding: 1.5rem 0.75rem;
     border-radius: 0.5rem;
 
+    @media (min-width: 768px) {
+      padding: 1.25rem 0.75rem;
+    }
+
     .filters-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 0.5rem;
       margin-bottom: 1.5rem;
+
+      @media (min-width: 768px) {
+        margin-bottom: 1rem;
+      }
 
       .button {
         cursor: pointer;
@@ -251,9 +264,13 @@ const InputDatePickerSelectorStyles = styled.div`
         border-radius: 0.25rem;
         padding: 0.5rem;
 
+        @media (min-width: 768px) {
+          padding: 0;
+        }
+
         @media (hover: hover) {
           &:hover {
-            background-color: ${({ theme }) => theme.selector.border};
+            /* background-color: ${({ theme }) => theme.selector.border}; */
           }
         }
 
@@ -261,6 +278,11 @@ const InputDatePickerSelectorStyles = styled.div`
           color: ${({ theme }) => theme.selector.activeText};
           width: 1.25rem;
           height: 1.25rem;
+
+          @media (min-width: 768px) {
+            width: 1rem;
+            height: 1rem;
+          }
         }
       }
 
@@ -278,14 +300,26 @@ const InputDatePickerSelectorStyles = styled.div`
         border-radius: 0.25rem;
         cursor: pointer;
 
+        @media (min-width: 768px) {
+          padding: 0.5rem;
+        }
+
         @media (hover: hover) {
           &:hover {
-            background-color: ${({ theme }) => theme.selector.border};
+            /* background-color: ${({ theme }) => theme.selector.border}; */
+
+            p {
+              color: ${({ theme }) => theme.selector.activeText};
+            }
           }
         }
 
         p {
           font-size: 1rem;
+
+          @media (min-width: 768px) {
+            font-size: 0.75rem;
+          }
         }
       }
     }
@@ -320,7 +354,7 @@ const InputDatePickerSelectorStyles = styled.div`
 
         @media (hover: hover) {
           &:hover {
-            background-color: ${({ theme }) => theme.selector.border};
+            /* background-color: ${({ theme }) => theme.selector.border}; */
 
             p {
               color: ${({ theme }) => theme.selector.activeText};
@@ -351,12 +385,16 @@ const InputDatePickerSelectorStyles = styled.div`
 
         @media (hover: hover) {
           &:hover {
-            background-color: ${({ theme }) => theme.selector.border};
+            /* background-color: ${({ theme }) => theme.selector.border}; */
 
             p {
               color: ${({ theme }) => theme.selector.activeText};
             }
           }
+        }
+
+        @media (min-width: 768px) {
+          padding: 0.5rem 0.4rem;
         }
       }
 

@@ -51,15 +51,17 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
         onFocus={onOpenSelector}
         // onBlur={() => setTimeout(onCloseSelector, 200)}
       />
-      <DatePickerSelector
-        isOpened={isSelectorOpened}
-        datePicked={datePicked}
-        onClose={onCloseSelector}
-        onSelectDate={setDatePicked}
-        onSelectYear={onSelectYear}
-        onSelectMonth={onSelectMonth}
-        onSelectDay={onSelectDay}
-      />
+      <div className="input-datepicker-container">
+        <DatePickerSelector
+          isOpened={isSelectorOpened}
+          datePicked={datePicked}
+          onClose={onCloseSelector}
+          onSelectDate={setDatePicked}
+          onSelectYear={onSelectYear}
+          onSelectMonth={onSelectMonth}
+          onSelectDay={onSelectDay}
+        />
+      </div>
     </InputDatePickerStyles>
   );
 };
@@ -67,6 +69,17 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
 const InputDatePickerStyles = styled.div`
   position: relative;
   width: 100%;
+
+  .input-datepicker-container {
+    position: absolute;
+    top: 6rem;
+    left: 0;
+    right: 0;
+
+    @media (min-width: 768px) {
+      top: 5rem;
+    }
+  }
 `;
 
 export const getDateByString = (text: string): Date | null => {

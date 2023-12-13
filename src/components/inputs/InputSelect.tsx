@@ -40,16 +40,18 @@ export const InputSelect: FunctionComponent<InputSelectProps> = (props) => {
         onFocus={onOpenSelector}
         // onBlur={() => setTimeout(onCloseSelector, 100)}
       />
-      <OptionSelector
-        isOpened={isSelectorOpened}
-        selectedOption={selected?.value ?? null}
-        options={props.options}
-        onClose={onCloseSelector}
-        onSelectValue={(e) => {
-          setSelected(e);
-          onCloseSelector();
-        }}
-      />
+      <div className="input-options-container">
+        <OptionSelector
+          isOpened={isSelectorOpened}
+          selectedOption={selected?.value ?? null}
+          options={props.options}
+          onClose={onCloseSelector}
+          onSelectValue={(e) => {
+            setSelected(e);
+            onCloseSelector();
+          }}
+        />
+      </div>
     </InputSelectStyles>
   );
 };
@@ -57,6 +59,17 @@ export const InputSelect: FunctionComponent<InputSelectProps> = (props) => {
 const InputSelectStyles = styled.div`
   position: relative;
   width: 100%;
+
+  .input-options-container {
+    position: absolute;
+    top: 6rem;
+    left: 0;
+    right: 0;
+
+    @media (min-width: 768px) {
+      top: 5rem;
+    }
+  }
 `;
 
 export const searchOptionByString = (

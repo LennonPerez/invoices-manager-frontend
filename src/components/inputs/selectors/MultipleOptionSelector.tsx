@@ -39,14 +39,8 @@ const MultipleOptionSelector: FunctionComponent<
 };
 
 const MultipleOptionSelectorStyles = styled.div`
-  position: absolute;
-  top: 3.5rem;
-  left: -4rem;
-  right: -4rem;
-
   .options-container {
     padding: 1.75rem;
-    width: fit-content;
 
     .option {
       cursor: pointer;

@@ -37,19 +37,34 @@ const InvoicesFilter: FunctionComponent<InvoicesFilterProps> = () => {
           <Icon className="chevron-icon" />
         </div>
       </TransparentButton>
-      <MultipleOptionSelector
-        isOpened={isSelectorOpened}
-        options={statusOptions}
-        selectedOptions={selectedOptions}
-        onSelectOption={onSelectOption}
-        onClose={() => setIsSelectorOpened(false)}
-      />
+      <div className="invoices-status-options">
+        <MultipleOptionSelector
+          isOpened={isSelectorOpened}
+          options={statusOptions}
+          selectedOptions={selectedOptions}
+          onSelectOption={onSelectOption}
+          onClose={() => setIsSelectorOpened(false)}
+        />
+      </div>
     </InvoicesFilterStyles>
   );
 };
 
 const InvoicesFilterStyles = styled.div`
   position: relative;
+
+  .invoices-status-options {
+    position: absolute;
+    top: 3rem;
+    left: -4rem;
+    right: -4rem;
+
+    @media (min-width: 1440px) {
+      top: 3.5rem;
+      left: -1.5rem;
+      right: -1.5rem;
+    }
+  }
 
   .chevron-icon-container {
     margin-left: 0.5rem;
