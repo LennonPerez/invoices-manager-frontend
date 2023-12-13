@@ -10,16 +10,16 @@ interface DefaultLayoutProps {
 
 const DefaultLayout: FunctionComponent<DefaultLayoutProps> = ({ children }) => {
   return (
-    <DefaultLayoutWrapper>
+    <DefaultLayoutStyles>
       <div className="navbar">
         <Navbar />
       </div>
       <div className="content">{children}</div>
-    </DefaultLayoutWrapper>
+    </DefaultLayoutStyles>
   );
 };
 
-const DefaultLayoutWrapper = styled.div`
+const DefaultLayoutStyles = styled.div`
   .navbar {
     position: fixed;
     top: 0;

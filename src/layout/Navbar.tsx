@@ -11,7 +11,7 @@ const Navbar = () => {
   const ThemeIcon = theme.type === "dark" ? BsFillSunFill : BsFillMoonFill;
 
   return (
-    <NavbarWrapper>
+    <NavbarStyles>
       <div className="logo-container">
         <div className="logo">
           <Image src="/main-icon.svg" alt="icon" fill />
@@ -28,11 +28,11 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </NavbarWrapper>
+    </NavbarStyles>
   );
 };
 
-const NavbarWrapper = styled.header`
+const NavbarStyles = styled.header`
   background-color: ${({ theme }) => theme.navbar.background};
   height: 4.5rem;
   display: flex;

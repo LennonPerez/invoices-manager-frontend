@@ -61,7 +61,7 @@ interface ThemeContextProps {
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextProps | null>(null);
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
