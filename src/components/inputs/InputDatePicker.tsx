@@ -15,30 +15,12 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
   props,
 ) => {
   const [isSelectorOpened, setIsSelectorOpened] = useState<boolean>(false);
-  const [datePicked, setDatePicked] = useState({
-    year: new Date().getFullYear(),
-    month: new Date().getMonth(),
-    day: new Date().getDate(),
-  });
+  const [datePicked, setDatePicked] = useState<Date | null>(null);
 
-  const { year, month, day } = datePicked;
-  const dateToDisplay = formatDate(new Date(year, month, day));
+  const dateToDisplay = datePicked ? formatDate(datePicked) : "";
 
   const onOpenSelector = () => setIsSelectorOpened(true);
   const onCloseSelector = () => setIsSelectorOpened(false);
-
-  const onSelectYear = (year: number) => {
-    setDatePicked({ ...datePicked, year });
-  };
-
-  const onSelectMonth = (month: number) => {
-    setDatePicked({ ...datePicked, month });
-  };
-
-  const onSelectDay = (day: number) => {
-    setDatePicked({ ...datePicked, day });
-    onCloseSelector();
-  };
 
   return (
     <InputDatePickerStyles>
@@ -54,12 +36,9 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
       <div className="input-datepicker-container">
         <DatePickerSelector
           isOpened={isSelectorOpened}
-          datePicked={datePicked}
+          datePicked={datePicked ?? new Date()}
           onClose={onCloseSelector}
           onSelectDate={setDatePicked}
-          onSelectYear={onSelectYear}
-          onSelectMonth={onSelectMonth}
-          onSelectDay={onSelectDay}
         />
       </div>
     </InputDatePickerStyles>

@@ -7,18 +7,9 @@ import { generateIDs } from "@/utils/generators";
 
 interface DatePickerSelectorProps {
   isOpened: boolean;
-  datePicked: DatePicked;
+  datePicked: Date;
   onClose: () => void;
-  onSelectDate: (date: DatePicked) => void;
-  onSelectDay: (day: number) => void;
-  onSelectMonth: (month: number) => void;
-  onSelectYear: (year: number) => void;
-}
-
-interface DatePicked {
-  year: number;
-  month: number;
-  day: number;
+  onSelectDate: (date: Date) => void;
 }
 
 const DatePickerSelector: FunctionComponent<DatePickerSelectorProps> = ({
@@ -26,13 +17,14 @@ const DatePickerSelector: FunctionComponent<DatePickerSelectorProps> = ({
   datePicked,
   onClose,
   onSelectDate,
-  onSelectYear,
-  onSelectDay,
 }) => {
-  const { year, month, day } = datePicked;
   const [view, setView] = useState<"days" | "months" | "years">("days");
+
   if (!isOpened) return null;
 
+  const year = datePicked.getFullYear();
+  const month = datePicked.getMonth();
+  const day = datePicked.getDate();
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
@@ -40,7 +32,7 @@ const DatePickerSelector: FunctionComponent<DatePickerSelectorProps> = ({
   const minYear = 1900;
   const maxYear = currentYear;
 
-  const date = new Date(year, month, day);
+  const date = datePicked;
   const daysByMonth = new Date(year, month + 1, 0).getDate();
 
   const yearsToIterate = generateYears(minYear, maxYear);
@@ -68,20 +60,24 @@ const DatePickerSelector: FunctionComponent<DatePickerSelectorProps> = ({
     }
   };
 
-  const selectYear = (year: number) => {
-    onSelectYear(year);
+  const selectYear = (selectedYear: number) => {
+    const selectedDate = new Date(selectedYear, month, day);
+    onSelectDate(selectedDate);
     setView("months");
   };
 
-  const selectMonth = (month: number) => {
-    const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
+  const selectMonth = (selectedMonth: number) => {
+    const lastDayOfMonth = new Date(year, selectedMonth + 1, 0).getDate();
     const adjustedDay = Math.min(day, lastDayOfMonth);
-    onSelectDate({ ...datePicked, month, day: adjustedDay });
+    const selectedDate = new Date(year, selectedMonth, adjustedDay);
+    onSelectDate(selectedDate);
     setView("days");
   };
 
-  const selectDay = (day: number) => {
-    onSelectDay(day);
+  const selectDay = (selectedDay: number) => {
+    const selectedDate = new Date(year, month, selectedDay);
+    onSelectDate(selectedDate);
+    onClose();
   };
 
   const selectPreviousOption = () => {
@@ -91,11 +87,8 @@ const DatePickerSelector: FunctionComponent<DatePickerSelectorProps> = ({
     switch (view) {
       case "days":
         if (previousMonth === -1) {
-          onSelectDate({
-            ...datePicked,
-            year: previousYear,
-            month: 11,
-          });
+          const selectedDate = new Date(previousYear, 11, day);
+          onSelectDate(selectedDate);
         } else {
           selectMonth(previousMonth);
         }
@@ -115,11 +108,8 @@ const DatePickerSelector: FunctionComponent<DatePickerSelectorProps> = ({
     switch (view) {
       case "days":
         if (nextMonth === 12) {
-          onSelectDate({
-            ...datePicked,
-            year: nextYear,
-            month: 0,
-          });
+          const selectedDate = new Date(nextYear, 0, day);
+          onSelectDate(selectedDate);
         } else {
           selectMonth(nextMonth);
         }
@@ -214,7 +204,7 @@ const generateYears = (startYear: number, endYear: number) => {
   const years = [];
 
   for (let year = startYear; year <= endYear; year++) {
-    years.push(year);
+    years.unshift(year);
   }
 
   return years;
