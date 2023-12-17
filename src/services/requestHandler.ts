@@ -29,18 +29,23 @@ const doRequest = async <T>(
   }
 };
 
-export const doGet = async <T>(url: string) => {
-  return doRequest<T>(() => axios.get(url));
+const setBaseUrl = (url: string) => {
+  const baseUrl = "https://invoices-manager-backend.vercel.app";
+  return `${baseUrl}${url}`;
 };
 
-export const doPost = async <T>(url: string, body: T) => {
-  return doRequest<T>(() => axios.post(url, body));
+export const doGet = async <T>(path: string) => {
+  return doRequest<T>(() => axios.get(setBaseUrl(path)));
 };
 
-export const doPut = async <T>(url: string, body: T) => {
-  return doRequest<T>(() => axios.put(url, body));
+export const doPost = async <T>(path: string, body: T) => {
+  return doRequest<T>(() => axios.post(setBaseUrl(path), body));
 };
 
-export const doDelete = async <T>(url: string) => {
-  return doRequest<T>(() => axios.delete(url));
+export const doPut = async <T>(path: string, body: T) => {
+  return doRequest<T>(() => axios.put(setBaseUrl(path), body));
+};
+
+export const doDelete = async <T>(path: string) => {
+  return doRequest<T>(() => axios.delete(setBaseUrl(path)));
 };
