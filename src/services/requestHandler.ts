@@ -16,11 +16,11 @@ type Error = {
 };
 
 const doRequest = async <T>(
-  request: () => Promise<AxiosResponse<T>>,
+  request: () => Promise<AxiosResponse<{ data: T }>>,
 ): Promise<SuccessResponse<T> | ErrorResponse<Error>> => {
   try {
     const response = await request();
-    return { code: "success", data: response.data };
+    return { code: "success", data: response.data.data };
   } catch (e) {
     return {
       code: "error",
