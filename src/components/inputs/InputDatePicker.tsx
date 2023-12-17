@@ -1,15 +1,10 @@
-import { FunctionComponent, RefObject, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import styled from "styled-components";
-import BaseInput, { InputCalendarIcon } from "./Input";
+import Input, { InputCalendarIcon, InputProps } from "./Input";
 import { formatDate } from "@/utils/formatters";
 import { DatePickerSelector } from "./selectors";
 
-interface InputDatePickerProps {
-  reference?: RefObject<HTMLInputElement>;
-  label?: string;
-  isRequired?: boolean;
-  isDisabled?: boolean;
-}
+type InputDatePickerProps = InputProps;
 
 export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
   props,
@@ -24,7 +19,7 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
 
   return (
     <InputDatePickerStyles>
-      <BaseInput
+      <Input
         {...props}
         cantWrite
         value={dateToDisplay}

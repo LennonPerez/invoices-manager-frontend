@@ -13,7 +13,7 @@ import { LuChevronDown, LuChevronUp } from "react-icons/lu";
 import { HiCalendar } from "react-icons/hi2";
 import { generateUniqueId } from "@/utils/generators";
 
-export interface BaseInputProps {
+export interface InputProps {
   reference?: RefObject<HTMLInputElement>;
   type?: HTMLInputTypeAttribute;
   name?: string;
@@ -24,6 +24,8 @@ export interface BaseInputProps {
   disabled?: boolean;
   readOnly?: boolean;
   cantWrite?: boolean;
+  error?: boolean;
+  showErrorMessage?: boolean;
   errorMessage?: string;
   suffixContent?: ReactNode;
   onClick?: () => void;
@@ -32,10 +34,9 @@ export interface BaseInputProps {
   onChange?: (value: string) => void;
 }
 
-const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
+const Input: FunctionComponent<InputProps> = (props) => {
   const [inputId, setInputId] = useState<string>("");
   const [isFocused, setFocus] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
 
   const localRef = useRef<HTMLInputElement>(null);
   const ref = props.reference ?? localRef;
@@ -63,12 +64,7 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
 
   const onBlurInput = () => {
     setFocus(false);
-    setIsError(!ref.current?.validity.valid ?? false);
     if (props.onBlur) props.onBlur();
-  };
-
-  const onInvalidInput = () => {
-    setIsError(true);
   };
 
   return (
@@ -77,12 +73,20 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
       $isDisabled={!!props.disabled}
       $isReadOnly={!!props.readOnly}
       $cantWrite={!!props.cantWrite}
+      $isError={props.error ?? false}
       $isFocused={isFocused}
     >
       {!!props.label ? (
-        <label className="label" htmlFor={inputId}>
-          {props.label}
-        </label>
+        <div className="label-container">
+          <label className="label" htmlFor={inputId}>
+            {props.label}
+          </label>
+          {props.error &&
+          props.errorMessage &&
+          (props.showErrorMessage ?? true) ? (
+            <span className="error-message">{props.errorMessage}</span>
+          ) : null}
+        </div>
       ) : null}
       <div className="input-container" onClick={onClickInput}>
         <input
@@ -99,15 +103,9 @@ const BaseInput: FunctionComponent<BaseInputProps> = (props) => {
           onChange={onChangeInput}
           onFocus={onFocusInput}
           onBlur={onBlurInput}
-          onInvalid={onInvalidInput}
         />
         {!!props.suffixContent ? props.suffixContent : null}
       </div>
-      {isError ? (
-        <span className="error-message">
-          {props.errorMessage ?? "Invalid field"}
-        </span>
-      ) : null}
     </BaseInputStyles>
   );
 };
@@ -118,6 +116,7 @@ interface BaseInputStylesProps {
   $isReadOnly: boolean;
   $isDisabled: boolean;
   $cantWrite: boolean;
+  $isError: boolean;
 }
 
 const BaseInputStyles = styled.div<BaseInputStylesProps>`
@@ -126,26 +125,46 @@ const BaseInputStyles = styled.div<BaseInputStylesProps>`
   flex-direction: column;
   flex-grow: 1;
 
-  label {
-    color: ${({ theme }) => theme.inputs.label};
-    width: fit-content;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 0.9375rem;
-    letter-spacing: -0.01563rem;
+  .label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 0.625rem;
+    gap: 0.5rem;
 
-    @media (min-width: 768px) {
-      color: ${({ theme }) => theme.palette.text.secondary};
+    label {
+      color: ${({ theme, $isError }) =>
+        $isError ? theme.inputs.error : theme.inputs.label};
+      width: fit-content;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 0.9375rem;
+      letter-spacing: -0.01563rem;
+      text-align: left;
+
+      @media (min-width: 768px) {
+        color: ${({ theme, $isError }) =>
+          $isError ? theme.inputs.error : theme.palette.text.secondary};
+      }
+    }
+
+    .error-message {
+      color: ${({ theme }) => theme.inputs.error};
+      text-transform: lowercase;
+      text-align: right;
     }
   }
 
   .input-container {
     background-color: ${({ theme }) => theme.inputs.background};
     border: 1px solid
-      ${({ theme, $isFocused }) =>
-        $isFocused ? theme.inputs.borderActive : theme.inputs.border};
+      ${({ theme, $isFocused, $isError }) =>
+        $isError
+          ? theme.inputs.error
+          : $isFocused
+            ? theme.inputs.borderActive
+            : theme.inputs.border};
     cursor: ${({ $cantWrite, $isDisabled, $isReadOnly }) =>
       $isDisabled || $isReadOnly
         ? "not-allowed"
@@ -180,11 +199,6 @@ const BaseInputStyles = styled.div<BaseInputStylesProps>`
       width: 100%;
       height: 100%;
     }
-  }
-
-  .error-message {
-    margin-top: 1rem;
-    color: ${({ theme }) => theme.inputs.error};
   }
 `;
 
@@ -245,4 +259,4 @@ const InputCalendarIconStyles = styled.div`
   }
 `;
 
-export default BaseInput;
+export default Input;

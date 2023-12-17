@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { BiSolidTrashAlt } from "react-icons/bi";
-import { BaseInput } from "@/components/inputs";
+import { Input } from "@/components/inputs";
 import { formatAmount } from "@/utils/formatters";
 
 interface InvoiceFormItemProps {}
@@ -11,15 +11,15 @@ const InvoiceFormItem: FunctionComponent<InvoiceFormItemProps> = () => {
     <InvoiceFormItemStyles>
       <div className="top">
         <div className="input name-input">
-          <BaseInput label="Item name" />
+          <Input label="Item name" showErrorMessage={false} />
         </div>
       </div>
       <div className="bottom">
         <div className="input quantity-input">
-          <BaseInput label="Qty." />
+          <Input label="Qty." showErrorMessage={false} />
         </div>
         <div className="input price-input">
-          <BaseInput label="Price" />
+          <Input label="Price" showErrorMessage={false} />
         </div>
         <div className="total-amount-container">
           <span className="label">Total</span>

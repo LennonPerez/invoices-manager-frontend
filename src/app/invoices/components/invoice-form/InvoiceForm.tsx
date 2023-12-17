@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { Invoice } from "@/types/invoice";
 import { paymentTermsOptions } from "@/utils/options";
-import { BaseInput, InputSelect, InputDatePicker } from "@/components/inputs";
+import { Input, InputSelect, InputDatePicker } from "@/components/inputs";
 import { SecondaryButton } from "@/components/buttons";
 import InvoiceFormItem from "./InvoiceFormItem";
 
@@ -17,52 +17,52 @@ const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({ invoice }) => {
     <InvoiceFormStyles>
       <div className="section">
         <h3>Bill From</h3>
-        <BaseInput label="Street Address" />
+        <Input label="Street Address" />
         <Divider />
         <div className="row">
-          <BaseInput label="City" />
-          <BaseInput label="Post Code" />
+          <Input label="City" />
+          <Input label="Post Code" />
           <div className="country-input">
-            <BaseInput label="Country" />
+            <Input label="Country" />
           </div>
         </div>
         <Divider />
         <div className="country-input">
-          <BaseInput label="Country" />
+          <Input label="Country" />
         </div>
       </div>
       <div className="section">
         <h3>Bill To</h3>
-        <BaseInput label="Client's Name" />
+        <Input label="Client's Name" />
         <Divider />
-        <BaseInput label="Client's Email" />
+        <Input label="Client's Email" />
         <Divider />
-        <BaseInput label="Street Address" />
+        <Input label="Street Address" />
         <Divider />
         <div className="row">
-          <BaseInput label="City" />
-          <BaseInput label="Post Code" />
+          <Input label="City" />
+          <Input label="Post Code" />
           <div className="country-input">
-            <BaseInput label="Country" />
+            <Input label="Country" />
           </div>
         </div>
         <Divider />
         <div className="country-input">
-          <BaseInput label="Country" />
+          <Input label="Country" />
         </div>
       </div>
       <div className="section last">
         <div className="row date-terms-row">
-          <InputDatePicker label="Invoice Date" isDisabled={isEditing} />
+          <InputDatePicker label="Invoice Date" disabled={isEditing} />
           <InputSelect label="Payment Terms" options={paymentTermsOptions} />
         </div>
         <div className="date-terms-column">
-          <InputDatePicker label="Invoice Date" isDisabled={isEditing} />
+          <InputDatePicker label="Invoice Date" disabled={isEditing} />
           <Divider />
           <InputSelect label="Payment Terms" options={paymentTermsOptions} />
         </div>
         <Divider />
-        <BaseInput label="Project / Description" />
+        <Input label="Project / Description" />
       </div>
       <div className="items-list-container">
         <h2>Item List</h2>

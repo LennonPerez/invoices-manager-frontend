@@ -1,15 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { FunctionComponent, RefObject, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import styled from "styled-components";
 import Option from "@/types/option";
-import BaseInput, { InputSelectIcon } from "./Input";
+import Input, { InputProps, InputSelectIcon } from "./Input";
 import { OptionSelector } from "./selectors";
 
-interface InputSelectProps {
-  reference?: RefObject<HTMLInputElement>;
-  label?: string;
-  value?: string | null;
-  isRequired?: boolean;
+interface InputSelectProps extends InputProps {
   options: Option[];
 }
 
@@ -31,7 +27,7 @@ export const InputSelect: FunctionComponent<InputSelectProps> = (props) => {
 
   return (
     <InputSelectStyles>
-      <BaseInput
+      <Input
         {...props}
         cantWrite
         value={selected?.text ?? ""}
