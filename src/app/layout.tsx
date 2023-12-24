@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { SpartanFont } from "@/styles/fonts";
 import ThemesProvider from "@/providers/ThemesProvider";
 import TanstackProvider from "@/providers/TanstackProvider";
-import DefaultLayout from "@/layout/default";
+import DefaultLayout from "@/layout/Default";
 
 export const metadata: Metadata = {
   title: "Create Next App",
