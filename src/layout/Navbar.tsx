@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useTheme } from "@/providers/themes";
+import { useTheme } from "@/providers/ThemesProvider";
 import { styled } from "styled-components";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";

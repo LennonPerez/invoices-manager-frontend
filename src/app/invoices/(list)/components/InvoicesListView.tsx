@@ -7,7 +7,7 @@ import InvoicesListEmptyState from "./InvoiceListEmptyState";
 import InvoicesList from "./InvoicesList";
 
 interface InvoicesListViewProps {
-  invoices?: Invoice[] | undefined;
+  invoices?: Invoice[] | null | undefined;
   error?: ResponseError | undefined;
   isLoading: boolean;
   isLoadingMore: boolean;
@@ -23,7 +23,7 @@ const InvoicesListView: FunctionComponent<InvoicesListViewProps> = ({
     return <InvoicesListLoader />;
   }
 
-  if (error || invoices === undefined) {
+  if (error || invoices === undefined || invoices === null) {
     return (
       <InvoicesListError
         errorCode={error?.errorCode ?? "UNKNOWN_ERROR"}

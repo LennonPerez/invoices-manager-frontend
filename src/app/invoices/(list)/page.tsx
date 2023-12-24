@@ -1,48 +1,34 @@
 "use client";
 
-import { useState } from "react";
 import styled from "styled-components";
 import InvoicesPageHeader from "./components/InvoicesHeader";
 import InvoicesListView from "./components/InvoicesListView";
 import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
-import invoices from "@/mocks/invoices";
+import useInvoicesState from "./hooks/useInvoicesState";
+import useInvoiceForm from "./hooks/useInvoiceForm";
 
 const Home = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const isFetching = false;
-  const isFetchingMore = false;
-
-  const onOpenForm = () => {
-    setIsFormOpen(true);
-  };
-
-  const onCloseForm = () => {
-    setIsFormOpen(false);
-  };
-
-  const onSaveFormAsDraft = () => {
-    //TODO: on save form draft func
-    onCloseForm();
-  };
-
-  const onSaveForm = () => {
-    //TODO: on save form func
-    onCloseForm();
-  };
+  const { invoices, isFetching } = useInvoicesState();
+  const { isFormOpen, openForm, closeForm, onSaveForm, onSaveFormAsDraft } =
+    useInvoiceForm();
 
   return (
     <HomePageStyles>
       <div className="header-container">
-        <InvoicesPageHeader invoicesQuantity={7} onOpenForm={onOpenForm} />
+        <InvoicesPageHeader
+          invoicesQuantity={invoices?.length ?? 0}
+          isLoading={isFetching}
+          onOpenForm={openForm}
+        />
       </div>
       <InvoicesListView
         invoices={invoices}
         isLoading={isFetching}
-        isLoadingMore={isFetchingMore}
+        isLoadingMore={false}
       />
       <InvoiceFormPage
         isOpen={isFormOpen}
-        onClose={onCloseForm}
+        onClose={closeForm}
         onSave={onSaveForm}
         onDraft={onSaveFormAsDraft}
       />

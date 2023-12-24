@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useTheme } from "@/providers/themes";
+import { useTheme } from "@/providers/ThemesProvider";
 import BaseButton, { ButtonColor, BaseButtonProps } from "./Button";
 
 type PrimaryButtonProps = Omit<BaseButtonProps, "buttonColor">;

@@ -9,27 +9,33 @@ import useIsMobile from "@/hooks/useIsMobile";
 
 interface InvoicesPageHeaderProps {
   invoicesQuantity: number;
+  isLoading: boolean;
   onOpenForm: () => void;
 }
 
 const InvoicesPageHeader: FunctionComponent<InvoicesPageHeaderProps> = ({
   invoicesQuantity,
+  isLoading,
   onOpenForm,
 }) => {
   const isMobileSize = useIsMobile();
   const statusSelected = "total";
 
-  const invoicesQuantityMessage = isMobileSize
-    ? `${invoicesQuantity} invoices`
-    : `There are ${invoicesQuantity} ${statusSelected} invoices`;
+  const getQuantityMessage = () => {
+    if (isLoading) return "Loading invoices";
+    if (!invoicesQuantity)
+      return isMobileSize ? "No invoices" : "There are no invoices";
+
+    return isMobileSize
+      ? `${invoicesQuantity} invoices`
+      : `There are ${invoicesQuantity} ${statusSelected} invoices`;
+  };
 
   return (
     <InvoicesListHeaderStyles>
       <div className="left-side">
         <h1 className="title">Invoices</h1>
-        <p className="invoices-counter">{`${
-          invoicesQuantity ? invoicesQuantityMessage : "No invoices"
-        }`}</p>
+        <p className="invoices-counter">{`${getQuantityMessage()}`}</p>
       </div>
       <div className="right-side">
         <div className="invoices-status-container">
