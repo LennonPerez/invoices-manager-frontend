@@ -6,7 +6,7 @@ export const getAllInvoices = async () => {
 };
 
 export const getInvoiceByID = async (invoiceID: string) => {
-  return doGet<Invoice>(`/invoices/${invoiceID}}`);
+  return doGet<Invoice>(`/invoices/${invoiceID}`);
 };
 
 export const createNewInvoice = async (invoice: Invoice) => {
@@ -18,5 +18,5 @@ export const editInvoice = async (invoice: Invoice) => {
 };
 
 export const deleteInvoiceByID = async (invoiceID: string) => {
-  return doDelete<{ message: string }>(`/invoices/${invoiceID}}`);
+  return doDelete<{ message: string }>(`/invoices/${invoiceID}`);
 };

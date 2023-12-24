@@ -21,6 +21,7 @@ const InvoicesListLoaderStyles = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 45.625rem;
+  width: 100%;
 
   .invoice-card {
     margin-bottom: 1rem;

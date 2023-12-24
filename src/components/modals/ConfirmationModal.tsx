@@ -6,14 +6,14 @@ import { DangerButton, SecondaryButton, PrimaryButton } from "../buttons";
 import BaseModal from "./BaseModal";
 
 export interface ConfirmationModalProps {
-  isOpen: boolean;
   title: string;
   description: string;
   confirmButtonText?: string;
   cancelButtonText?: string;
   isDanger?: boolean;
+  isOpen?: boolean;
   onConfirm?: () => void;
-  onCancel: () => void;
+  onCancel?: () => void;
 }
 
 const ConfirmationModal: FunctionComponent<ConfirmationModalProps> = ({
@@ -23,17 +23,17 @@ const ConfirmationModal: FunctionComponent<ConfirmationModalProps> = ({
   cancelButtonText,
   confirmButtonText,
   isDanger,
-  onCancel: onClose,
+  onCancel,
   onConfirm,
 }) => {
   const CofirmButton = isDanger ? DangerButton : PrimaryButton;
   return (
-    <BaseModal isOpen={isOpen} onClose={onClose}>
+    <BaseModal isOpen={isOpen ?? false} onClose={onCancel ?? (() => {})}>
       <ConfirmationModalStyles>
         <h2 className="title">{title}</h2>
         <p className="description">{description}</p>
         <div className="buttons">
-          <SecondaryButton onClick={onClose}>
+          <SecondaryButton onClick={onCancel}>
             {cancelButtonText ?? "Cancel"}
           </SecondaryButton>
           <CofirmButton onClick={onConfirm}>

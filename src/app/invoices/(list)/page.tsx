@@ -5,12 +5,12 @@ import InvoicesPageHeader from "./components/InvoicesHeader";
 import InvoicesListView from "./components/InvoicesListView";
 import InvoiceFormPage from "../components/invoice-form/InvoiceFormPage";
 import useInvoicesState from "./hooks/useInvoicesState";
-import useInvoiceForm from "./hooks/useInvoiceForm";
+import useNewInvoiceForm from "./hooks/useNewInvoiceForm";
 
 const Home = () => {
   const { invoices, isFetching } = useInvoicesState();
   const { isFormOpen, openForm, closeForm, onSaveForm, onSaveFormAsDraft } =
-    useInvoiceForm();
+    useNewInvoiceForm();
 
   return (
     <HomePageStyles>

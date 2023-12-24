@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useInvoiceForm = () => {
+const useNewInvoiceForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const openForm = () => {
@@ -30,4 +30,4 @@ const useInvoiceForm = () => {
   };
 };
 
-export default useInvoiceForm;
+export default useNewInvoiceForm;
