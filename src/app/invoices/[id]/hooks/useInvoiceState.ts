@@ -1,4 +1,4 @@
-import { getInvoiceByID } from "@/services/invoicesSerivice";
+import { getInvoiceByID } from "@/services/invoicesService";
 import { useQuery } from "@tanstack/react-query";
 
 const useInvoiceState = (invoiceID: string) => {
@@ -8,8 +8,9 @@ const useInvoiceState = (invoiceID: string) => {
   });
 
   const invoice = data?.code === "success" ? data.data : undefined;
+  const error = data?.code === "error" ? data.error : undefined;
 
-  return { invoice, isFetching };
+  return { invoice, isFetching, error };
 };
 
 export default useInvoiceState;

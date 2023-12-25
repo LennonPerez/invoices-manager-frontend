@@ -11,8 +11,8 @@ const InvoicesDetailsError: FunctionComponent<InvoicesDetailsErrorProps> = ({
 }) => {
   return (
     <>
-      <p>{`Error code: ${errorCode}`}</p>;
-      <p>{`Error message: ${errorMessage}`}</p>;
+      <p>{`Error code: ${errorCode}`}</p>
+      <p>{`Error message: ${errorMessage}`}</p>
     </>
   );
 };

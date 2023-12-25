@@ -1,6 +1,6 @@
 import { FunctionComponent, memo } from "react";
 import { Invoice } from "@/types/invoice";
-import { ResponseError } from "@/types/response";
+import { BaseError } from "@/services/requestHandler";
 import InvoicesListLoader from "./InvoicesListLoader";
 import InvoicesListError from "./InvoicesListError";
 import InvoicesListEmptyState from "./InvoiceListEmptyState";
@@ -8,7 +8,7 @@ import InvoicesList from "./InvoicesList";
 
 interface InvoicesListViewProps {
   invoices?: Invoice[] | null | undefined;
-  error?: ResponseError | undefined;
+  error?: BaseError | null | undefined;
   isLoading: boolean;
   isLoadingMore: boolean;
 }
@@ -26,8 +26,8 @@ const InvoicesListView: FunctionComponent<InvoicesListViewProps> = ({
   if (error || invoices === undefined || invoices === null) {
     return (
       <InvoicesListError
-        errorCode={error?.errorCode ?? "UNKNOWN_ERROR"}
-        errorMessage={error?.errorMessage ?? "Unknown error"}
+        errorCode={error?.code ?? "UNKNOWN_ERROR"}
+        errorMessage={error?.message ?? "Unknown error"}
       />
     );
   }

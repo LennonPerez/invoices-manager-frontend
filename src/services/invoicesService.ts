@@ -13,7 +13,7 @@ export const createNewInvoice = async (invoice: Invoice) => {
   return doPost<Invoice>("/invoices", invoice);
 };
 
-export const editInvoice = async (invoice: Invoice) => {
+export const editInvoiceByID = async (invoice: Invoice) => {
   return doPut<Invoice>(`/invoices/${invoice.id}`, invoice);
 };
 

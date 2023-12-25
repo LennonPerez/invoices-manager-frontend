@@ -5,19 +5,19 @@ type SuccessResponse<T> = {
   data: T;
 };
 
-type ErrorResponse<E = Error> = {
+type ErrorResponse<E = BaseError> = {
   code: "error";
   error: E;
 };
 
-type Error = {
+export type BaseError = {
   code: string;
   message: string;
 };
 
 const doRequest = async <T>(
   request: () => Promise<AxiosResponse<{ data: T }>>,
-): Promise<SuccessResponse<T> | ErrorResponse<Error>> => {
+): Promise<SuccessResponse<T> | ErrorResponse<BaseError>> => {
   try {
     const response = await request();
     return { code: "success", data: response.data.data };

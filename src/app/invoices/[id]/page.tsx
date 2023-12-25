@@ -19,7 +19,7 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
 
   const invoiceID = params.id;
   const { isFormOpen, openForm, closeForm } = useInvoiceFormEdit();
-  const { invoice, isFetching } = useInvoiceState(invoiceID);
+  const { invoice, isFetching, error } = useInvoiceState(invoiceID);
   const { confirmModalData, showDeleteConfirmation } =
     useInvoiceConfirm(invoiceID);
 
@@ -46,7 +46,7 @@ const InvoiceDetailsPage: FunctionComponent<InvoiceDetailsPageProps> = ({
       <InvoiceDetailsView
         invoice={invoice}
         isLoading={isFetching}
-        error={undefined}
+        error={error}
       />
       <InvoiceDetailsMobileCTAs
         isInitialLoading={false}
