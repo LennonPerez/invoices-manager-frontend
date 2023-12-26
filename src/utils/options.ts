@@ -1,4 +1,4 @@
-import { SelectorOption } from "@/components/Selector";
+import { SelectorOption } from "@/components/inputs/selectors/OptionSelector";
 
 export const paymentTermsOptions: SelectorOption[] = [
   {
