@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import { Invoice } from "@/types/invoice";
-import InvoiceCard from "./invoiceCard";
+import InvoiceCard from "./InvoiceCard";
 import InvoiceCardLoader from "./InvoiceCardLoader";
 
 interface InvoicesListProps {
