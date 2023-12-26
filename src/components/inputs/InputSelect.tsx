@@ -22,7 +22,7 @@ export const InputSelect: FunctionComponent<InputSelectProps> = (props) => {
     setSelected(initial);
   }, []);
 
-  const onOpenSelector = () => setIsSelectorOpened(true);
+  const onOpenSelector = async () => setIsSelectorOpened(true);
   const onCloseSelector = () => setIsSelectorOpened(false);
 
   return (

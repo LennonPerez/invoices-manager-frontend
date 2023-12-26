@@ -14,7 +14,7 @@ export const InputDatePicker: FunctionComponent<InputDatePickerProps> = (
 
   const dateToDisplay = datePicked ? formatDate(datePicked) : "";
 
-  const onOpenSelector = () => setIsSelectorOpened(true);
+  const onOpenSelector = async () => setIsSelectorOpened(true);
   const onCloseSelector = () => setIsSelectorOpened(false);
 
   return (
