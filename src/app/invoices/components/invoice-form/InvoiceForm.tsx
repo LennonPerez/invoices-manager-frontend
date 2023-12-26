@@ -5,64 +5,98 @@ import { paymentTermsOptions } from "@/utils/options";
 import { Input, InputSelect, InputDatePicker } from "@/components/inputs";
 import { SecondaryButton } from "@/components/buttons";
 import InvoiceFormItem from "./InvoiceFormItem";
+import useValidation from "./hooks/useValidation";
+import useIsMobile from "@/hooks/useIsMobile";
 
 interface InvoiceFormProps {
-  invoice: Invoice | undefined;
+  invoiceToEdit: Invoice | undefined;
 }
 
-const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({ invoice }) => {
-  const isEditing = !!invoice?.id;
+const InvoiceForm: FunctionComponent<InvoiceFormProps> = ({
+  invoiceToEdit,
+}) => {
+  const isMobile = useIsMobile();
+  const { inputs, handleSubmit } = useValidation();
+  const isEditing = !!invoiceToEdit?.id;
+
+  const FromCountryInput = () => (
+    <div className="country-input">
+      <Input label="Country" {...inputs.fromCountry} />
+    </div>
+  );
+
+  const ToCountryInput = () => (
+    <div className="country-input">
+      <Input label="Country" {...inputs.toCountry} />
+    </div>
+  );
+
+  const DateInput = () => (
+    <InputDatePicker
+      label="Invoice Date"
+      disabled={isEditing}
+      {...inputs.date}
+    />
+  );
+
+  const PaymentTermsInput = () => (
+    <InputSelect
+      label="Payment Terms"
+      options={paymentTermsOptions}
+      {...inputs.paymentTerms}
+    />
+  );
 
   return (
-    <InvoiceFormStyles>
+    <InvoiceFormStyles onSubmit={handleSubmit}>
       <div className="section">
         <h3>Bill From</h3>
-        <Input label="Street Address" />
+        <Input label="Street Address" {...inputs.fromAddress} />
         <Divider />
         <div className="row">
-          <Input label="City" />
-          <Input label="Post Code" />
-          <div className="country-input">
-            <Input label="Country" />
-          </div>
+          <Input label="City" {...inputs.fromCity} />
+          <Input label="Post Code" {...inputs.fromPostalCode} />
+          {!isMobile ? <FromCountryInput /> : null}
         </div>
         <Divider />
-        <div className="country-input">
-          <Input label="Country" />
-        </div>
+        {isMobile ? <FromCountryInput /> : null}
       </div>
       <div className="section">
         <h3>Bill To</h3>
-        <Input label="Client's Name" />
+        <Input label="Client's Name" {...inputs.clientName} />
         <Divider />
-        <Input label="Client's Email" />
+        <Input label="Client's Email" {...inputs.clientEmail} />
         <Divider />
-        <Input label="Street Address" />
+        <Input label="Street Address" {...inputs.toStreetAddress} />
         <Divider />
         <div className="row">
-          <Input label="City" />
-          <Input label="Post Code" />
-          <div className="country-input">
-            <Input label="Country" />
-          </div>
+          <Input label="City" {...inputs.toCity} />
+          <Input label="Post Code" {...inputs.toPostCode} />
+          {!isMobile ? <ToCountryInput /> : null}
         </div>
         <Divider />
-        <div className="country-input">
-          <Input label="Country" />
-        </div>
+        {isMobile ? <ToCountryInput /> : null}
       </div>
       <div className="section last">
         <div className="row date-terms-row">
-          <InputDatePicker label="Invoice Date" disabled={isEditing} />
-          <InputSelect label="Payment Terms" options={paymentTermsOptions} />
+          {!isMobile ? (
+            <>
+              <DateInput />
+              <PaymentTermsInput />
+            </>
+          ) : null}
         </div>
         <div className="date-terms-column">
-          <InputDatePicker label="Invoice Date" disabled={isEditing} />
-          <Divider />
-          <InputSelect label="Payment Terms" options={paymentTermsOptions} />
+          {isMobile ? (
+            <>
+              <DateInput />
+              <Divider />
+              <PaymentTermsInput />
+            </>
+          ) : null}
         </div>
         <Divider />
-        <Input label="Project / Description" />
+        <Input label="Project / Description" {...inputs.projectDescription} />
       </div>
       <div className="items-list-container">
         <h2>Item List</h2>

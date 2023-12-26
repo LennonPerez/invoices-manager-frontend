@@ -1,20 +1,20 @@
 import {
-  useRef,
   useState,
   useEffect,
   ReactNode,
   FunctionComponent,
   HTMLInputTypeAttribute,
-  RefObject,
   ChangeEvent,
+  FocusEvent,
 } from "react";
 import styled from "styled-components";
 import { LuChevronDown, LuChevronUp } from "react-icons/lu";
 import { HiCalendar } from "react-icons/hi2";
 import { generateUniqueId } from "@/utils/generators";
+import { ChangeHandler, RefCallBack } from "react-hook-form";
 
 export interface InputProps {
-  reference?: RefObject<HTMLInputElement>;
+  reference?: RefCallBack;
   type?: HTMLInputTypeAttribute;
   name?: string;
   value?: string;
@@ -29,24 +29,21 @@ export interface InputProps {
   errorMessage?: string;
   suffixContent?: ReactNode;
   onClick?: () => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  onChange?: (value: string) => void;
+  onFocus?: ChangeHandler;
+  onBlur?: ChangeHandler;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: FunctionComponent<InputProps> = (props) => {
   const [inputId, setInputId] = useState<string>("");
   const [isFocused, setFocus] = useState<boolean>(false);
 
-  const localRef = useRef<HTMLInputElement>(null);
-  const ref = props.reference ?? localRef;
-
   useEffect(() => setInputId(generateUniqueId()), []);
 
   const onClickInput = () => {
     if (props.disabled) return;
 
-    ref.current?.focus();
+    setFocus(!props.disabled);
 
     if (!props.onClick) return;
     props.onClick();
@@ -54,17 +51,17 @@ const Input: FunctionComponent<InputProps> = (props) => {
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (!props.onChange) return;
-    props.onChange(e.target.value);
+    props.onChange(e);
   };
 
-  const onFocusInput = () => {
+  const onFocusInput = (e: FocusEvent<HTMLInputElement, Element>) => {
     setFocus(!props.disabled);
-    if (props.onFocus && !props.disabled) props.onFocus();
+    if (props.onFocus && !props.disabled) props.onFocus(e);
   };
 
-  const onBlurInput = () => {
+  const onBlurInput = (e: FocusEvent<HTMLInputElement, Element>) => {
     setFocus(false);
-    if (props.onBlur) props.onBlur();
+    if (props.onBlur) props.onBlur(e);
   };
 
   return (
@@ -91,7 +88,7 @@ const Input: FunctionComponent<InputProps> = (props) => {
       <div className="input-container" onClick={onClickInput}>
         <input
           id={inputId}
-          ref={ref}
+          ref={props.reference}
           type={props.type}
           value={props.value}
           name={props.name}
@@ -179,7 +176,8 @@ const BaseInputStyles = styled.div<BaseInputStylesProps>`
 
     @media (hover: hover) {
       &:hover {
-        border-color: ${({ theme }) => theme.inputs.borderActive};
+        border-color: ${({ theme, $isError }) =>
+          $isError ? theme.inputs.error : theme.inputs.borderActive};
       }
     }
 

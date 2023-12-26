@@ -48,7 +48,7 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = ({
 
   return (
     <InvoiceFormPageStyles ref={formRef} $show={show}>
-      <form>
+      <form className="form-container">
         <div className="form-content">
           <div className="back-button-container">
             <BackButton onClick={goBack} />
@@ -61,7 +61,7 @@ const InvoiceFormPage: FunctionComponent<InvoiceFormPageProps> = ({
           ) : (
             <h1 className="title">New Invoice</h1>
           )}
-          <InvoiceForm invoice={invoiceToEdit} />
+          <InvoiceForm invoiceToEdit={invoiceToEdit} />
         </div>
         <InvoiceFormButtons
           isEditing={isEditing}
@@ -81,7 +81,7 @@ interface InvoiceFormPageStylesProps {
 }
 
 const InvoiceFormPageStyles = styled.div<InvoiceFormPageStylesProps>`
-  form {
+  .form-container {
     background-color: ${({ theme }) => theme.form.background};
     transform: translateY(${({ $show }) => ($show ? "0" : "100vh")});
     max-width: 38.5rem;
