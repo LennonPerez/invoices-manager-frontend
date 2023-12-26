@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { SpartanFont } from "@/styles/fonts";
 import ThemesProvider from "@/providers/ThemesProvider";
 import TanstackProvider from "@/providers/TanstackProvider";
-// import DefaultLayout from "@/layout/Default";
+import DefaultLayout from "@/layout/Default";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,8 +21,7 @@ const RootLayout: FunctionComponent<RootLayoutProps> = ({ children }) => {
       <ThemesProvider>
         <html lang="en">
           <body className={SpartanFont.className}>
-            {/* <DefaultLayout>{children}</DefaultLayout> */}
-            {children}
+            <DefaultLayout>{children}</DefaultLayout>
           </body>
         </html>
       </ThemesProvider>
